@@ -43,21 +43,34 @@ function Player(name, score){
 // var stringifiedScores = JSON.stringify(highscoreList);
 // localStorage.setItem('scoresData', stringifiedScores);
 
+
+// -------------- CREATE LETTERS AND DISPLAY ON HTML --------------------
+
+// I NEED TO ASSIGN A VALUE TO EACH  BUTTON SO WHEN CLICKED TRIGGERS EVENT LISTENER AND PERFORMS guessedLetter(WITH CLICKED VALUE)
 var letters = 'abcdefghijklmnopqrstuvwxyz'.split('');
-var words = ['rudoplh', 'santa', 'christmas'];
-var blankWord = '';
-var currentAnswer;
-var chances = 6;
-var correct = false;
-
 var letterContainer = document.getElementById('letters');
-
 for (var i = 0; i < letters.length; i++){
   var span = document.createElement('span');
   span.textContent = letters[i];
   letterContainer.appendChild(span);
 }
 
+// THIS WORKS AND RENDERS ON SCREEN; HARD CODED VALUE
+var letterExample = document.querySelector('.R');
+function guessALetter(){
+  guessedLetter('r');
+  console.log('you guessed r');
+  displayWord();
+}
+letterExample.addEventListener('click', guessALetter);
+
+
+// -------------- GENERATING RANDOM WORD --------------------
+var words = ['rudoplh', 'santa', 'christmas'];
+var blankWord = '';
+var currentAnswer;
+var chances = 6;
+var correct = false;
 // function randomWord() {
 //   return Math.floor(Math.random() * words.length);
 // }
@@ -87,5 +100,12 @@ function guessedLetter(guess){
   correct = false;
 }
 
-guessedLetter('r');
-// console.log(blankWord);
+// RENDER WORD ON SCREEN
+var wordElement = document.getElementById('word');
+var pressPlay = document.querySelector('.play-btn');
+pressPlay.addEventListener('click', displayWord);
+
+function displayWord(){
+  wordElement.textContent = blankWord;
+}
+

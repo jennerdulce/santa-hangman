@@ -2,6 +2,11 @@ body {
   background-color: teal;
 }
 
+button {
+  font-size: 30px;
+  padding: 5px;
+}
+
 #game-container {
   position: relative;
   width: 1000px;
@@ -60,6 +65,27 @@ body {
   padding: 3px
 }
 
+/* WORD BOX */
+#word-container {
+  position: absolute;
+  bottom: 150px;
+  left: 10px;
+  width: 970px;
+  height: 30px;
+  padding: 4px;
+  border: 3px solid black;
+  border-radius: 30px;
+  background-color: white;
+  opacity: .6;
+}
+
+#word{
+  text-align: center;
+  letter-spacing: 8px;
+  word-spacing: 6px;
+  font-size: 24px;
+}
+
 /* LETTER BOX */
 #letters {
   position: absolute;
@@ -70,7 +96,6 @@ body {
   border: 3px solid black;
   border-radius: 30px;
   background-color: aquamarine;
-
 }
 
 #letters > span {
