@@ -1,0 +1,10 @@
+body {
+  background-color: teal;
+}
+
+#game-container {
+  width: 1000px;
+  height: 750px;
+  background-color: rgb(245, 172, 62);
+  margin: 50px auto;
+}
