@@ -3,9 +3,11 @@ body {
 }
 
 #game-container {
+  position: relative;
   width: 1000px;
   height: 750px;
-  background-color: rgb(245, 172, 62);
+  background-image: url("../img/beginningscreen.jpg");
+  background-size: contain;
   margin: 300px auto;
 }
 
@@ -23,7 +25,7 @@ body {
   align-items: center;
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0s opacity 0,5s;
+  /* transition: visibility 0s opacity 0,5s; NOT WORKING */
 }
 
 .bg-active {
@@ -56,4 +58,32 @@ body {
   cursor: pointer;
   border: 3px solid black;
   padding: 3px
+}
+
+/* LETTER BOX */
+#letters {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  width: 970px;
+  padding: 4px;
+  border: 3px solid black;
+  border-radius: 30px;
+  background-color: aquamarine;
+
+}
+
+#letters > span {
+  font-size: 28px;
+  display: inline-block;
+  margin: 20px auto;
+  margin-left: 8px;
+  border-radius: 10px;
+  padding:5px;
+  background-color:white;
+  text-transform: uppercase;
+}
+
+#letters > span:hover {
+  cursor: pointer;
 }
