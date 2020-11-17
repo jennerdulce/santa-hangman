@@ -96,39 +96,35 @@ function Player(name, score) {
 
 
 // ------------------- RETRIEVE HIGHSCORES -----------------------
-var highscoreEl = document.getElementById('highscores');
-var retrievedData = localStorage.getItem('scoresData');
+// var retrievedData = localStorage.getItem('scoresData');
+// if (retrievedData){
+//   highscoreList = retrievedData;
+// } else {
+//   for (var i = 0; i < randomNames.length; i++){
+//     new Player(randomNames[i], scores[i]);
+//   }
+// }
 
-if (retrievedData) {
-  highscoreList = retrievedData;
-} else {
-  for (var i = 0; i < randomNames.length; i++) {
-    new Player(randomNames[i], scores[i]);
-  }
-  // }
-  highscoreList.sort(function (a, b) {
-    return b.score - a.score;
-  });
-  for (var i = 0; i < highscoreList.length; i++) {
-    var li = document.createElement('li');
-    li.textContent = `${highscoreList[i].name}: ${highscoreList[i].score}`;
-    highscoreEl.appendChild(li);
-  }
-  // ------ HIGH SCORE SORTER -------
-  // var stringifiedScores = JSON.stringify(highscoreList);
-  // localStorage.setItem('scoresData', stringifiedScores);
-}
+// employees.sort(function(a, b){
+//   return a.score-b.score;
+// });
+
+
+// var stringifiedScores = JSON.stringify(highscoreList);
+// localStorage.setItem('scoresData', stringifiedScores);
+
 
 // -------------- CREATE LETTERS AND DISPLAY ON HTML --------------------
 
 // I NEED TO ASSIGN A VALUE TO EACH  BUTTON SO WHEN CLICKED TRIGGERS EVENT LISTENER AND PERFORMS guessedLetter(WITH CLICKED VALUE)
-// var letters = 'abcdefghijklmnopqrstuvwxyz'.split(''); // 'a', 'b', 'c', 'd'...]
-// var letterContainer = document.getElementById('letters');
-// for (var i = 0; i < letters.length; i++){
-//   var span = document.createElement('span');
-//   span.textContent = letters[i];
-//   letterContainer.appendChild(span);
-// }
+
+var letters = 'abcdefghijklmnopqrstuvwxyz'.split('');
+var letterContainer = document.getElementById('letters');
+for (var i = 0; i < letters.length; i++) {
+  var span = document.createElement('span');
+  span.textContent = letters[i];
+  letterContainer.appendChild(span);
+}
 
 // THIS WORKS AND RENDERS ON SCREEN; HARD CODED VALUE
 var letterExample = document.querySelector('.R');
@@ -137,6 +133,7 @@ function guessALetter() {
   displayWord();
 }
 letterExample.addEventListener('click', guessALetter);
+
 
 // -------------- GENERATING RANDOM WORD --------------------
 var words = ['rudoplh', 'santa', 'christmas'];
@@ -149,11 +146,35 @@ var correct = false;
 // function randomWord() {
 //   return Math.floor(Math.random() * words.length);
 // }
+var gameCount;
+var wordScore = 0;
+
+var scoretracker
+function timer () {
+  gameCount --;
+  var gameCountDisplay = document.getElementById('gameTimer');
+  gameCountDisplay.innerHTML = gameCount;
+  if(gameCount <= 0){
+    clearInterval(gameCount);
+    endGame();
+  }
+
+}
+function startscoreTracker() {
+  scoreTracker = setInterval(timer, 20);
+
+  function timer() {
+    var meterDisplay = document.getElementById('fillMeter');
+    
+    meterDisplay.setAttribute('style', meterWidth);
+  }
+}
+
 
 // would use random word inside words[randomWord()]
-currentWord = words[0]; // rudolph 7 letter
+currentWord = words[0];
 for (var i = 0; i < currentWord.length; i++) {
-  blankWord += '_'; // ' _ _ _ _ _ _ _ '
+  blankWord += '_';
 }
 
 currentPhrase = phrase[0];
@@ -166,27 +187,19 @@ for (var i = 0; i < currentPhrase.length; i++) {
 }
 
 
-
-// ---------------- THIS IS HOW YOU ACTUALLY GUESS A LETTER -----------------------
 function guessedLetter(guess) {
-  blankWord = blankWord.split(''); // rudolph = ['r', 'u','d']
+  blankWord = blankWord.split(''); // tree = ['t','r','e','e']
   for (var i = 0; i < currentWord.length; i++) {
-    if (guess === currentWord.charAt(i)) { // rudolph => _ _ _ _ _ _ _ // guess = r
+    if (guess === currentWord.charAt(i)) { // rudolph => _ _ _ _ _ _ _
       blankWord[i] = guess;
-      blankWord = blankWord.join(''); // 'rudolph'
+      blankWord = blankWord.join(''); // 'tree'
       correct = true;
       // turn letter green
-    }
-    if (blankWord === currentWord && chances > 0) {
-      // open you win modal
     }
   }
   if (!correct) {
     // turn letter red
     // chances--
-  }
-  if (blankWord !== currentWord && chances === 0) {
-    // open you lose modal
   }
   // resets to false for the next guess
   correct = false;
@@ -210,3 +223,4 @@ pressPhrase.addEventListener('click', displayPhrase);
 function displayPhrase() {
   wordElement.textContent = blankPhrase;
 }
+
