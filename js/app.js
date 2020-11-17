@@ -136,7 +136,7 @@ letterExample.addEventListener('click', guessALetter);
 
 
 // -------------- GENERATING RANDOM WORD --------------------
-var words = ['rudoplh', 'santa', 'christmas'];
+var words = ['rudolph', 'santa', 'christmas'];
 var phrase = ['sleigh bells ring'];
 var blankWord = '';
 var currentWord, currentPhrase;
