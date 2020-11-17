@@ -140,3 +140,17 @@ button {
 #letters > span:hover {
   cursor: pointer;
 }
+
+.modal-howToPlay > h1 {
+  font-size: 45px;
+
+}
+
+.modal-howToPlay > p {
+  font-size: 35px;
+
+}
+
+.modal-howToPlay {
+  background-image: url();
+}
