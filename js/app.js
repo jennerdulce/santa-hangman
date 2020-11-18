@@ -118,13 +118,16 @@ function Player(name, score) {
 
 // I NEED TO ASSIGN A VALUE TO EACH  BUTTON SO WHEN CLICKED TRIGGERS EVENT LISTENER AND PERFORMS guessedLetter(WITH CLICKED VALUE)
 
-var letters = 'abcdefghijklmnopqrstuvwxyz'.split('');
-var letterContainer = document.getElementById('letters');
-for (var i = 0; i < letters.length; i++) {
-  var span = document.createElement('span');
-  span.textContent = letters[i];
-  letterContainer.appendChild(span);
-}
+
+// var letters = 'abcdefghijklmnopqrstuvwxyz'.split(''); // 'a', 'b', 'c', 'd'...]
+// var letterContainer = document.getElementById('letters');
+// for (var i = 0; i < letters.length; i++){
+//   var span = document.createElement('span');
+//   span.textContent = letters[i];
+//   letterContainer.appendChild(span);
+// }
+
+
 
 // THIS WORKS AND RENDERS ON SCREEN; HARD CODED VALUE
 var letterExample = document.querySelector('.R');
@@ -171,10 +174,16 @@ function startscoreTracker() {
 }
 
 
+
+
 // would use random word inside words[randomWord()]
-currentWord = words[0];
+
+
+currentWord = words[0]; // rudolph 7 letter
 for (var i = 0; i < currentWord.length; i++) {
-  blankWord += '_';
+  blankWord += '_'; // ' _ _ _ _ _ _ _ '
+
+
 }
 
 currentPhrase = phrase[0];
@@ -190,7 +199,9 @@ for (var i = 0; i < currentPhrase.length; i++) {
 function guessedLetter(guess) {
   blankWord = blankWord.split(''); // tree = ['t','r','e','e']
   for (var i = 0; i < currentWord.length; i++) {
-    if (guess === currentWord.charAt(i)) { // rudolph => _ _ _ _ _ _ _
+
+    if (guess === currentWord.charAt(i)) { // rudolph => _ _ _ _ _ _ _ // guess = r
+
       blankWord[i] = guess;
       blankWord = blankWord.join(''); // 'tree'
       correct = true;

@@ -140,10 +140,12 @@ button {
 #letters > span:hover {
   cursor: pointer;
 }
+
 .logo-box{
   text-align: center;
 
 }
+
 .modal-btn{
   background-color: #E3CE9F;
   border:none;
@@ -199,4 +201,6 @@ button {
   box-shadow: 3px 3px 2px grey;
   outline: 0px;
   display: inline-block;
+
 }
+
