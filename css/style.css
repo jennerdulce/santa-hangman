@@ -237,4 +237,17 @@ button {
 
 }
 
+.modal-highscore {
+  font-size: 25px;
+  padding-top: 125px;
+  padding-left: 200px;
+  font-family: 'Dancing Script', cursive;
+  color: brown
+}
+
+.modal-highscore > h1 {
+  padding-bottom: 25px;
+  font-size: 35px;
+  
+}
 

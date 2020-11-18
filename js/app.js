@@ -1,5 +1,11 @@
 // -------------- MODAL -----------------
-
+// Background Music
+var myMusic
+  function startGame() {
+    myMusic = new AudioBufferSourceNode()
+  }
+    
+  }
 // opening modal
 var modalBtn = document.querySelector('.modal-btn');
 var modalBg = document.querySelector('.modal-front-bg');
@@ -100,7 +106,7 @@ finishBtn.addEventListener('click', openFinish);
 
 //  ---------------- OBJECT CONSTRUCTOR ---------------
 var scores = [100, 500, 600, 400, 300, 400, 600, 115, 630, 900];
-var randomNames = ['rudolph', 'papa elf', 'Mrs. Clause', 'Jack Skellignton', 'Corpse Bride', 'Hercules', 'Mushu', 'Olaf', 'Else', 'Sven'];
+var randomNames = ['Rudolph', 'papa elf', 'Mrs. Clause', 'Jack Skellignton', 'Corpse Bride', 'Hercules', 'Mushu', 'Olaf', 'Else', 'Sven'];
 var highscoreList = [];
 var currentUserScore = 0;
 
@@ -151,17 +157,24 @@ if (retrievedData) {
 
 
 // THIS WORKS AND RENDERS ON SCREEN; HARD CODED VALUE
-var letterExampleR = document.querySelector('.R');
-letterExampleR.addEventListener('click', guessR);
-function guessR() {
-  guessedLetter('r');
+var letterExampleA = document.querySelector('.A');
+letterExampleA.addEventListener('click', guessA);
+function guessA() {
+  guessedLetter('a');
   displayWord();
 }
 
-var letterExampleU = document.querySelector('.U');
-letterExampleU.addEventListener('click', guessU);
-function guessU() {
-  guessedLetter('u');
+var letterExampleB = document.querySelector('.B');
+letterExampleB.addEventListener('click', guessB);
+function guessB() {
+  guessedLetter('b');
+  displayWord();
+}
+
+var letterExampleC = document.querySelector('.C');
+letterExampleC.addEventListener('click', guessC);
+function guessC() {
+  guessedLetter('c');
   displayWord();
 }
 
@@ -172,24 +185,24 @@ function guessD() {
   displayWord();
 }
 
-var letterExampleO = document.querySelector('.O');
-letterExampleO.addEventListener('click', guessO);
-function guessO() {
-  guessedLetter('o');
+var letterExampleE = document.querySelector('.E');
+letterExampleE.addEventListener('click', guessE);
+function guessE() {
+  guessedLetter('e');
   displayWord();
 }
 
-var letterExampleL = document.querySelector('.L');
-letterExampleL.addEventListener('click', guessL);
-function guessL() {
-  guessedLetter('l');
+var letterExampleF = document.querySelector('.F');
+letterExampleF.addEventListener('click', guessF);
+function guessF() {
+  guessedLetter('f');
   displayWord();
 }
 
-var letterExampleP = document.querySelector('.P');
-letterExampleP.addEventListener('click', guessP);
-function guessP() {
-  guessedLetter('p');
+var letterExampleG = document.querySelector('.G');
+letterExampleG.addEventListener('click', guessG);
+function guessG() {
+  guessedLetter('g');
   displayWord();
 }
 
@@ -199,7 +212,114 @@ function guessH() {
   guessedLetter('h');
   displayWord();
 }
-
+var letterExampleI = document.querySelector('.I');
+letterExampleI.addEventListener('click', guessI);
+function guessI() {
+  guessedLetter('i');
+  displayWord();
+}
+var letterExampleJ = document.querySelector('.J');
+letterExampleJ.addEventListener('click', guessJ);
+function guessJ() {
+  guessedLetter('j');
+  displayWord();
+}
+var letterExampleK = document.querySelector('.K');
+letterExampleK.addEventListener('click', guessK);
+function guessK() {
+  guessedLetter('k');
+  displayWord();
+}
+var letterExampleL = document.querySelector('.L');
+letterExampleL.addEventListener('click', guessL);
+function guessL() {
+  guessedLetter('l');
+  displayWord();
+}
+var letterExampleM = document.querySelector('.M');
+letterExampleM.addEventListener('click', guessM);
+function guessM() {
+  guessedLetter('m');
+  displayWord();
+}
+var letterExampleN = document.querySelector('.N');
+letterExampleN.addEventListener('click', guessN);
+function guessN() {
+  guessedLetter('n');
+  displayWord();
+}
+var letterExampleO = document.querySelector('.O');
+letterExampleO.addEventListener('click', guessO);
+function guessO() {
+  guessedLetter('o');
+  displayWord();
+}
+var letterExampleP = document.querySelector('.P');
+letterExampleP.addEventListener('click', guessP);
+function guessP() {
+  guessedLetter('p');
+  displayWord();
+}
+var letterExampleQ = document.querySelector('.Q');
+letterExampleQ.addEventListener('click', guessQ);
+function guessQ() {
+  guessedLetter('q');
+  displayWord();
+}
+var letterExampleR = document.querySelector('.R');
+letterExampleR.addEventListener('click', guessR);
+function guessR() {
+  guessedLetter('r');
+  displayWord();
+}
+var letterExampleS = document.querySelector('.S');
+letterExampleS.addEventListener('click', guessS);
+function guessS() {
+  guessedLetter('s');
+  displayWord();
+}
+var letterExampleT = document.querySelector('.T');
+letterExampleT.addEventListener('click', guessT);
+function guessT() {
+  guessedLetter('t');
+  displayWord();
+}
+var letterExampleU = document.querySelector('.U');
+letterExampleU.addEventListener('click', guessU);
+function guessU() {
+  guessedLetter('u');
+  displayWord();
+}
+var letterExampleV = document.querySelector('.V');
+letterExampleV.addEventListener('click', guessV);
+function guessV() {
+  guessedLetter('v');
+  displayWord();
+}
+var letterExampleW = document.querySelector('.W');
+letterExampleW.addEventListener('click', guessW);
+function guessW() {
+  guessedLetter('w');
+  displayWord();
+}
+var letterExampleX = document.querySelector('.X');
+letterExampleX.addEventListener('click', guessX);
+function guessX() {
+  guessedLetter('x');
+  displayWord();
+}
+var letterExampleY = document.querySelector('.Y');
+letterExampleY.addEventListener('click', guessY);
+function guessY() {
+  guessedLetter('h');
+  displayWord();
+}
+var letterExampleZ = document.querySelector('.Z');
+letterExampleZ.addEventListener('click', guessZ);
+function guessZ() {
+  guessedLetter('z');
+  displayWord();
+}
 
 
 
@@ -214,28 +334,28 @@ var correct = false;
 // function randomWord() {
 //   return Math.floor(Math.random() * words.length);
 // }
-var gameCount;
-var wordScore = 0;
+// var gameCount;
+// var wordScore = 0;
 
-var scoretracker
-function timer () {
-  gameCount --;
-  var gameCountDisplay = document.getElementById('gameTimer');
-  gameCountDisplay.innerHTML = gameCount;
-  if(gameCount <= 0){
-    clearInterval(gameCount);
-    endGame();
-  }
+// var scoretracker
+// function timer () {
+//   gameCount --;
+//   var gameCountDisplay = document.getElementById('gameTimer');
+//   gameCountDisplay.innerHTML = gameCount;
+//   if(gameCount <= 0){
+//     clearInterval(gameCount);
+//     endGame();
+//   }
 
-}
-function startscoreTracker() {
-  scoreTracker = setInterval(timer, 20);
+// }
+// function startscoreTracker() {
+//   scoreTracker = setInterval(timer, 20);
 
-  function timer() {
-    var meterDisplay = document.getElementById('fillMeter');
-    meterDisplay.setAttribute('style', meterWidth);
-  }
-}
+//   function timer() {
+//     var meterDisplay = document.getElementById('fillMeter');
+//     meterDisplay.setAttribute('style', meterWidth);
+//   }
+// }
 
 
 
@@ -294,7 +414,7 @@ function guessedLetter(guess) {
   }
   if (!correct) {
     // turn letter red
-    // chances--
+    chances--;
   }
 
   if (blankWord !== currentWord && chances === 0) {
