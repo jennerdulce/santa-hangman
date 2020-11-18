@@ -68,7 +68,7 @@ button {
   position: relative;
   background-color: white;
   background-image: url("../img/wreath.png");
-  background-repeat: inherit;
+  background-repeat: no-repeat;
   text-align: center;
   color: white;
   width: 50%;
@@ -151,6 +151,19 @@ button {
   cursor: pointer;
 }
 
+.modal-howToPlay > h1 {
+  font-size: 45px;
+
+}
+
+.modal-howToPlay > p {
+  font-size: 35px;
+
+}
+
+.modal-howToPlay {
+  background-image: url();
+}
 
 /* GUESSES */
 #guesses {
@@ -259,7 +272,6 @@ h2{
   color: red;
   background: wheat;
   border-radius: 15px 15px 0px 0px;
-
   
 }
 .groupMember{
@@ -273,3 +285,4 @@ h2{
   text-align: center;
   background-color: white;  
 }
+
