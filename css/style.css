@@ -166,7 +166,7 @@ button {
 }
 
 /* GUESSES */
-#guesses {
+#chance {
   position: absolute;
   right: 10px;
   top: 10px;
