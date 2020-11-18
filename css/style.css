@@ -30,7 +30,7 @@ button {
 
 
 /* MODAL */
-.modal-front-bg, .modal-highscore-bg, .modal-howToPlay-bg {
+.modal-front-bg, .modal-highscore-bg, .modal-howToPlay-bg, .modal-play-bg, .modal-finish-bg {
   position: fixed;
   width: 100%;
   height: 100vh;
@@ -68,7 +68,7 @@ button {
   align-items: center;
 }
 
-.modal-highscore, .modal-howToPlay {
+.modal-highscore, .modal-howToPlay, .modal-play, .modal-finish {
   position: relative;
   background-color: white;
   background-image: url("../img/wreath.png");
@@ -89,7 +89,7 @@ button {
   color: #000;
 }
 
-.modal-front > h1 {
+.modal-front > h1, a {
   font-size: 30px;
   border: 3px solid black;
   border-radius: 30px;
@@ -97,7 +97,7 @@ button {
   cursor: pointer;
 }
 
-.modal-close, .modal-highscore-close, .modal-howToPlay-close {
+.modal-close, .modal-highscore-close, .modal-howToPlay-close, .modal-play-close {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -154,3 +154,103 @@ button {
 #letters > span:hover {
   cursor: pointer;
 }
+
+.modal-howToPlay > h1 {
+  font-size: 45px;
+
+}
+
+.modal-howToPlay > p {
+  font-size: 35px;
+
+}
+
+.modal-howToPlay {
+  background-image: url();
+}
+
+/* GUESSES */
+#guesses {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 30px;
+  border: 2px solid black;
+  border-radius: 30px;
+  padding: 5px;
+}
+
+/* SCORE */
+#score {
+  position: absolute;
+  right: 10px;
+  top: 60px;
+  font-size: 30px;
+  border: 2px solid black;
+  border-radius: 30px;
+  padding: 5px;
+}
+
+.logo-box{
+  text-align: center;
+
+}
+
+.modal-btn{
+  background-color: #E3CE9F;
+  border:none;
+  color: #570000;
+  padding: 5px 15px;
+  text-align: center;
+  text-decoration: none;
+  font-family: sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
+  border: 3px solid black;
+  box-shadow: 3px 3px 2px grey;
+  outline: 0px;
+  display: inline-block;
+ 
+}
+ .phrase-btn{
+  background-color: #E3CE9F;
+  border:none;
+  color: #570000;
+  padding: 5px 15px;
+  text-align: center;
+  text-decoration: none;
+  font-family: sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
+  border: 3px solid black;
+  box-shadow: 3px 3px 2px grey;
+  outline: 0px;
+  display: inline-block;
+
+ }
+.word-btn{
+  background-color: #E3CE9F;
+  border:none;
+  color: #570000;
+  padding: 5px 15px;
+  text-align: center;
+  text-decoration: none;
+  font-family: sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
+  border: 3px solid black;
+  box-shadow: 3px 3px 2px grey;
+  outline: 0px;
+  display: inline-block;
+
+}
+
