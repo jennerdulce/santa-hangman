@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-US">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,18 +8,29 @@
   <link rel="stylesheet" href="css/style.css">
   <title>Santa Hangman</title>
 </head>
+
 <body>
   <header>
 
   </header>
   <main>
     <div id="game-container">
+      <p id="guesses">GUESSES WILL GO HERE</p>
+      <p id="score">SCORE WILL GO HERE</p>
       <section id="word-container">
         <p id="word">THE WORD GOES HERE</p>
       </section>
 
       <!-- LETTERS -->
       <section id="letters">
+
+         <button class="R">r</button>
+        <button class="U">u</button>
+        <button class="D">d</button>
+        <button class="O">o</button>
+        <button class="L">l</button>
+        <button class="P">p</button>
+        <button class="H">h</button>
         <button class="R">a</button>
         <button class="R">b</button>
         <button class="R">c</button>
@@ -45,19 +57,19 @@
         <button class="R">x</button>
         <button class="R">y</button>
         <button class="R">z</button>
-
       </section>
     </div>
     <button class="modal-btn">TRIGGER MODAL</button>
-    <button class="phrase-btn">Phrase</button>
-    <button class="word-btn">Word</button>
+    <button class="finish-btn">TRIGGER FINISH</button>
 
     <div class="modal-front-bg">
       <div class="modal-front">
         <h1 id="highscore-btn">High Score</h1>
         <h1 id="howToPlay-btn">How To Play</h1>
-        <h1>About Us</h1>
-        <h1>Play</h1>
+        <a href="aboutus.html" target="_blank">
+          <h1>About Us</h1>
+        </a>
+        <h1 id="play-btn">Play</h1>
         <span class="modal-close">X</span>
       </div>
     </div>
@@ -73,14 +85,9 @@
     <div class="modal-play-bg">
       <div class="modal-play">
         <h1>Choose Mode:</h1>
+        <button class="phrase-btn">Phrase</button>
+        <button class="word-btn">Word</button>
         <span class="modal-play-close">X</span>
-      </div>
-    </div>
-
-    <div class="modal-aboutUs-bg">
-      <div class="modal-aboutUs">
-        <h1>About Us</h1>
-        <span class="modal-aboutUs-close">X</span>
       </div>
     </div>
 
@@ -93,6 +100,24 @@
       </div>
     </div>
 
+    <div class="modal-finish-bg">
+      <div class="modal-finish">
+        <h1 id="finishStatement">WIN OR LOSE STATEMENT WILL BE HERE</h1>
+        <form action="">
+          <label for="username">Enter Your name</label>
+          <input type="text">
+          <input id="submitHighscore" type="submit" value="Submit">
+        </form>
+
+        <p>PLAY AGAIN?</p>
+        <!-- will lead back to choose mode modal -->
+        <button id="yes">Yes</button>
+        <!-- will lead back to front modal -->
+        <button id="no">No</button>
+        <!-- will open highscore modal -->
+        <button id="finishHighscore">highscore</button>
+      </div>
+    </div>
 
 
 
@@ -100,22 +125,22 @@
     <!-- SNOWFLAKES REFERENCED https://www.youtube.com/watch?v=Y3Cif6o8U7I&ab_channel=AaronWard -->
     <div class="snowflakes" aria-hidden="true">
       <div class="snowflake">
-      ❅
+        ❅
       </div>
       <div class="snowflake">
-      ❆
+        ❆
       </div>
       <div class="snowflake">
-      ❅
+        ❅
       </div>
       <div class="snowflake">
-      ❆
+        ❆
       </div>
       <div class="snowflake">
-      ❅
+        ❅
       </div>
       <div class="snowflake">
-      ❆
+        ❆
       </div>
       <div class="snowflake">
         ❅
@@ -142,4 +167,5 @@
   </footer>
   <script src="js/app.js"></script>
 </body>
+
 </html>
