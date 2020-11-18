@@ -109,32 +109,29 @@ function Player(name, score) {
 
 
 // ------------------- RETRIEVE HIGHSCORES -----------------------
-var highscoreEl = document.getElementById('highscores');
-var retrievedData = localStorage.getItem('scoresData');
+// var retrievedData = localStorage.getItem('scoresData');
+// if (retrievedData){
+//   highscoreList = retrievedData;
+// } else {
+//   for (var i = 0; i < randomNames.length; i++){
+//     new Player(randomNames[i], scores[i]);
+//   }
+// }
 
-if (retrievedData) {
-  highscoreList = retrievedData;
-} else {
-  for (var i = 0; i < randomNames.length; i++) {
-    new Player(randomNames[i], scores[i]);
-  }
-  // }
-  highscoreList.sort(function (a, b) {
-    return b.score - a.score;
-  });
-  for (var i = 0; i < highscoreList.length; i++) {
-    var li = document.createElement('li');
-    li.textContent = `${highscoreList[i].name}: ${highscoreList[i].score}`;
-    highscoreEl.appendChild(li);
-  }
-  // ------ HIGH SCORE SORTER -------
-  // var stringifiedScores = JSON.stringify(highscoreList);
-  // localStorage.setItem('scoresData', stringifiedScores);
-}
+// employees.sort(function(a, b){
+//   return a.score-b.score;
+// });
+
+
+// var stringifiedScores = JSON.stringify(highscoreList);
+// localStorage.setItem('scoresData', stringifiedScores);
+
 
 // -------------- CREATE LETTERS AND DISPLAY ON HTML --------------------
 
 // I NEED TO ASSIGN A VALUE TO EACH  BUTTON SO WHEN CLICKED TRIGGERS EVENT LISTENER AND PERFORMS guessedLetter(WITH CLICKED VALUE)
+
+
 // var letters = 'abcdefghijklmnopqrstuvwxyz'.split(''); // 'a', 'b', 'c', 'd'...]
 // var letterContainer = document.getElementById('letters');
 // for (var i = 0; i < letters.length; i++){
@@ -142,6 +139,8 @@ if (retrievedData) {
 //   span.textContent = letters[i];
 //   letterContainer.appendChild(span);
 // }
+
+
 
 // THIS WORKS AND RENDERS ON SCREEN; HARD CODED VALUE
 var letterExampleR = document.querySelector('.R');
@@ -195,6 +194,7 @@ function guessH() {
 
 
 
+
 // -------------- GENERATING RANDOM WORD --------------------
 var words = ['rudolph', 'santa', 'christmas'];
 var phrase = ['sleigh bells ring'];
@@ -206,11 +206,41 @@ var correct = false;
 // function randomWord() {
 //   return Math.floor(Math.random() * words.length);
 // }
+var gameCount;
+var wordScore = 0;
+
+var scoretracker
+function timer () {
+  gameCount --;
+  var gameCountDisplay = document.getElementById('gameTimer');
+  gameCountDisplay.innerHTML = gameCount;
+  if(gameCount <= 0){
+    clearInterval(gameCount);
+    endGame();
+  }
+
+}
+function startscoreTracker() {
+  scoreTracker = setInterval(timer, 20);
+
+  function timer() {
+    var meterDisplay = document.getElementById('fillMeter');
+    
+    meterDisplay.setAttribute('style', meterWidth);
+  }
+}
+
+
+
 
 // would use random word inside words[randomWord()]
+
+
 currentWord = words[0]; // rudolph 7 letter
 for (var i = 0; i < currentWord.length; i++) {
   blankWord += '_'; // ' _ _ _ _ _ _ _ '
+
+
 }
 
 currentPhrase = phrase[0];
@@ -227,6 +257,7 @@ function openEndModal() {
 }
 
 
+
 // ---------------- THIS IS HOW YOU ACTUALLY GUESS A LETTER -----------------------
 var finishStatementEl = document.getElementById('finishStatement');
 
@@ -235,28 +266,35 @@ var finishStatementEl = document.getElementById('finishStatement');
 
 function guessedLetter(guess) {
   blankWord = blankWord.split(''); // rudolph = ['r','u','d']
+
   for (var i = 0; i < currentWord.length; i++) {
+
     if (guess === currentWord.charAt(i)) { // rudolph => _ _ _ _ _ _ _ // guess = r
+
       blankWord[i] = guess;
-      blankWord = blankWord.join(''); // 'rudolph'
+      blankWord = blankWord.join(''); // 'tree'
       correct = true;
       currentUserScore += 100;
       // turn letter green
     }
+
     if (blankWord === currentWord && chances > 0) {
       // open you win modal
       finishStatementEl.textContent = 'You Win!';
       openEndModal();
     }
+
   }
   if (!correct) {
     // turn letter red
     // chances--
   }
+
   if (blankWord !== currentWord && chances === 0) {
     finishStatementEl.textContent = 'You Lose!';
     openEndModal();
   }
+
   // resets to false for the next guess
   correct = false;
 }
@@ -295,3 +333,4 @@ function displayPhrase() {
 //     pass
 //   }
 // }
+
