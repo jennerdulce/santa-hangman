@@ -30,7 +30,7 @@ button {
 
 
 /* MODAL */
-.modal-front-bg, .modal-highscore-bg, .modal-howToPlay-bg {
+.modal-front-bg, .modal-highscore-bg, .modal-howToPlay-bg, .modal-play-bg, .modal-finish-bg {
   position: fixed;
   width: 100%;
   height: 100vh;
@@ -62,7 +62,7 @@ button {
   align-items: center;
 }
 
-.modal-highscore, .modal-howToPlay {
+.modal-highscore, .modal-howToPlay, .modal-play, .modal-finish {
   position: relative;
   background-color: white;
   width: 50%;
@@ -75,7 +75,7 @@ button {
   background-size: contain;
 }
 
-.modal-front > h1 {
+.modal-front > h1, a {
   font-size: 30px;
   border: 3px solid black;
   border-radius: 30px;
@@ -83,7 +83,7 @@ button {
   cursor: pointer;
 }
 
-.modal-close, .modal-highscore-close, .modal-howToPlay-close {
+.modal-close, .modal-highscore-close, .modal-howToPlay-close, .modal-play-close {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -139,4 +139,26 @@ button {
 
 #letters > span:hover {
   cursor: pointer;
+}
+
+/* GUESSES */
+#guesses {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 30px;
+  border: 2px solid black;
+  border-radius: 30px;
+  padding: 5px;
+}
+
+/* SCORE */
+#score {
+  position: absolute;
+  right: 10px;
+  top: 60px;
+  font-size: 30px;
+  border: 2px solid black;
+  border-radius: 30px;
+  padding: 5px;
 }
