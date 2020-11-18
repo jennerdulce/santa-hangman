@@ -93,26 +93,26 @@ var yesChoice = document.getElementById('yes');
 var noChoice = document.getElementById('no');
 var finishHighscore = document.getElementById('finishHighscore');
 
-function handleYes(){
+function handleYes() {
   finishBg.classList.remove('bg-active');
   playBg.classList.add('bg-active');
 }
 yesChoice.addEventListener('click', handleYes);
 
 
-function handleNo(){
+function handleNo() {
   finishBg.classList.remove('bg-active');
   modalBg.classList.add('bg-active');
 }
 noChoice.addEventListener('click', handleNo);
 
-function handleHighscore(){
+function handleHighscore() {
   finishBg.classList.remove('bg-active');
   highscoreBg.classList.add('bg-active');
 }
 finishHighscore.addEventListener('click', handleHighscore);
 
-function openFinish(){
+function openFinish() {
   finishBg.classList.add('bg-active');
 }
 finishBtn.addEventListener('click', openFinish);
@@ -218,9 +218,44 @@ function guessH() {
   guessedLetter('h');
   displayWord();
 }
+var letterExampleS = document.querySelector('.S');
+letterExampleS.addEventListener('click', guessS);
+function guessS() {
+  guessedLetter('s');
+  displayWord();
+}
 
+var letterExampleT = document.querySelector('.T');
+letterExampleT.addEventListener('click', guessT);
+function guessT() {
+  guessedLetter('t');
+  displayWord();
+}
 
-
+var letterExampleV = document.querySelector('.V');
+letterExampleV.addEventListener('click',guessV );
+function guessV() {
+  guessedLetter('v');
+  displayWord();
+}
+var letterExampleW = document.querySelector('.W');
+letterExampleW.addEventListener('click', guessW);
+function guessW() {
+  guessedLetter('w');
+  displayWord();
+}
+var letterExampleX = document.querySelector('.X');
+letterExampleX.addEventListener('click', guessX);
+function guessX() {
+  guessedLetter('x');
+  displayWord();
+}
+var letterExampleZ = document.querySelector('.Z');
+letterExampleZ.addEventListener('click', guessZ);
+function guessZ() {
+  guessedLetter('z');
+  displayWord();
+}
 
 // -------------- GENERATING RANDOM WORD --------------------
 var words = ['rudolph', 'santa', 'christmas'];
@@ -233,28 +268,26 @@ var correct = false;
 // function randomWord() {
 //   return Math.floor(Math.random() * words.length);
 // }
-var gameCount;
-var wordScore = 0;
 
-var scoretracker
-function timer () {
-  gameCount --;
-  var gameCountDisplay = document.getElementById('gameTimer');
-  gameCountDisplay.innerHTML = gameCount;
-  if(gameCount <= 0){
-    clearInterval(gameCount);
-    endGame();
-  }
+// function timer() {
+//   gameCount--;
+//   var gameCountDisplay = document.getElementById('gameTimer');
+//   gameCountDisplay.innerHTML = gameCount;
+//   if (gameCount <= 0) {
+//     clearInterval(gameCount);
+//     endGame();
+//   }
 
-}
-function startscoreTracker() {
-  scoreTracker = setInterval(timer, 20);
+// }
+// function startscoreTracker() {
+//   scoreTracker = setInterval(timer, 20);
 
-  function timer() {
-    var meterDisplay = document.getElementById('fillMeter');
-    meterDisplay.setAttribute('style', meterWidth);
-  }
-}
+//   function timer() {
+//     var meterDisplay = document.getElementById('fillMeter');
+//     meterDisplay.setAttribute('style', meterWidth);
+
+//   }
+// }
 
 
 
