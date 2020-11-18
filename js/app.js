@@ -150,7 +150,6 @@ function renderHighscore(){
   }
 }
 
-
 // -------------- CREATE LETTERS AND DISPLAY ON HTML --------------------
 // THIS WORKS AND RENDERS ON SCREEN; HARD CODED VALUE
 var letterExampleR = document.querySelector('.R');
@@ -207,6 +206,13 @@ var letterExampleA = document.querySelector('.A');
 letterExampleA.addEventListener('click', guessA);
 function guessA() {
   guessedLetter('a');
+  displayWord();
+}
+
+var letterExampleB = document.querySelector('.B');
+letterExampleB.addEventListener('click', guessB);
+function guessB() {
+  guessedLetter('b');
   displayWord();
 }
 
@@ -274,7 +280,6 @@ function guessedLetter(guess) {
       blankWord = blankWord.split(''); // rudolph = ['r','u','d']
       blankWord[i] = guess;
       blankWord = blankWord.join('');
-      console.log(blankWord);
       correct = true;
       currentUserScore += 100;
       // turn letter green
@@ -288,10 +293,9 @@ function guessedLetter(guess) {
   }
 
   if (!correct) {
-    console.log(blankWord);
     // turn letter red
     chances--;
-    console.log(chances);
+    chanceEl.textContent = `${chances} / 6`;
   }
 
   // LOSE LOGIC ---------------
@@ -303,6 +307,14 @@ function guessedLetter(guess) {
   // resets to false for the next guess
   correct = false;
 }
+
+// DISPLAY CHANCES
+var chanceEl = document.getElementById('chance');
+chanceEl.textContent = `${chances} / 6`;
+
+
+
+
 
 
 // STRETCH GOALS ------------------------------------
