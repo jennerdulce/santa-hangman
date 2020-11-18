@@ -69,6 +69,7 @@ button {
   background-color: white;
   background-image: url("../img/wreath.png");
   background-repeat: inherit;
+  text-align: center;
   color: white;
   width: 50%;
   height: 50%;
@@ -80,6 +81,7 @@ button {
   background-size: contain;
   background-repeat: no-repeat;
   background-size: 1000px;
+  text-align: center;
   color: #000;
 }
 
