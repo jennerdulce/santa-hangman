@@ -68,7 +68,7 @@ howToPlayClose.addEventListener('click', closehowToPlay);
 
 //  finish modal
 // dont need an open, finish will be opened at end of the game by
-// var finishBtn = document.getElementById('finish-btn');
+var finishBtn = document.querySelector('.finish-btn');
 var finishBg = document.querySelector('.modal-finish-bg');
 var yesChoice = document.getElementById('yes');
 var noChoice = document.getElementById('no');
@@ -93,6 +93,10 @@ function handleHighscore(){
 }
 finishHighscore.addEventListener('click', handleHighscore);
 
+function openFinish(){
+  finishBg.classList.add('bg-active');
+}
+finishBtn.addEventListener('click', openFinish);
 
 //  ---------------- OBJECT CONSTRUCTOR ---------------
 var scores = [100, 500, 600, 400, 300, 400, 600, 115, 630, 900];
