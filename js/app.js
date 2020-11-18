@@ -109,24 +109,28 @@ function Player(name, score) {
 
 
 // ------------------- RETRIEVE HIGHSCORES -----------------------
-// var retrievedData = localStorage.getItem('scoresData');
-// if (retrievedData){
-//   highscoreList = retrievedData;
-// } else {
-//   for (var i = 0; i < randomNames.length; i++){
-//     new Player(randomNames[i], scores[i]);
-//   }
-// }
+var highscoreEl = document.getElementById('highscores');
+var retrievedData = localStorage.getItem('scoresData');
 
-// employees.sort(function(a, b){
-//   return a.score-b.score;
-// });
-
-
-// var stringifiedScores = JSON.stringify(highscoreList);
-// localStorage.setItem('scoresData', stringifiedScores);
-
-
+if (retrievedData) {
+  highscoreList = retrievedData;
+} else {
+  for (var i = 0; i < randomNames.length; i++) {
+    new Player(randomNames[i], scores[i]);
+  }
+  // }
+  highscoreList.sort(function (a, b) {
+    return b.score - a.score;
+  });
+  for (var i = 0; i < highscoreList.length; i++) {
+    var li = document.createElement('li');
+    li.textContent = `${highscoreList[i].name}: ${highscoreList[i].score}`;
+    highscoreEl.appendChild(li);
+  }
+  // ------ STORE HIGH SCORE -------
+  // var stringifiedScores = JSON.stringify(highscoreList);
+  // localStorage.setItem('scoresData', stringifiedScores);
+}
 // -------------- CREATE LETTERS AND DISPLAY ON HTML --------------------
 
 // I NEED TO ASSIGN A VALUE TO EACH  BUTTON SO WHEN CLICKED TRIGGERS EVENT LISTENER AND PERFORMS guessedLetter(WITH CLICKED VALUE)
@@ -225,7 +229,6 @@ function startscoreTracker() {
 
   function timer() {
     var meterDisplay = document.getElementById('fillMeter');
-    
     meterDisplay.setAttribute('style', meterWidth);
   }
 }
