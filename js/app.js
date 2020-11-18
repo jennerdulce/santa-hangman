@@ -23,6 +23,7 @@ var highscoreClose = document.querySelector('.modal-highscore-close');
 
 function openHighscores() {
   modalBg.classList.remove('bg-active');
+  renderHighscore();
   highscoreBg.classList.add('bg-active');
 }
 highscoreBtn.addEventListener('click', openHighscores);
@@ -94,16 +95,16 @@ function openFinish() {
 finishBtn.addEventListener('click', openFinish);
 
 
-// 
+// INSTANTIATE NEW PLAYER
 function submitHandler(e){
   e.preventDefault();
 
   var username = e.target.username.value;
-  var score = score
+  var score = currentUserScore;
   var player = new Player(username, score);
-};
+}
 
-var container = document.getElementById('newlocation');
+var container = document.getElementById('userHighscore');
 container.addEventListener('submit', submitHandler);
 
 
@@ -131,7 +132,7 @@ function renderHighscore(){
     for (var i = 0; i < randomNames.length; i++) {
       new Player(randomNames[i], scores[i]);
     }
-    
+
     // sorts list
     highscoreList.sort(function (a, b) {
       return b.score - a.score;
@@ -209,12 +210,29 @@ function guessA() {
   displayWord();
 }
 
+var letterExampleS = document.querySelector('.S');
+letterExampleS.addEventListener('click', guessS);
+function guessS() {
+  guessedLetter('s');
+  displayWord();
+}
+
 // -------------- GENERATING RANDOM WORD --------------------
-var words = ['rudolph', 'santa', 'christmas', 'sleigh bells ring'];
+var words = [
+  'prancer',
+  'santa',
+  'merry christmas',
+  'sleigh bells ring',
+  'rudolph the rednose raindeer',
+  'presents',
+  'ho ho ho',
+  'ol saint nick',
+  'north pole',
+];
+
 var blankWord = '';
 var currentWord;
 var chances = 6;
-var score = 0;
 var correct = false;
 
 function randomWord() {
@@ -233,10 +251,11 @@ function setBlankWord(word){
 
 function startGame() {
   chances = 6;
-  score = 0;
+  currentUserScore = 0;
   blankWord = '';
+  // currentWord = words[randomWord()];
   currentWord = words[randomWord()];
-  setBlankWord(currentWord)
+  setBlankWord(currentWord);
   displayWord();
   // start timer will go here
 }
@@ -245,16 +264,17 @@ function openEndModal() {
   finishBg.classList.add('bg-active');
 }
 
-// ---------------- THIS IS HOW YOU ACTUALLY GUESS A LETTER -----------------------
+// ---------------- THIS IS HOW YOU GUESS A LETTER -----------------------
+// WORDS WITH DUPLICATES DOES NOT WORK. HOW DO WE MAKE IT HANDLE 2 LETTERS AT ONE TIME
 var finishStatementEl = document.getElementById('finishStatement');
 function guessedLetter(guess) {
-  blankWord = blankWord.split(''); // rudolph = ['r','u','d']
 
   for (var i = 0; i < currentWord.length; i++) {
-
     if (guess === currentWord.charAt(i)) { // rudolph => _ _ _ _ _ _ _ // guess = r
+      blankWord = blankWord.split(''); // rudolph = ['r','u','d']
       blankWord[i] = guess;
-      blankWord = blankWord.join(''); // 'tree'
+      blankWord = blankWord.join('');
+      console.log(blankWord);
       correct = true;
       currentUserScore += 100;
       // turn letter green
@@ -268,9 +288,10 @@ function guessedLetter(guess) {
   }
 
   if (!correct) {
-    blankWord = blankWord.join('');
+    console.log(blankWord);
     // turn letter red
     chances--;
+    console.log(chances);
   }
 
   // LOSE LOGIC ---------------
@@ -296,6 +317,8 @@ function guessedLetter(guess) {
 //   playBg.classList.remove('bg-active');
 //   wordElement.textContent = blankPhrase;
 // }
+
+
 
 
 // DIFFERENT WAY OF RENDERING LETTERS --------------------------
