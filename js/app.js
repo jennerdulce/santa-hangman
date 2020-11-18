@@ -122,6 +122,7 @@ if (retrievedData) {
 // -------------- CREATE LETTERS AND DISPLAY ON HTML --------------------
 
 // I NEED TO ASSIGN A VALUE TO EACH  BUTTON SO WHEN CLICKED TRIGGERS EVENT LISTENER AND PERFORMS guessedLetter(WITH CLICKED VALUE)
+
 // var letters = 'abcdefghijklmnopqrstuvwxyz'.split(''); // 'a', 'b', 'c', 'd'...]
 // var letterContainer = document.getElementById('letters');
 // for (var i = 0; i < letters.length; i++){
@@ -129,6 +130,7 @@ if (retrievedData) {
 //   span.textContent = letters[i];
 //   letterContainer.appendChild(span);
 // }
+
 
 // THIS WORKS AND RENDERS ON SCREEN; HARD CODED VALUE
 var letterExample = document.querySelector('.R');
@@ -150,10 +152,14 @@ var correct = false;
 //   return Math.floor(Math.random() * words.length);
 // }
 
+
+
 // would use random word inside words[randomWord()]
+
 currentWord = words[0]; // rudolph 7 letter
 for (var i = 0; i < currentWord.length; i++) {
   blankWord += '_'; // ' _ _ _ _ _ _ _ '
+
 }
 
 currentPhrase = phrase[0];
@@ -172,6 +178,7 @@ function guessedLetter(guess) {
   blankWord = blankWord.split(''); // rudolph = ['r', 'u','d']
   for (var i = 0; i < currentWord.length; i++) {
     if (guess === currentWord.charAt(i)) { // rudolph => _ _ _ _ _ _ _ // guess = r
+
       blankWord[i] = guess;
       blankWord = blankWord.join(''); // 'rudolph'
       correct = true;
