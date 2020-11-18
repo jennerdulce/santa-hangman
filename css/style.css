@@ -56,7 +56,7 @@ button {
   background-image: url("../img/wreath.png");
   background-size: contain;
   background-repeat: no-repeat;
-  background-size:auto;
+  background-size: 1000px;
   width: 50%;
   height: 50%;
   display: flex;
@@ -66,7 +66,6 @@ button {
 
 .modal-highscore, .modal-howToPlay, .modal-play, .modal-finish {
   position: relative;
-  background-color: white;
   background-image: url("../img/wreath.png");
   background-repeat: no-repeat;
   text-align: center;
@@ -80,7 +79,7 @@ button {
   background-image: url("../img/list.png");
   background-size: contain;
   background-repeat: no-repeat;
-  background-size: 1000px;
+  background-size: 1000px 600px;
   text-align: center;
   color: #000;
 }
