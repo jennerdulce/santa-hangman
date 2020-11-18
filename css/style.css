@@ -68,7 +68,7 @@ button {
   position: relative;
   background-color: white;
   background-image: url("../img/wreath.png");
-  background-repeat: inherit;
+  background-repeat: no-repeat;
   text-align: center;
   color: white;
   width: 50%;
