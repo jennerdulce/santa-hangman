@@ -72,10 +72,13 @@ var noChoice = document.getElementById('no');
 var finishHighscore = document.getElementById('finishHighscore');
 
 function handleYes() {
+
   startGame();
+
   finishBg.classList.remove('bg-active');
 }
 yesChoice.addEventListener('click', handleYes);
+
 
 function handleNo() {
   finishBg.classList.remove('bg-active');
@@ -201,6 +204,12 @@ function guessH() {
   guessedLetter('h');
   displayWord();
 }
+var letterExampleS = document.querySelector('.S');
+letterExampleS.addEventListener('click', guessS);
+function guessS() {
+  guessedLetter('s');
+  displayWord();
+}
 
 var letterExampleA = document.querySelector('.A');
 letterExampleA.addEventListener('click', guessA);
@@ -216,12 +225,6 @@ function guessB() {
   displayWord();
 }
 
-var letterExampleS = document.querySelector('.S');
-letterExampleS.addEventListener('click', guessS);
-function guessS() {
-  guessedLetter('s');
-  displayWord();
-}
 
 // -------------- GENERATING RANDOM WORD --------------------
 var words = [
@@ -241,6 +244,7 @@ var currentWord;
 var chances = 6;
 var correct = false;
 
+
 function randomWord() {
   return Math.floor(Math.random() * words.length);
 }
@@ -254,6 +258,7 @@ function setBlankWord(word) {
     }
   }
 }
+
 
 function startGame() {
   chances = 6;
