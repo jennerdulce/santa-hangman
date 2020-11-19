@@ -1,11 +1,4 @@
 // -------------- MODAL -----------------
-// Background Music
-// var myMusic
-//   function startGame() {
-//     myMusic = new AudioBufferSourceNode()
-//   }
-// }
-
 // opening modal
 var modalBtn = document.querySelector('.modal-btn');
 var modalBg = document.querySelector('.modal-front-bg');
