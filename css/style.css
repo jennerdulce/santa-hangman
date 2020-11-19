@@ -50,14 +50,18 @@ button {
   opacity: 1;
 }
 
+ .modal>h1 :hover {
+  background-color:white;
+
+}
 
 .modal-front {
   position: relative;
   background-image: url("../img/wreath.png");
   background-size: contain;
   background-repeat: no-repeat;
-  background-size:auto;
-  width: 50%;
+  background-size:cover;
+  /* width: 50%; */
   height: 50%;
   display: flex;
   justify-content: space-around;
@@ -78,19 +82,33 @@ button {
 
 .modal-highscore {
   background-image: url("../img/list.png");
+  /* background-attachment: fixed; */
   background-size: contain;
   background-repeat: no-repeat;
-  background-size: 1000px;
+  background-size: cover;
+  width: 50%;
   text-align: center;
   color: #000;
 }
 
-.modal-front > h1, a {
+.modal-highscore > h1, ul{
+background: rgb(250, 248, 248);
+color: rgb(17, 187, 34);
+text-align: center;
+border: 300px;
+
+}
+
+
+
+.modal-front > h1, a { */
   font-size: 30px;
   border: 3px solid black;
   border-radius: 30px;
   padding: 10px;
   cursor: pointer;
+  text-align: center;
+  /* /* width: 50%; */
 }
 
 .modal-close, .modal-highscore-close, .modal-howToPlay-close, .modal-play-close {
@@ -140,7 +158,7 @@ button {
   font-size: 28px;
   display: inline-block;
   margin: 20px auto;
-  margin-left: 8px;
+  margin-left: 30px;
   border-radius: 10px;
   padding:5px;
   background-color:white;
@@ -158,11 +176,16 @@ button {
 
 .modal-howToPlay > p {
   font-size: 35px;
-
+  color: rgb(245, 245, 245);
+  
 }
 
 .modal-howToPlay {
-  background-image: url();
+  background-image: url("../img/wreath.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-size: auto;
+
 }
 
 /* GUESSES */
@@ -203,6 +226,7 @@ button {
   font-size: 20px;
   font-weight: bold;
   margin: 4px 2px;
+  margin-left: 1000px ;
   cursor: pointer;
   border-radius: 12px;
   border: 3px solid black;

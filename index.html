@@ -7,6 +7,13 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/style.css">
   <title>Santa Hangman</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+<!-- music -->
+<audio controls>
+  <source src="JingleBells.mp3" controls autoplay loop type="audio/mpeg"></audio>
+
+  
 </head>
 
 <body>
@@ -106,8 +113,9 @@
 
     <div class="modal-finish-bg">
       <div class="modal-finish">
-        <h1 id="finishStatement">WIN OR LOSE STATEMENT WILL BE HERE</h1>
-        <form action="">
+
+        <h1 id="finishStatement">WIN OR LOSE</h1>
+        <form id="userHighscore" action="get">
           <label for="username">Enter Your name</label>
           <input type="text">
           <input id="submitHighscore" type="submit" value="Submit">
