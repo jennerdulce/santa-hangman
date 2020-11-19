@@ -1,3 +1,30 @@
+'use strict';
+
+var words = [
+  'prancer',
+  'santa',
+  'merry christmas',
+  'sleigh bells ring',
+  'rudolph the rednose raindeer',
+  'presents',
+  'ho ho ho',
+  'ol saint nick',
+  'north pole',
+];
+var blankWord = '';
+var currentWord;
+var chances = 7;
+var correct = false;
+var bodyPart = 0;
+
+// High Score list entries
+var scores = [100, 500, 600, 400, 300, 400, 600, 115, 630, 900];
+var randomNames = ['Rudolph', 'papa elf', 'Mrs. Clause', 'Jack Skellignton', 'Corpse Bride', 'Hercules', 'Mushu', 'Olaf', 'Else', 'Sven'];
+var highscoreList = [];
+var currentUserScore = 0;
+
+
+
 // -------------- MODAL -----------------
 // opening modal
 var modalBtn = document.querySelector('.modal-btn');
@@ -13,7 +40,6 @@ function closeModal() {
   modalBg.classList.remove('bg-active');
 }
 modalClose.addEventListener('click', closeModal);
-
 
 // highscore modal
 var highscoreBtn = document.getElementById('highscore-btn');
@@ -71,7 +97,7 @@ var noChoice = document.getElementById('no');
 var finishHighscore = document.getElementById('finishHighscore');
 
 function handleYes() {
-
+  resetGame();
   startGame();
 
   finishBg.classList.remove('bg-active');
@@ -87,6 +113,7 @@ noChoice.addEventListener('click', handleNo);
 
 function handleHighscore() {
   finishBg.classList.remove('bg-active');
+  renderHighscore();
   highscoreBg.classList.add('bg-active');
 }
 finishHighscore.addEventListener('click', handleHighscore);
@@ -101,9 +128,16 @@ finishBtn.addEventListener('click', openFinish);
 function submitHandler(e) {
   e.preventDefault();
 
-  var username = e.target.username.value;
-  var score = currentUserScore;
-  var player = new Player(username, score);
+  var user = e.target.username.value;
+  var score = 99999;
+  var player = new Player(user, score);
+  renderHighscore();
+  finishBg.classList.remove('bg-active');
+  highscoreBg.classList.add('bg-active');
+
+  // ------ STORE HIGH SCORE -------
+  var stringifiedScores = JSON.stringify(highscoreList);
+  localStorage.setItem('scoresData', stringifiedScores);
 }
 
 var container = document.getElementById('userHighscore');
@@ -111,17 +145,29 @@ container.addEventListener('submit', submitHandler);
 
 
 //  ---------------- OBJECT CONSTRUCTOR ---------------
-var scores = [100, 500, 600, 400, 300, 400, 600, 115, 630, 900];
-var randomNames = ['Rudolph', 'papa elf', 'Mrs. Clause', 'Jack Skellignton', 'Corpse Bride', 'Hercules', 'Mushu', 'Olaf', 'Else', 'Sven'];
-var highscoreList = [];
-var currentUserScore = 0;
-
 
 function Player(name, score) {
   this.name = name;
   this.score = score;
   highscoreList.push(this);
 }
+
+// ------------------- SORTS HIGH SCORE FUNCTION --------------
+function sortHighScore() {
+  highscoreList.sort(function (a, b) {
+    return b.score - a.score;
+  });
+}
+
+// ------------------- UPDATE HIGH SCORE LIST -------------------
+function updateHighScoresList(){
+  for (var i = 0; i < highscoreList.length; i++) {
+    var li = document.createElement('li');
+    li.textContent = `${highscoreList[i].name}: ${highscoreList[i].score}`;
+    highscoreEl.appendChild(li);
+  }
+}
+
 
 // ------------------- RETRIEVE HIGHSCORES -----------------------
 var highscoreEl = document.getElementById('highscores');
@@ -136,19 +182,97 @@ function renderHighscore() {
     }
 
     // sorts list
-    highscoreList.sort(function (a, b) {
-      return b.score - a.score;
-    });
+    sortHighScore();
+    updateHighScoresList();
+  }
+}
 
-    // NEED TO LEARN HOW TO UPDATE THE LIST WITH ONLY 10
-    for (var i = 0; i < highscoreList.length; i++) {
-      var li = document.createElement('li');
-      li.textContent = `${highscoreList[i].name}: ${highscoreList[i].score}`;
-      highscoreEl.appendChild(li);
+// -------------- GENERATING RANDOM WORD --------------------
+
+function randomWord() {
+  return Math.floor(Math.random() * words.length);
+}
+
+function setBlankWord(word) {
+  for (var i = 0; i < word.length; i++) {
+    if (word[i] === ' ') {
+      blankWord += ' ';
+    } else {
+      blankWord += '_';
     }
-    // ------ STORE HIGH SCORE -------
-    // var stringifiedScores = JSON.stringify(highscoreList);
-    // localStorage.setItem('scoresData', stringifiedScores);
+  }
+}
+
+function openEndModal() {
+  finishBg.classList.add('bg-active');
+}
+
+// ---------------- THIS IS HOW YOU GUESS A LETTER -----------------------
+
+var finishStatementEl = document.getElementById('finishStatement');
+function guessedLetter(guess) {
+
+  for (var i = 0; i < currentWord.length; i++) {
+    if (guess === currentWord.charAt(i)) { // rudolph => _ _ _ _ _ _ _ // guess = r
+      blankWord = blankWord.split(''); // rudolph = ['r','u','d']
+      blankWord[i] = guess;
+      blankWord = blankWord.join('');
+      correct = true;
+      currentUserScore += 100;
+      scoreEl.textContent = `Score: ${currentUserScore}`;
+      // turn letter green
+    }
+
+    // WIN LOGIC -------------
+    if (blankWord === currentWord && chances > 0) {
+      finishStatementEl.textContent = 'You Win!';
+      openEndModal();
+    }
+  }
+
+  if (!correct) {
+    // turn letter red
+    chances--;
+    bodyPart++;
+    renderBodyParts();
+    chanceEl.textContent = `${chances} / 7`;
+  }
+
+  // LOSE LOGIC ---------------
+  if (blankWord !== currentWord && chances === 0) {
+    finishStatementEl.textContent = 'You Lose!';
+    openEndModal();
+  }
+  // resets to false for the next guess
+  correct = false;
+}
+
+// ------------------- DISPLAY CHANCES --------------------
+var chanceEl = document.getElementById('chance');
+chanceEl.textContent = `${chances} / 7`;
+
+
+// ------------------- DISPLAY SCORE ------------------------
+var scoreEl = document.getElementById('score');
+scoreEl.textContent = `Score: ${currentUserScore}`;
+
+// ------------------- DISPLAY BODY PARTS -----------------
+var gameBackground = document.getElementById('game-container');
+function renderBodyParts() {
+  if (bodyPart === 1) {
+    gameBackground.style.backgroundImage = 'url("../santa/1.jpg")';
+  } else if (bodyPart === 2) {
+    gameBackground.style.backgroundImage = 'url("../santa/2.jpg")';
+  } else if (bodyPart === 3) {
+    gameBackground.style.backgroundImage = 'url("../santa/3.jpg")';
+  } else if (bodyPart === 4) {
+    gameBackground.style.backgroundImage = 'url("../santa/4.jpg")';
+  } else if (bodyPart === 5) {
+    gameBackground.style.backgroundImage = 'url("../santa/5.jpg")';
+  } else if (bodyPart === 6) {
+    gameBackground.style.backgroundImage = 'url("../santa/6.jpg")';
+  } else if (bodyPart === 7) {
+    gameBackground.style.backgroundImage = 'url("../santa/7.jpg")';
   }
 }
 
@@ -309,7 +433,7 @@ function guessX() {
 var letterExampleY = document.querySelector('.Y');
 letterExampleY.addEventListener('click', guessY);
 function guessY() {
-  guessedLetter('h');
+  guessedLetter('y');
   displayWord();
 }
 
@@ -320,39 +444,7 @@ function guessZ() {
   displayWord();
 }
 
-// -------------- GENERATING RANDOM WORD --------------------
-var words = [
-  'prancer',
-  'santa',
-  'merry christmas',
-  'sleigh bells ring',
-  'rudolph the rednose raindeer',
-  'presents',
-  'ho ho ho',
-  'ol saint nick',
-  'north pole',
-];
-
-var blankWord = '';
-var currentWord;
-var chances = 7;
-var correct = false;
-var bodyPart = 0;
-
-function randomWord() {
-  return Math.floor(Math.random() * words.length);
-}
-
-function setBlankWord(word) {
-  for (var i = 0; i < word.length; i++) {
-    if (word[i] === ' ') {
-      blankWord += ' ';
-    } else {
-      blankWord += '_';
-    }
-  }
-}
-
+//  ---------------- RESET GAME --------------------
 function resetGame() {
   chances = 7;
   currentUserScore = 0;
@@ -361,85 +453,20 @@ function resetGame() {
   currentWord = words[randomWord()];
   bodyPart = 0;
   gameBackground.style.backgroundImage = 'url("../santa/0.jpg")';
+  scoreEl.textContent = `Score: ${currentUserScore}`;
   chanceEl.textContent = `${chances} / 7`;
 }
+
+// ---------------- GAME START -----------------
 function startGame() {
+  renderHighscore();
   resetGame();
   setBlankWord(currentWord);
-  // startTimer();
   displayWord();
-  // start timer will go here
+  // startTimer() STRETCH GOAL;
 }
 
-function openEndModal() {
-  finishBg.classList.add('bg-active');
-}
 
-// ---------------- THIS IS HOW YOU GUESS A LETTER -----------------------
-// WORDS WITH DUPLICATES DOES NOT WORK. HOW DO WE MAKE IT HANDLE 2 LETTERS AT ONE TIME
-var finishStatementEl = document.getElementById('finishStatement');
-function guessedLetter(guess) {
-
-  for (var i = 0; i < currentWord.length; i++) {
-    if (guess === currentWord.charAt(i)) { // rudolph => _ _ _ _ _ _ _ // guess = r
-      blankWord = blankWord.split(''); // rudolph = ['r','u','d']
-      blankWord[i] = guess;
-      blankWord = blankWord.join('');
-      correct = true;
-      currentUserScore += 100;
-      // turn letter green
-    }
-
-    // WIN LOGIC -------------
-    if (blankWord === currentWord && chances > 0) {
-      finishStatementEl.textContent = 'You Win!';
-      openEndModal();
-    }
-  }
-
-  if (!correct) {
-    // turn letter red
-    chances--;
-
-    bodyPart++;
-    console.log(bodyPart);
-    renderBodyParts();
-    chanceEl.textContent = `${chances} / 7`;
-
-  }
-
-  // LOSE LOGIC ---------------
-  if (blankWord !== currentWord && chances === 0) {
-    finishStatementEl.textContent = 'You Lose!';
-    openEndModal();
-  }
-  // resets to false for the next guess
-  correct = false;
-}
-
-// DISPLAY CHANCES --------------------
-var chanceEl = document.getElementById('chance');
-chanceEl.textContent = `${chances} / 7`;
-
-
-function renderBodyParts(){
-  if (bodyPart === 1){
-    gameBackground.style.backgroundImage = 'url("../santa/1.jpg")';
-  } else if (bodyPart === 2){
-    gameBackground.style.backgroundImage = 'url("../santa/2.jpg")';
-  } else if (bodyPart === 3){
-    gameBackground.style.backgroundImage = 'url("../santa/3.jpg")';
-  } else if (bodyPart === 4){
-    gameBackground.style.backgroundImage = 'url("../santa/4.jpg")';
-  } else if (bodyPart === 5){
-    gameBackground.style.backgroundImage = 'url("../santa/5.jpg")';
-  } else if (bodyPart === 6){
-    gameBackground.style.backgroundImage = 'url("../santa/6.jpg")';
-  } else if (bodyPart === 7){
-    gameBackground.style.backgroundImage = 'url("../santa/7.jpg")';
-  }
-}
-var gameBackground = document.getElementById('game-container');
 
 
 // STRETCH GOALS ------------------------------------
