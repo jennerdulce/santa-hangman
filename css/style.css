@@ -2,12 +2,6 @@ body {
   background-color: teal;
 }
 
-button {
-  font-size: 30px;
-  padding: 5px;
-}
-
-
 /* SNOWFLAKES REFERENCED https://www.youtube.com/watch?v=Y3Cif6o8U7I&ab_channel=AaronWard*/
 .snowflake {
   color: #fff;
@@ -139,22 +133,42 @@ border: 300px;
   text-align: center;
   letter-spacing: 8px;
   word-spacing: 6px;
-  font-size: 24px;
+  font-size: 36px;
+  text-transform: capitalize;
+  box-shadow: 3px 5px 5px rgba(0, 0, 0, .25);
+  
 }
 
 /* LETTER BOX */
 #letters {
   position: absolute;
-  bottom: 10px;
+  bottom: 25px;
   left: 10px;
   width: 970px;
   padding: 4px;
   border: 3px solid black;
   border-radius: 30px;
   background-color: aquamarine;
+  box-shadow: 3px 5px 5px rgba(0, 0, 0, .25);
 }
 
-#letters > span {
+#letters > button {
+  text-transform: uppercase;
+}
+
+#letters > button:hover {
+  cursor: pointer;
+}
+
+button {
+  font-size: 24px;
+  margin-left: 3px;
+  padding: 5px;
+  border-radius: 20px;
+  box-shadow: 3px 5px 5px rgba(0, 0, 0, .25);
+}
+
+/* #letters > span {
   font-size: 28px;
   display: inline-block;
   margin: 20px auto;
@@ -167,7 +181,7 @@ border: 300px;
 
 #letters > span:hover {
   cursor: pointer;
-}
+} */
 
 .modal-howToPlay > h1 {
   font-size: 45px;
@@ -291,7 +305,10 @@ border: 300px;
   display: inline-block;
 
 }
-#guesses{
+#chance{
+  position: absolute;
+  top: 10px;
+  left: 10px;
   background-color: #E3CE9F;
   border:none;
   color: #570000;
@@ -309,7 +326,10 @@ border: 300px;
   outline: 0px;
   display: inline-block;
 }
-#score{
+#score {
+  position: absolute;
+  top: 10px;
+  right: 10px;
   background-color: #E3CE9F;
   border:none;
   color: #570000;
@@ -376,12 +396,6 @@ color:black;
   background-color: white;  
 }
 
-#word:hover {
-  /* background: sandybrown; */
-  cursor: pointer;
-  font: 1em sans-serif;
-  color: #000;
-}
 #timer{
 background-color: #E3CE9F;
 border:none;
@@ -421,9 +435,9 @@ display: inline-block;
 
 }
 h4{
-
 color: yellow;
 }
+
 #highscore-btn{
 color: yellow;
 font-size: 20px;
