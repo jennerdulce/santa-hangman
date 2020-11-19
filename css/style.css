@@ -165,18 +165,8 @@ button {
   background-image: url();
 }
 
-#timer {
-  position: absolute;
-  right: 50%;
-  top: 10px;
-  font-size: 30px;
-  border: 2px solid black;
-  border-radius: 30px;
-  padding: 5px;
-}
-
 /* GUESSES */
-#chance {
+#guesses {
   position: absolute;
   right: 10px;
   top: 10px;
@@ -221,6 +211,24 @@ button {
   display: inline-block;
  
 }
+.finish-btn{
+  background-color: #E3CE9F;
+  border:none;
+  color: #570000;
+  padding: 5px 15px;
+  text-align: center;
+  text-decoration: none;
+  font-family: sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
+  border: 3px solid black;
+  box-shadow: 3px 3px 2px grey;
+  outline: 0px;
+  display: inline-block;
+}
  .phrase-btn{
   background-color: #E3CE9F;
   border:none;
@@ -259,21 +267,43 @@ button {
   display: inline-block;
 
 }
-
-.modal-highscore {
-  font-size: 25px;
-  padding-top: 125px;
-  padding-left: 200px;
-  font-family: 'Dancing Script', cursive;
-  color: brown
+#guesses{
+  background-color: #E3CE9F;
+  border:none;
+  color: #570000;
+  padding: 5px 15px;
+  text-align: center;
+  text-decoration: none;
+  font-family: sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
+  border: 3px solid black;
+  box-shadow: 3px 3px 2px grey;
+  outline: 0px;
+  display: inline-block;
 }
+#score{
+  background-color: #E3CE9F;
+  border:none;
+  color: #570000;
+  padding: 5px 15px;
+  text-align: center;
+  text-decoration: none;
+  font-family: sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
+  border: 3px solid black;
+  box-shadow: 3px 3px 2px grey;
+  outline: 0px;
+  display: inline-block;
 
-.modal-highscore > h1 {
-  padding-bottom: 25px;
-  font-size: 35px;
-  
 }
-
 
 h1 {    
   text-align: center;                            
@@ -299,7 +329,17 @@ h2{
   background: wheat;
   border-radius: 15px 15px 0px 0px;
   
+  
 }
+h3{
+text-align: center;  
+padding: 5px;
+font-size: 45px; 
+margin: 5px 2px 0px 0px;
+color:black;
+
+}
+
 .groupMember{
   display: grid;    
   grid-template-columns: repeat(2, 1fr); 
@@ -312,68 +352,85 @@ h2{
   background-color: white;  
 }
 
-.finish-btn{
-  background-color: #E3CE9F;
-  border:none;
-  color: #570000;
-  padding: 5px 15px;
-  text-align: center;
-  text-decoration: none;
-  font-family: sans-serif;
-  font-size: 20px;
-  font-weight: bold;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 12px;
-  border: 3px solid black;
-  box-shadow: 3px 3px 2px grey;
-  outline: 0px;
-  display: inline-block;
-}
-
-#guesses{
-  background-color: #E3CE9F;
-  border:none;
-  color: #570000;
-  padding: 5px 15px;
-  text-align: center;
-  text-decoration: none;
-  font-family: sans-serif;
-  font-size: 20px;
-  font-weight: bold;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 12px;
-  border: 3px solid black;
-  box-shadow: 3px 3px 2px grey;
-  outline: 0px;
-  display: inline-block;
-}
-
-#score{
-  background-color: #E3CE9F;
-  border:none;
-  color: #570000;
-  padding: 5px 15px;
-  text-align: center;
-  text-decoration: none;
-  font-family: sans-serif;
-  font-size: 20px;
-  font-weight: bold;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 12px;
-  border: 3px solid black;
-  box-shadow: 3px 3px 2px grey;
-  outline: 0px;
-  display: inline-block;
-}
-
 #word:hover {
-    /* background: sandybrown; */
-    cursor: pointer;
-    font: 1em sans-serif;
-    color: #000;
+  /* background: sandybrown; */
+  cursor: pointer;
+  font: 1em sans-serif;
+  color: #000;
 }
+#timer{
+background-color: #E3CE9F;
+border:none;
+color: #570000;
+padding: 5px 15px;
+text-align: center;
+text-decoration: none;
+font-family: sans-serif;
+font-size: 20px;
+font-weight: bold;
+margin: 4px 2px;
+cursor: pointer;
+border-radius: 12px;
+border: 3px solid black;
+box-shadow: 3px 3px 2px grey;
+outline: 0px;
+display: inline-block;
 
+}
+#finishStatement{
+background-color: #E3CE9F;
+border:none;
+color: #570000;
+padding: 5px 15px;
+text-align: center;
+text-decoration: none;
+font-family: sans-serif;
+font-size: 20px;
+font-weight: bold;
+margin: 4px 2px;
+cursor: pointer;
+border-radius: 12px;
+border: 3px solid black;
+box-shadow: 3px 3px 2px grey;
+outline: 0px;
+display: inline-block;
+
+}
+h4{
+
+color: yellow;
+}
+#highscore-btn{
+color: yellow;
+font-size: 20px;
+cursor: pointer;
+display: inline-block;
+border-radius: 12px;
+
+}
+#highscore-btn:hover {    
+color:red;
+}
+#howToPlay-btn{
+color: yellow;
+font-size: 20px;
+cursor: pointer;
+display: inline-block;
+border-radius: 12px;
+
+}
+#howToPlay-btn:hover {    
+color:red;
+}
+#play-btn{
+color: yellow;
+font-size: 20px;
+cursor: pointer;
+display: inline-block;
+border-radius: 12px;
+
+}
+#play-btn:hover {    
+color:red;
+}
 
