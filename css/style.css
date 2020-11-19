@@ -165,8 +165,18 @@ button {
   background-image: url();
 }
 
+#timer {
+  position: absolute;
+  right: 50%;
+  top: 10px;
+  font-size: 30px;
+  border: 2px solid black;
+  border-radius: 30px;
+  padding: 5px;
+}
+
 /* GUESSES */
-#guesses {
+#chance {
   position: absolute;
   right: 10px;
   top: 10px;
