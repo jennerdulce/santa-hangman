@@ -68,7 +68,7 @@ button {
   position: relative;
   background-color: white;
   background-image: url("../img/wreath.png");
-  background-repeat: inherit;
+  background-repeat: no-repeat;
   text-align: center;
   color: white;
   width: 50%;
@@ -151,6 +151,19 @@ button {
   cursor: pointer;
 }
 
+.modal-howToPlay > h1 {
+  font-size: 45px;
+
+}
+
+.modal-howToPlay > p {
+  font-size: 35px;
+
+}
+
+.modal-howToPlay {
+  background-image: url();
+}
 
 /* GUESSES */
 #guesses {
@@ -236,6 +249,7 @@ button {
   display: inline-block;
 
 }
+<<<<<<< HEAD
 
 .modal-highscore {
   font-size: 25px;
@@ -250,4 +264,42 @@ button {
   font-size: 35px;
   
 }
+=======
+h1 {    
+  text-align: center;                            
+  color: white;
+  height: 100px; 
+  background-color: black; 
+  border: black solid 2px;
+  margin: 2px 2px 0px; 
+  font-size: 97px;
+  width: auto; 
+  border-radius: 25px 25px 0px 0px; 
+  background: black;
+}
+h1:hover {    
+  color:#F09C00;
+}
+h2{  
+  text-align: center;  
+  padding: 5px;
+  font-size: 45px; 
+  margin: 5px 2px 0px 0px;
+  color: red;
+  background: wheat;
+  border-radius: 15px 15px 0px 0px;
+  
+}
+.groupMember{
+  display: grid;    
+  grid-template-columns: repeat(2, 1fr); 
+  grid-gap: 20px; 
+  border: 5px solid black; 
+  border: 5px solid black;
+  padding: 10px ; 
+  margin: 20px; 
+  text-align: center;
+  background-color: white;  
+}
+>>>>>>> 29b9a4a7c51c9f30e1971db5479cef97cbc20915
 

@@ -40,20 +40,39 @@ function closeHighscore() {
 highscoreClose.addEventListener('click', closeHighscore);
 
 
+
+
+// RENDER WORD ON SCREEN
+var wordElement = document.getElementById('word');
+// var pressWord = document.querySelector('.word-btn');
+// pressWord.addEventListener('click', displayWord);
+// function displayWord() {
+//   modalBg.classList.remove('bg-active');
+//   playBg.classList.remove('bg-active');
+//   wordElement.textContent = blankWord;
+// }
+
 // play modal
 var playBtn = document.getElementById('play-btn');
-var playBg = document.querySelector('.modal-play-bg');
-var playClose = document.querySelector('.modal-play-close');
 
-function openPlay() {
-  playBg.classList.add('bg-active');
+function displayWord() {
+  modalBg.classList.remove('bg-active');
+  wordElement.textContent = blankWord;
 }
-playBtn.addEventListener('click', openPlay);
+playBtn.addEventListener('click', displayWord);
 
-function closePlay() {
-  playBg.classList.remove('bg-active');
-}
-playClose.addEventListener('click', closePlay);
+// var playBg = document.querySelector('.modal-play-bg');
+// var playClose = document.querySelector('.modal-play-close');
+
+// function openPlay() {
+//   playBg.classList.add('bg-active');
+// }
+// playBtn.addEventListener('click', openPlay);
+
+// function closePlay() {
+//   playBg.classList.remove('bg-active');
+// }
+// playClose.addEventListener('click', closePlay);
 
 
 // how to play modal
@@ -426,27 +445,17 @@ function guessedLetter(guess) {
   correct = false;
 }
 
-// RENDER WORD ON SCREEN
-var wordElement = document.getElementById('word');
-var pressWord = document.querySelector('.word-btn');
-pressWord.addEventListener('click', displayWord);
-
-function displayWord() {
-  modalBg.classList.remove('bg-active');
-  playBg.classList.remove('bg-active');
-  wordElement.textContent = blankWord;
-}
 
 
 // RENDER PHRASE ON SCREEN
-var pressPhrase = document.querySelector('.phrase-btn');
-pressPhrase.addEventListener('click', displayPhrase);
+// var pressPhrase = document.querySelector('.phrase-btn');
+// pressPhrase.addEventListener('click', displayPhrase);
 
-function displayPhrase() {
-  modalBg.classList.remove('bg-active');
-  playBg.classList.remove('bg-active');
-  wordElement.textContent = blankPhrase;
-}
+// function displayPhrase() {
+//   modalBg.classList.remove('bg-active');
+//   playBg.classList.remove('bg-active');
+//   wordElement.textContent = blankPhrase;
+// }
 
 
 // function renderGame() {
