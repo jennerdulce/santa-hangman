@@ -7,11 +7,13 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/style.css">
   <title>Santa Hangman</title>
+
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
 <!-- music -->
 <audio controls>
   <source src="JingleBells.mp3" controls autoplay loop type="audio/mpeg"></audio>
 
+  
 </head>
 
 <body>
@@ -20,8 +22,7 @@
   </header>
   <main>
     <div id="game-container">
-      <p id="timer">Time will go here</p>
-      <p id="chance">chance WILL GO HERE</p>
+      <p id="guesses">GUESSES WILL GO HERE</p>
       <p id="score">SCORE WILL GO HERE</p>
       <section id="word-container">
         <p id="word">THE WORD GOES HERE</p>
@@ -29,32 +30,40 @@
 
       <!-- LETTERS -->
       <section id="letters">
-        <button class="A">a</button>
-        <button class="B">b</button>
-        <button class="C">c</button>
-        <button class="D">d</button>
-        <button class="E">e</button>
-        <button class="F">f</button>
-        <button class="G">g</button>
-        <button class="H">h</button>
-        <button class="I">i</button>
-        <button class="J">j</button>
-        <button class="K">k</button>
-        <button class="L">l</button>
-        <button class="M">m</button>
-        <button class="N">n</button>
-        <button class="O">o</button>
-        <button class="P">p</button>
-        <button class="Q">q</button>
-        <button class="R">r</button>
-        <button class="S">s</button>
-        <button class="T">t</button>
+
+         <button class="R">r</button>
         <button class="U">u</button>
-        <button class="V">v</button>
-        <button class="W">w</button>
-        <button class="X">x</button>
-        <button class="Y">y</button>
-        <button class="Z">z</button>
+        <button class="D">d</button>
+        <button class="O">o</button>
+        <button class="L">l</button>
+        <button class="P">p</button>
+        <button class="H">h</button>
+        <button class="R">a</button>
+        <button class="R">b</button>
+        <button class="R">c</button>
+        <button class="R">d</button>
+        <button class="R">e</button>
+        <button class="R">f</button>
+        <button class="R">g</button>
+        <button class="R">h</button>
+        <button class="R">i</button>
+        <button class="R">j</button>
+        <button class="R">k</button>
+        <button class="R">l</button>
+        <button class="R">m</button>
+        <button class="R">n</button>
+        <button class="R">o</button>
+        <button class="R">p</button>
+        <button class="R">q</button>
+        <button class="R">r</button>
+        <button class="R">s</button>
+        <button class="R">t</button>
+        <button class="R">u</button>
+        <button class="R">v</button>
+        <button class="R">w</button>
+        <button class="R">x</button>
+        <button class="R">y</button>
+        <button class="R">z</button>
       </section>
     </div>
     <button class="modal-btn">TRIGGER MODAL</button>
@@ -84,18 +93,18 @@
       </div>
     </div>
 
-    <!-- <div class="modal-play-bg">
+    <div class="modal-play-bg">
       <div class="modal-play">
         <h1>Choose Mode:</h1>
         <button class="phrase-btn">Phrase</button>
         <button class="word-btn">Word</button>
         <span class="modal-play-close">X</span>
       </div>
-    </div> -->
+    </div>
 
     <div class="modal-highscore-bg">
       <div class="modal-highscore">
-        <h1>Naughty <del>Highscores</del> List</h1>
+        <h1><del>Naughty</del> Highscores List</h1>
         <ul id="highscores">
         </ul>
         <span class="modal-highscore-close">X</span>
@@ -104,6 +113,7 @@
 
     <div class="modal-finish-bg">
       <div class="modal-finish">
+
         <h1 id="finishStatement">WIN OR LOSE</h1>
         <form id="userHighscore" action="get">
           <label for="username">Enter Your name</label>
@@ -120,6 +130,9 @@
         <button id="finishHighscore">highscore</button>
       </div>
     </div>
+
+
+
 
     <!-- SNOWFLAKES REFERENCED https://www.youtube.com/watch?v=Y3Cif6o8U7I&ab_channel=AaronWard -->
     <div class="snowflakes" aria-hidden="true">
@@ -162,7 +175,7 @@
     </div>
   </main>
   <footer>
-    
+
   </footer>
   <script src="js/app.js"></script>
 </body>
