@@ -23,6 +23,7 @@ var highscoreClose = document.querySelector('.modal-highscore-close');
 
 function openHighscores() {
   modalBg.classList.remove('bg-active');
+  renderHighscore();
   highscoreBg.classList.add('bg-active');
 }
 highscoreBtn.addEventListener('click', openHighscores);
@@ -34,40 +35,18 @@ function closeHighscore() {
 highscoreClose.addEventListener('click', closeHighscore);
 
 
-
-
 // RENDER WORD ON SCREEN
 var wordElement = document.getElementById('word');
-// var pressWord = document.querySelector('.word-btn');
-// pressWord.addEventListener('click', displayWord);
-// function displayWord() {
-//   modalBg.classList.remove('bg-active');
-//   playBg.classList.remove('bg-active');
-//   wordElement.textContent = blankWord;
-// }
 
 // play modal
 var playBtn = document.getElementById('play-btn');
 
 function displayWord() {
   modalBg.classList.remove('bg-active');
+  // this starts the game so we would render the game here and reset the word
   wordElement.textContent = blankWord;
 }
-playBtn.addEventListener('click', displayWord);
-
-// var playBg = document.querySelector('.modal-play-bg');
-// var playClose = document.querySelector('.modal-play-close');
-
-// function openPlay() {
-//   playBg.classList.add('bg-active');
-// }
-// playBtn.addEventListener('click', openPlay);
-
-// function closePlay() {
-//   playBg.classList.remove('bg-active');
-// }
-// playClose.addEventListener('click', closePlay);
-
+playBtn.addEventListener('click', startGame);
 
 // how to play modal
 var howToPlayBtn = document.getElementById('howToPlay-btn');
@@ -84,8 +63,7 @@ function closehowToPlay() {
 }
 howToPlayClose.addEventListener('click', closehowToPlay);
 
-
-//  finish modal
+// finish modal
 // dont need an open, finish will be opened at end of the game by
 var finishBtn = document.querySelector('.finish-btn');
 var finishBg = document.querySelector('.modal-finish-bg');
@@ -94,8 +72,10 @@ var noChoice = document.getElementById('no');
 var finishHighscore = document.getElementById('finishHighscore');
 
 function handleYes() {
+
+  startGame();
+
   finishBg.classList.remove('bg-active');
-  playBg.classList.add('bg-active');
 }
 yesChoice.addEventListener('click', handleYes);
 
@@ -117,6 +97,20 @@ function openFinish() {
 }
 finishBtn.addEventListener('click', openFinish);
 
+
+// INSTANTIATE NEW PLAYER
+function submitHandler(e) {
+  e.preventDefault();
+
+  var username = e.target.username.value;
+  var score = currentUserScore;
+  var player = new Player(username, score);
+}
+
+var container = document.getElementById('userHighscore');
+container.addEventListener('submit', submitHandler);
+
+
 //  ---------------- OBJECT CONSTRUCTOR ---------------
 var scores = [100, 500, 600, 400, 300, 400, 600, 115, 630, 900];
 var randomNames = ['rudolph', 'papa elf', 'Mrs. Clause', 'Jack Skellignton', 'Corpse Bride', 'Hercules', 'Mushu', 'Olaf', 'Else', 'Sven'];
@@ -130,51 +124,43 @@ function Player(name, score) {
   highscoreList.push(this);
 }
 
-
 // ------------------- RETRIEVE HIGHSCORES -----------------------
 var highscoreEl = document.getElementById('highscores');
 var retrievedData = localStorage.getItem('scoresData');
 
-if (retrievedData) {
-  highscoreList = retrievedData;
-} else {
-  for (var i = 0; i < randomNames.length; i++) {
-    new Player(randomNames[i], scores[i]);
+function renderHighscore() {
+  if (retrievedData) {
+    highscoreList = retrievedData;
+  } else {
+    for (var i = 0; i < randomNames.length; i++) {
+      new Player(randomNames[i], scores[i]);
+    }
+
+    // sorts list
+    highscoreList.sort(function (a, b) {
+      return b.score - a.score;
+    });
+
+    // NEED TO LEARN HOW TO UPDATE THE LIST WITH ONLY 10
+    for (var i = 0; i < highscoreList.length; i++) {
+      var li = document.createElement('li');
+      li.textContent = `${highscoreList[i].name}: ${highscoreList[i].score}`;
+      highscoreEl.appendChild(li);
+    }
+    // ------ STORE HIGH SCORE -------
+    // var stringifiedScores = JSON.stringify(highscoreList);
+    // localStorage.setItem('scoresData', stringifiedScores);
   }
-  // }
-  highscoreList.sort(function (a, b) {
-    return b.score - a.score;
-  });
-  for (var i = 0; i < highscoreList.length; i++) {
-    var li = document.createElement('li');
-    li.textContent = `${highscoreList[i].name}: ${highscoreList[i].score}`;
-    highscoreEl.appendChild(li);
-  }
-  // ------ STORE HIGH SCORE -------
-  // var stringifiedScores = JSON.stringify(highscoreList);
-  // localStorage.setItem('scoresData', stringifiedScores);
 }
+
 // -------------- CREATE LETTERS AND DISPLAY ON HTML --------------------
-
-// I NEED TO ASSIGN A VALUE TO EACH  BUTTON SO WHEN CLICKED TRIGGERS EVENT LISTENER AND PERFORMS guessedLetter(WITH CLICKED VALUE)
-
-
-// var letters = 'abcdefghijklmnopqrstuvwxyz'.split(''); // 'a', 'b', 'c', 'd'...]
-// var letterContainer = document.getElementById('letters');
-// for (var i = 0; i < letters.length; i++){
-//   var span = document.createElement('span');
-//   span.textContent = letters[i];
-//   letterContainer.appendChild(span);
-// }
-
-
-
 // THIS WORKS AND RENDERS ON SCREEN; HARD CODED VALUE
 var letterExampleR = document.querySelector('.R');
 letterExampleR.addEventListener('click', guessR);
 function guessR() {
   guessedLetter('r');
   displayWord();
+  // remove event listener here?
 }
 
 var letterExampleU = document.querySelector('.U');
@@ -225,130 +211,101 @@ function guessS() {
   displayWord();
 }
 
-var letterExampleT = document.querySelector('.T');
-letterExampleT.addEventListener('click', guessT);
-function guessT() {
-  guessedLetter('t');
+var letterExampleA = document.querySelector('.A');
+letterExampleA.addEventListener('click', guessA);
+function guessA() {
+  guessedLetter('a');
   displayWord();
 }
 
-var letterExampleV = document.querySelector('.V');
-letterExampleV.addEventListener('click',guessV );
-function guessV() {
-  guessedLetter('v');
+var letterExampleB = document.querySelector('.B');
+letterExampleB.addEventListener('click', guessB);
+function guessB() {
+  guessedLetter('b');
   displayWord();
 }
-var letterExampleW = document.querySelector('.W');
-letterExampleW.addEventListener('click', guessW);
-function guessW() {
-  guessedLetter('w');
-  displayWord();
-}
-var letterExampleX = document.querySelector('.X');
-letterExampleX.addEventListener('click', guessX);
-function guessX() {
-  guessedLetter('x');
-  displayWord();
-}
-var letterExampleZ = document.querySelector('.Z');
-letterExampleZ.addEventListener('click', guessZ);
-function guessZ() {
-  guessedLetter('z');
-  displayWord();
-}
+
 
 // -------------- GENERATING RANDOM WORD --------------------
-var words = ['rudolph', 'santa', 'christmas'];
-var phrase = ['sleigh bells ring'];
+var words = [
+  'prancer',
+  'santa',
+  'merry christmas',
+  'sleigh bells ring',
+  'rudolph the rednose raindeer',
+  'presents',
+  'ho ho ho',
+  'ol saint nick',
+  'north pole',
+];
+
 var blankWord = '';
-var currentWord, currentPhrase;
-var blankPhrase = '';
+var currentWord;
 var chances = 6;
 var correct = false;
-// function randomWord() {
-//   return Math.floor(Math.random() * words.length);
-// }
-
-// function timer() {
-//   gameCount--;
-//   var gameCountDisplay = document.getElementById('gameTimer');
-//   gameCountDisplay.innerHTML = gameCount;
-//   if (gameCount <= 0) {
-//     clearInterval(gameCount);
-//     endGame();
-//   }
-
-// }
-// function startscoreTracker() {
-//   scoreTracker = setInterval(timer, 20);
-
-//   function timer() {
-//     var meterDisplay = document.getElementById('fillMeter');
-//     meterDisplay.setAttribute('style', meterWidth);
-
-//   }
-// }
 
 
-
-
-// would use random word inside words[randomWord()]
-
-
-currentWord = words[0]; // rudolph 7 letter
-for (var i = 0; i < currentWord.length; i++) {
-  blankWord += '_'; // ' _ _ _ _ _ _ _ '
-
-
+function randomWord() {
+  return Math.floor(Math.random() * words.length);
 }
 
-currentPhrase = phrase[0];
-for (var i = 0; i < currentPhrase.length; i++) {
-  if (currentPhrase[i] === ' ') {
-    blankPhrase += ' ';
-  } else {
-    blankPhrase += '_';
+function setBlankWord(word) {
+  for (var i = 0; i < word.length; i++) {
+    if (word[i] === ' ') {
+      blankWord += ' ';
+    } else {
+      blankWord += '_';
+    }
   }
+}
+
+
+function startGame() {
+  chances = 6;
+  currentUserScore = 0;
+  blankWord = '';
+  timeLeft = 90;
+  // currentWord = words[randomWord()];
+  currentWord = words[randomWord()];
+  setBlankWord(currentWord);
+  startTimer();
+  displayWord();
+  // start timer will go here
 }
 
 function openEndModal() {
   finishBg.classList.add('bg-active');
 }
 
-
-
-// ---------------- THIS IS HOW YOU ACTUALLY GUESS A LETTER -----------------------
+// ---------------- THIS IS HOW YOU GUESS A LETTER -----------------------
+// WORDS WITH DUPLICATES DOES NOT WORK. HOW DO WE MAKE IT HANDLE 2 LETTERS AT ONE TIME
 var finishStatementEl = document.getElementById('finishStatement');
-
-
-
-
 function guessedLetter(guess) {
-  blankWord = blankWord.split(''); // rudolph = ['r','u','d']
 
   for (var i = 0; i < currentWord.length; i++) {
-
     if (guess === currentWord.charAt(i)) { // rudolph => _ _ _ _ _ _ _ // guess = r
-
+      blankWord = blankWord.split(''); // rudolph = ['r','u','d']
       blankWord[i] = guess;
-      blankWord = blankWord.join(''); // 'tree'
+      blankWord = blankWord.join('');
       correct = true;
       currentUserScore += 100;
       // turn letter green
     }
 
+    // WIN LOGIC -------------
     if (blankWord === currentWord && chances > 0) {
-      // open you win modal
       finishStatementEl.textContent = 'You Win!';
       openEndModal();
     }
-
   }
+
   if (!correct) {
     // turn letter red
-    // chances--
+    chances--;
+    chanceEl.textContent = `${chances} / 6`;
   }
 
+  // LOSE LOGIC ---------------
   if (blankWord !== currentWord && chances === 0) {
     finishStatementEl.textContent = 'You Lose!';
     openEndModal();
@@ -358,8 +315,34 @@ function guessedLetter(guess) {
   correct = false;
 }
 
+// DISPLAY CHANCES --------------------
+var chanceEl = document.getElementById('chance');
+chanceEl.textContent = `${chances} / 6`;
 
 
+// TIMER ----------------
+var timeLeft = 90;
+
+function startTimer() {
+  setInterval(function () {
+    timeLeft--;
+
+    if (timeLeft >= 0) {
+      var timeEl = document.getElementById('timer');
+      timeEl.textContent = timeLeft;
+    }
+
+    if (timeLeft === 0) {
+      finishStatementEl.textContent = 'You Lose!';
+      openEndModal();
+    }
+  }, 1000);
+}
+
+
+// STRETCH GOALS ------------------------------------
+
+// PHRASE CHOICE -------------------------------
 // RENDER PHRASE ON SCREEN
 // var pressPhrase = document.querySelector('.phrase-btn');
 // pressPhrase.addEventListener('click', displayPhrase);
@@ -371,15 +354,38 @@ function guessedLetter(guess) {
 // }
 
 
-// function renderGame() {
-//   currentUserScore = 0;
-//   blankWord = '';
-//   blankPhrase = '';
-//   if (playWord){
-//     pass
-//   }
-//   if (playPhrase){
-//     pass
-//   }
+
+
+// DIFFERENT WAY OF RENDERING LETTERS --------------------------
+// var letters = 'abcdefghijklmnopqrstuvwxyz'.split(''); // 'a', 'b', 'c', 'd'...]
+// var letterContainer = document.getElementById('letters');
+// for (var i = 0; i < letters.length; i++){
+//   var span = document.createElement('span');
+//   span.textContent = letters[i];
+//   letterContainer.appendChild(span);
 // }
 
+
+// TIMER ---------------------------
+// var gameCount;
+// var wordScore = 0;
+
+// var scoretracker;
+// function timer () {
+//   gameCount --;
+//   var gameCountDisplay = document.getElementById('gameTimer');
+//   gameCountDisplay.innerHTML = gameCount;
+//   if(gameCount <= 0){
+//     clearInterval(gameCount);
+//     endGame();
+//   }
+
+// }
+// function startscoreTracker() {
+//   scoreTracker = setInterval(timer, 20);
+
+//   function timer() {
+//     var meterDisplay = document.getElementById('fillMeter');
+//     meterDisplay.setAttribute('style', meterWidth);
+//   }
+// }
