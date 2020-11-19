@@ -16,6 +16,7 @@ var currentWord;
 var chances = 7;
 var correct = false;
 var bodyPart = 0;
+var topScores = [];
 
 // High Score list entries
 var scores = [100, 500, 600, 400, 300, 400, 600, 115, 630, 900];
@@ -129,7 +130,7 @@ function submitHandler(e) {
   e.preventDefault();
 
   var user = e.target.username.value;
-  var score = 99999;
+  var score = currentUserScore;
   var player = new Player(user, score);
   renderHighscore();
   finishBg.classList.remove('bg-active');
