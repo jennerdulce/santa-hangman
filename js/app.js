@@ -401,6 +401,7 @@ function guessedLetter(guess) {
 
   if (!correct) {
     // turn letter red
+    chances--;
     chanceEl.textContent = `${chances} / 6`;
   }
 
