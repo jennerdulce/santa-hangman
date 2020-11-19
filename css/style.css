@@ -259,6 +259,22 @@ button {
   display: inline-block;
 
 }
+
+.modal-highscore {
+  font-size: 25px;
+  padding-top: 125px;
+  padding-left: 200px;
+  font-family: 'Dancing Script', cursive;
+  color: brown
+}
+
+.modal-highscore > h1 {
+  padding-bottom: 25px;
+  font-size: 35px;
+  
+}
+
+
 h1 {    
   text-align: center;                            
   color: white;
@@ -295,6 +311,7 @@ h2{
   text-align: center;
   background-color: white;  
 }
+
 .finish-btn{
   background-color: #E3CE9F;
   border:none;
@@ -313,6 +330,7 @@ h2{
   outline: 0px;
   display: inline-block;
 }
+
 #guesses{
   background-color: #E3CE9F;
   border:none;
@@ -331,6 +349,7 @@ h2{
   outline: 0px;
   display: inline-block;
 }
+
 #score{
   background-color: #E3CE9F;
   border:none;
@@ -356,4 +375,5 @@ h2{
     font: 1em sans-serif;
     color: #000;
 }
+
 
