@@ -342,8 +342,9 @@ var words = [
 
 var blankWord = '';
 var currentWord;
-var chances = 6;
+var chances = 7;
 var correct = false;
+var bodyPart = 0;
 
 function randomWord() {
   return Math.floor(Math.random() * words.length);
@@ -359,16 +360,20 @@ function setBlankWord(word) {
   }
 }
 
-
-function startGame() {
-  chances = 6;
+function resetGame() {
+  chances = 7;
   currentUserScore = 0;
   blankWord = '';
-  timeLeft = 90;
-  // currentWord = words[randomWord()];
+  // timeLeft = 90;
   currentWord = words[randomWord()];
+  bodyPart = 0;
+  gameBackground.style.backgroundImage = 'url("../santa/0.jpg")';
+  chanceEl.textContent = `${chances} / 7`;
+}
+function startGame() {
+  resetGame();
   setBlankWord(currentWord);
-  startTimer();
+  // startTimer();
   displayWord();
   // start timer will go here
 }
@@ -401,7 +406,11 @@ function guessedLetter(guess) {
 
   if (!correct) {
     // turn letter red
-    chanceEl.textContent = `${chances} / 6`;
+    chances--;
+    bodyPart++;
+    console.log(bodyPart);
+    renderBodyParts();
+    chanceEl.textContent = `${chances} / 7`;
   }
 
   // LOSE LOGIC ---------------
@@ -409,34 +418,33 @@ function guessedLetter(guess) {
     finishStatementEl.textContent = 'You Lose!';
     openEndModal();
   }
-
   // resets to false for the next guess
   correct = false;
 }
 
 // DISPLAY CHANCES --------------------
 var chanceEl = document.getElementById('chance');
-chanceEl.textContent = `${chances} / 6`;
+chanceEl.textContent = `${chances} / 7`;
 
 
-// TIMER ----------------
-var timeLeft = 90;
-
-function startTimer() {
-  setInterval(function () {
-    timeLeft--;
-
-    if (timeLeft >= 0) {
-      var timeEl = document.getElementById('timer');
-      timeEl.textContent = timeLeft;
-    }
-
-    if (timeLeft === 0) {
-      finishStatementEl.textContent = 'You Lose!';
-      openEndModal();
-    }
-  }, 1000);
+function renderBodyParts(){
+  if (bodyPart === 1){
+    gameBackground.style.backgroundImage = 'url("../santa/1.jpg")';
+  } else if (bodyPart === 2){
+    gameBackground.style.backgroundImage = 'url("../santa/2.jpg")';
+  } else if (bodyPart === 3){
+    gameBackground.style.backgroundImage = 'url("../santa/3.jpg")';
+  } else if (bodyPart === 4){
+    gameBackground.style.backgroundImage = 'url("../santa/4.jpg")';
+  } else if (bodyPart === 5){
+    gameBackground.style.backgroundImage = 'url("../santa/5.jpg")';
+  } else if (bodyPart === 6){
+    gameBackground.style.backgroundImage = 'url("../santa/6.jpg")';
+  } else if (bodyPart === 7){
+    gameBackground.style.backgroundImage = 'url("../santa/7.jpg")';
+  }
 }
+var gameBackground = document.getElementById('game-container');
 
 
 // STRETCH GOALS ------------------------------------
@@ -465,26 +473,22 @@ function startTimer() {
 // }
 
 
-// TIMER ---------------------------
-// var gameCount;
-// var wordScore = 0;
 
-// var scoretracker;
-// function timer () {
-//   gameCount --;
-//   var gameCountDisplay = document.getElementById('gameTimer');
-//   gameCountDisplay.innerHTML = gameCount;
-//   if(gameCount <= 0){
-//     clearInterval(gameCount);
-//     endGame();
-//   }
+// TIMER ----------------
+// var timeLeft = 92;
 
-// }
-// function startscoreTracker() {
-//   scoreTracker = setInterval(timer, 20);
+// function startTimer() {
+//   setInterval(function () {
+//     timeLeft--;
 
-//   function timer() {
-//     var meterDisplay = document.getElementById('fillMeter');
-//     meterDisplay.setAttribute('style', meterWidth);
-//   }
+//     if (timeLeft >= 0) {
+//       var timeEl = document.getElementById('timer');
+//       timeEl.textContent = timeLeft;
+//     }
+
+//     if (timeLeft === 0) {
+//       finishStatementEl.textContent = 'You Lose!';
+//       openEndModal();
+//     }
+//   }, 1000);
 // }
