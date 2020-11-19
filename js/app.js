@@ -96,7 +96,7 @@ finishBtn.addEventListener('click', openFinish);
 
 
 // INSTANTIATE NEW PLAYER
-function submitHandler(e){
+function submitHandler(e) {
   e.preventDefault();
 
   var username = e.target.username.value;
@@ -125,7 +125,7 @@ function Player(name, score) {
 var highscoreEl = document.getElementById('highscores');
 var retrievedData = localStorage.getItem('scoresData');
 
-function renderHighscore(){
+function renderHighscore() {
   if (retrievedData) {
     highscoreList = retrievedData;
   } else {
@@ -138,7 +138,7 @@ function renderHighscore(){
       return b.score - a.score;
     });
 
-    // NEED TO LEARN HOW TO UPDATE THE LIST WITH ONLY 10 
+    // NEED TO LEARN HOW TO UPDATE THE LIST WITH ONLY 10
     for (var i = 0; i < highscoreList.length; i++) {
       var li = document.createElement('li');
       li.textContent = `${highscoreList[i].name}: ${highscoreList[i].score}`;
@@ -245,7 +245,7 @@ function randomWord() {
   return Math.floor(Math.random() * words.length);
 }
 
-function setBlankWord(word){
+function setBlankWord(word) {
   for (var i = 0; i < word.length; i++) {
     if (word[i] === ' ') {
       blankWord += ' ';
@@ -259,9 +259,11 @@ function startGame() {
   chances = 6;
   currentUserScore = 0;
   blankWord = '';
+  timeLeft = 90;
   // currentWord = words[randomWord()];
   currentWord = words[randomWord()];
   setBlankWord(currentWord);
+  startTimer();
   displayWord();
   // start timer will go here
 }
@@ -308,13 +310,29 @@ function guessedLetter(guess) {
   correct = false;
 }
 
-// DISPLAY CHANCES
+// DISPLAY CHANCES --------------------
 var chanceEl = document.getElementById('chance');
 chanceEl.textContent = `${chances} / 6`;
 
 
+// TIMER ----------------
+var timeLeft = 90;
 
+function startTimer() {
+  setInterval(function () {
+    timeLeft--;
 
+    if (timeLeft >= 0) {
+      var timeEl = document.getElementById('timer');
+      timeEl.textContent = timeLeft;
+    }
+
+    if (timeLeft === 0) {
+      finishStatementEl.textContent = 'You Lose!';
+      openEndModal();
+    }
+  }, 1000);
+}
 
 
 // STRETCH GOALS ------------------------------------
