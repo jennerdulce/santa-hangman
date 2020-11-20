@@ -463,9 +463,18 @@ function guessZ() {
   } else {
     letterExampleZ.style.backgroundColor = 'red';
   }
+<<<<<<< HEAD
   letterExampleZ.removeEventListener('click');
+=======
+  letterExampleZ.removeEventListener('click',guessZ);
+>>>>>>> 4e0ba166b4e59e16734e847e23cd6048a34c0480
   displayWord();
   guessedLetter('z');
+}
+
+function handleClicks(e) {
+  console.log(e);
+  console.log(this);
 }
 
 function handleClicks(e) {
