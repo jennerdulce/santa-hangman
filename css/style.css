@@ -2,12 +2,6 @@ body {
   background-color: teal;
 }
 
-button {
-  font-size: 30px;
-  padding: 5px;
-}
-
-
 /* SNOWFLAKES REFERENCED https://www.youtube.com/watch?v=Y3Cif6o8U7I&ab_channel=AaronWard*/
 .snowflake {
   color: #fff;
@@ -50,14 +44,23 @@ button {
   opacity: 1;
 }
 
+ .modal>h1 :hover {
+  background-color:white;
+
+}
 
 .modal-front {
   position: relative;
   background-image: url("../img/wreath.png");
   background-size: contain;
   background-repeat: no-repeat;
+<<<<<<< HEAD
   background-size: 1000px;
   width: 50%;
+=======
+  background-size:cover;
+  /* width: 50%; */
+>>>>>>> 758b3a80757c315d5ad856c34690e4fdc5c8501f
   height: 50%;
   display: flex;
   justify-content: space-around;
@@ -77,19 +80,37 @@ button {
 
 .modal-highscore {
   background-image: url("../img/list.png");
+  /* background-attachment: fixed; */
   background-size: contain;
   background-repeat: no-repeat;
+<<<<<<< HEAD
   background-size: 1000px 600px;
+=======
+  background-size: cover;
+  width: 50%;
+>>>>>>> 758b3a80757c315d5ad856c34690e4fdc5c8501f
   text-align: center;
   color: #000;
 }
 
-.modal-front > h1, a {
+.modal-highscore > h1, ul{
+background: rgb(250, 248, 248);
+color: rgb(17, 187, 34);
+text-align: center;
+border: 300px;
+
+}
+
+
+
+.modal-front > h1, a { 
   font-size: 30px;
   border: 3px solid black;
   border-radius: 30px;
   padding: 10px;
   cursor: pointer;
+  text-align: center;
+  /* /* width: 50%; */
 }
 
 .modal-close, .modal-highscore-close, .modal-howToPlay-close, .modal-play-close {
@@ -120,26 +141,46 @@ button {
   text-align: center;
   letter-spacing: 8px;
   word-spacing: 6px;
-  font-size: 24px;
+  font-size: 36px;
+  text-transform: capitalize;
+  box-shadow: 3px 5px 5px rgba(0, 0, 0, .25);
+  
 }
 
 /* LETTER BOX */
 #letters {
   position: absolute;
-  bottom: 10px;
+  bottom: 25px;
   left: 10px;
   width: 970px;
   padding: 4px;
   border: 3px solid black;
   border-radius: 30px;
   background-color: aquamarine;
+  box-shadow: 3px 5px 5px rgba(0, 0, 0, .25);
 }
 
-#letters > span {
+#letters > button {
+  text-transform: uppercase;
+}
+
+#letters > button:hover {
+  cursor: pointer;
+}
+
+button {
+  font-size: 24px;
+  margin-left: 3px;
+  padding: 5px;
+  border-radius: 20px;
+  box-shadow: 3px 5px 5px rgba(0, 0, 0, .25);
+}
+
+/* #letters > span {
   font-size: 28px;
   display: inline-block;
   margin: 20px auto;
-  margin-left: 8px;
+  margin-left: 30px;
   border-radius: 10px;
   padding:5px;
   background-color:white;
@@ -148,7 +189,7 @@ button {
 
 #letters > span:hover {
   cursor: pointer;
-}
+} */
 
 .modal-howToPlay > h1 {
   font-size: 45px;
@@ -157,15 +198,20 @@ button {
 
 .modal-howToPlay > p {
   font-size: 35px;
-
+  color: rgb(245, 245, 245);
+  
 }
 
 .modal-howToPlay {
-  background-image: url();
+  background-image: url("../img/wreath.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-size: auto;
+
 }
 
 /* GUESSES */
-#chance {
+#guesses {
   position: absolute;
   right: 10px;
   top: 10px;
@@ -202,6 +248,7 @@ button {
   font-size: 20px;
   font-weight: bold;
   margin: 4px 2px;
+  margin-left: 1000px ;
   cursor: pointer;
   border-radius: 12px;
   border: 3px solid black;
@@ -209,6 +256,24 @@ button {
   outline: 0px;
   display: inline-block;
  
+}
+.finish-btn{
+  background-color: #E3CE9F;
+  border:none;
+  color: #570000;
+  padding: 5px 15px;
+  text-align: center;
+  text-decoration: none;
+  font-family: sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
+  border: 3px solid black;
+  box-shadow: 3px 3px 2px grey;
+  outline: 0px;
+  display: inline-block;
 }
  .phrase-btn{
   background-color: #E3CE9F;
@@ -248,6 +313,50 @@ button {
   display: inline-block;
 
 }
+#chance{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #E3CE9F;
+  border:none;
+  color: #570000;
+  padding: 5px 15px;
+  text-align: center;
+  text-decoration: none;
+  font-family: sans-serif;
+  font-size: 34px;
+  font-weight: bold;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
+  border: 3px solid black;
+  box-shadow: 3px 3px 2px grey;
+  outline: 0px;
+  display: inline-block;
+}
+#score {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #E3CE9F;
+  border:none;
+  color: #570000;
+  padding: 5px 15px;
+  text-align: center;
+  text-decoration: none;
+  font-family: sans-serif;
+  font-size: 34px;
+  font-weight: bold;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
+  border: 3px solid black;
+  box-shadow: 3px 3px 2px grey;
+  outline: 0px;
+  display: inline-block;
+
+}
+
 h1 {    
   text-align: center;                            
   color: white;
@@ -272,7 +381,17 @@ h2{
   background: wheat;
   border-radius: 15px 15px 0px 0px;
   
+  
 }
+h3{
+text-align: center;  
+padding: 5px;
+font-size: 45px; 
+margin: 5px 2px 0px 0px;
+color:black;
+
+}
+
 .groupMember{
   display: grid;    
   grid-template-columns: repeat(2, 1fr); 
@@ -284,4 +403,92 @@ h2{
   text-align: center;
   background-color: white;  
 }
+
+#timer{
+background-color: #E3CE9F;
+border:none;
+color: #570000;
+padding: 5px 15px;
+text-align: center;
+text-decoration: none;
+font-family: sans-serif;
+font-size: 20px;
+font-weight: bold;
+margin: 4px 2px;
+cursor: pointer;
+border-radius: 12px;
+border: 3px solid black;
+box-shadow: 3px 3px 2px grey;
+outline: 0px;
+display: inline-block;
+
+}
+#finishStatement{
+background-color: #E3CE9F;
+border:none;
+color: #570000;
+padding: 5px 15px;
+text-align: center;
+text-decoration: none;
+font-family: sans-serif;
+font-size: 20px;
+font-weight: bold;
+margin: 4px 2px;
+cursor: pointer;
+border-radius: 12px;
+border: 3px solid black;
+box-shadow: 3px 3px 2px grey;
+outline: 0px;
+display: inline-block;
+}
+
+h4{
+color: yellow;
+}
+
+#highscore-btn{
+color: yellow;
+font-size: 20px;
+cursor: pointer;
+display: inline-block;
+border-radius: 25px 25px 25px 25px; 
+
+}
+#highscore-btn:hover {    
+color:red;
+}
+#howToPlay-btn{
+color: yellow;
+font-size: 20px;
+cursor: pointer;
+display: inline-block;
+border-radius: 25px 25px 25px 25px; 
+
+}
+#howToPlay-btn:hover {    
+color:red;
+}
+#play-btn{
+color: yellow;
+font-size: 20px;
+cursor: pointer;
+display: inline-block;
+border-radius: 25px 25px 25px 25px; 
+
+}
+#play-btn:hover {    
+color:red;
+}
+#about{
+  text-align: center;
+  cursor: pointer;
+  font-size: 20px;
+  color:yellow;
+  background: black;
+  border-radius: 25px 25px 25px 25px; 
+} 
+#about:hover {    
+  color:red;
+  }
+
 
