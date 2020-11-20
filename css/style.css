@@ -95,7 +95,7 @@ border: 300px;
 
 
 
-.modal-front > h1, a { */
+.modal-front > h1, a { 
   font-size: 30px;
   border: 3px solid black;
   border-radius: 30px;
@@ -443,7 +443,7 @@ color: yellow;
 font-size: 20px;
 cursor: pointer;
 display: inline-block;
-border-radius: 12px;
+border-radius: 25px 25px 25px 25px; 
 
 }
 #highscore-btn:hover {    
@@ -454,7 +454,7 @@ color: yellow;
 font-size: 20px;
 cursor: pointer;
 display: inline-block;
-border-radius: 12px;
+border-radius: 25px 25px 25px 25px; 
 
 }
 #howToPlay-btn:hover {    
@@ -465,10 +465,22 @@ color: yellow;
 font-size: 20px;
 cursor: pointer;
 display: inline-block;
-border-radius: 12px;
+border-radius: 25px 25px 25px 25px; 
 
 }
 #play-btn:hover {    
 color:red;
 }
+#about{
+  text-align: center;
+  cursor: pointer;
+  font-size: 20px;
+  color:yellow;
+  background: black;
+  border-radius: 25px 25px 25px 25px; 
+} 
+#about:hover {    
+  color:red;
+  }
+
 
