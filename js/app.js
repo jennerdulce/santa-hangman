@@ -250,15 +250,18 @@ function guessedLetter(guess) {
     bodyPart++;
     renderBodyParts();
     chanceEl.textContent = `${chances} / 7`;
+    // LOSE LOGIC ---------------
+    if (blankWord !== currentWord && chances === 0) {
+      finishStatementEl.textContent = 'You Lose!';
+      openEndModal();
+    }
+    // resets to false for the next guess
+    correct = false;
+    return false;
+  } else {
+    return true;
   }
 
-  // LOSE LOGIC ---------------
-  if (blankWord !== currentWord && chances === 0) {
-    finishStatementEl.textContent = 'You Lose!';
-    openEndModal();
-  }
-  // resets to false for the next guess
-  correct = false;
 }
 
 // ------------------- DISPLAY CHANCES --------------------
@@ -452,9 +455,22 @@ function guessY() {
 
 var letterExampleZ = document.querySelector('.Z');
 letterExampleZ.addEventListener('click', guessZ);
+
 function guessZ() {
-  guessedLetter('z');
+  var correctGuess = guessedLetter('z');
+  if (correctGuess) {
+    letterExampleZ.style.backgroundColor = 'green';
+  } else {
+    letterExampleZ.style.backgroundColor = 'red';
+  }
+  letterExampleZ.removeEventListener('click');
   displayWord();
+  guessedLetter('z');
+}
+
+function handleClicks(e) {
+  console.log(e);
+  console.log(this);
 }
 
 //  ---------------- RESET GAME --------------------
