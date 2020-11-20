@@ -130,23 +130,27 @@ function submitHandler(e) {
   e.preventDefault();
 
   var user = e.target.username.value;
-  var score = currentUserScore;
+  var score = 99999;
   var player = new Player(user, score);
+  storeHighScore();
   renderHighscore();
   finishBg.classList.remove('bg-active');
   highscoreBg.classList.add('bg-active');
 
-  // ------ STORE HIGH SCORE -------
-  var stringifiedScores = JSON.stringify(highscoreList);
-  localStorage.setItem('scoresData', stringifiedScores);
+
 }
 
 var container = document.getElementById('userHighscore');
 container.addEventListener('submit', submitHandler);
 
 
-//  ---------------- OBJECT CONSTRUCTOR ---------------
+// ------ STORE HIGH SCORE -------
+function storeHighScore() {
+  var stringifiedScores = JSON.stringify(highscoreList);
+  localStorage.setItem('scoresData', stringifiedScores);
+}
 
+//  ---------------- OBJECT CONSTRUCTOR ---------------
 function Player(name, score) {
   this.name = name;
   this.score = score;
@@ -161,14 +165,23 @@ function sortHighScore() {
 }
 
 // ------------------- UPDATE HIGH SCORE LIST -------------------
-function updateHighScoresList(){
-  for (var i = 0; i < highscoreList.length; i++) {
+function updateHighScoresList() {
+  sortHighScore();
+  while (topScores.length !== 0) {
+    topScores.shift();
+  }
+
+  for (var i = 0; i < 10; i++) {
+    topScores.push(highscoreList[i]);
+  }
+
+  highscoreEl.innerHTML = '';
+  for (var i = 0; i < topScores.length; i++) {
     var li = document.createElement('li');
-    li.textContent = `${highscoreList[i].name}: ${highscoreList[i].score}`;
+    li.textContent = `${topScores[i].name}: ${topScores[i].score}`;
     highscoreEl.appendChild(li);
   }
 }
-
 
 // ------------------- RETRIEVE HIGHSCORES -----------------------
 var highscoreEl = document.getElementById('highscores');
@@ -176,16 +189,16 @@ var retrievedData = localStorage.getItem('scoresData');
 
 function renderHighscore() {
   if (retrievedData) {
-    highscoreList = retrievedData;
+    var parsedRetrievedData = JSON.parse(retrievedData);
+    highscoreList = parsedRetrievedData;
   } else {
     for (var i = 0; i < randomNames.length; i++) {
       new Player(randomNames[i], scores[i]);
     }
 
-    // sorts list
-    sortHighScore();
     updateHighScoresList();
   }
+  storeHighScore();
 }
 
 // -------------- GENERATING RANDOM WORD --------------------
@@ -251,7 +264,6 @@ function guessedLetter(guess) {
 // ------------------- DISPLAY CHANCES --------------------
 var chanceEl = document.getElementById('chance');
 chanceEl.textContent = `${chances} / 7`;
-
 
 // ------------------- DISPLAY SCORE ------------------------
 var scoreEl = document.getElementById('score');
