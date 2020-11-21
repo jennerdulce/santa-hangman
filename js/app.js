@@ -717,6 +717,7 @@ function resetButtonColor(){
 //   }, 1000);
 // }
 
+
 //  ----------------------- RESETTING BUTTONS ---------------------------
 // function resetButtons(){
 //   for(var i = 0; i < arrayLetters.length; i++){
