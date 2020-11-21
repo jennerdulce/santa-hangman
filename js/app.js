@@ -282,116 +282,306 @@ function renderBodyParts() {
 
 // -------------- CREATE LETTERS AND DISPLAY ON HTML --------------------
 // THIS WORKS AND RENDERS ON SCREEN; HARD CODED VALUE
+
 var letterExampleA = document.querySelector('.A');
 letterExampleA.addEventListener('click', guessA);
 function guessA() {
-  guessedLetter('a');
+  var correctGuess = guessedLetter('a');
+  if (correctGuess) {
+    letterExampleZ.style.backgroundColor = 'green';
+  } else {
+    letterExampleZ.style.backgroundColor = 'red';
+  }
+  letterExampleZ.removeEventListener('click', guessA);
   displayWord();
-  // remove event listener here?
 }
+
+function handleClicks(e) {
+  console.log(e);
+  console.log(this);
+}
+
 
 var letterExampleB = document.querySelector('.B');
 letterExampleB.addEventListener('click', guessB);
 function guessB() {
-  guessedLetter('b');
+  var correctGuess = guessedLetter('b');
+  if (correctGuess) {
+    letterExampleZ.style.backgroundColor = 'green';
+  } else {
+    letterExampleZ.style.backgroundColor = 'red';
+  }
+  letterExampleZ.removeEventListener('click', guessB);
   displayWord();
+}
+
+function handleClicks(e) {
+  console.log(e);
+  console.log(this);
 }
 
 var letterExampleC = document.querySelector('.C');
 letterExampleC.addEventListener('click', guessC);
 function guessC() {
-  guessedLetter('c');
+  var correctGuess = guessedLetter('c');
+  if (correctGuess) {
+    letterExampleZ.style.backgroundColor = 'green';
+  } else {
+    letterExampleZ.style.backgroundColor = 'red';
+  }
+  letterExampleZ.removeEventListener('click',guessC);
   displayWord();
+}
+
+function handleClicks(e) {
+  console.log(e);
+  console.log(this);
 }
 
 var letterExampleD = document.querySelector('.D');
-letterExampleD.addEventListener('click', guessD);
+letterExampleC.addEventListener('click', guessD);
 function guessD() {
-  guessedLetter('d');
+  var correctGuess = guessedLetter('d');
+  if (correctGuess) {
+    letterExampleZ.style.backgroundColor = 'green';
+  } else {
+    letterExampleZ.style.backgroundColor = 'red';
+  }
+  letterExampleZ.removeEventListener('click',guessD);
   displayWord();
 }
 
+function handleClicks(e) {
+  console.log(e);
+  console.log(this);
+}
+
 var letterExampleE = document.querySelector('.E');
-letterExampleE.addEventListener('click', guessE);
+letterExampleC.addEventListener('click', guessE);
 function guessE() {
-  guessedLetter('e');
+  var correctGuess = guessedLetter('e');
+  if (correctGuess) {
+    letterExampleZ.style.backgroundColor = 'green';
+  } else {
+    letterExampleZ.style.backgroundColor = 'red';
+  }
+  letterExampleZ.removeEventListener('click',guessE);
   displayWord();
 }
+
+function handleClicks(e) {
+  console.log(e);
+  console.log(this);
+}
+
 
 var letterExampleF = document.querySelector('.F');
 letterExampleF.addEventListener('click', guessF);
 function guessF() {
-  guessedLetter('f');
+  var correctGuess = guessedLetter('f');
+  if (correctGuess) {
+    letterExampleZ.style.backgroundColor = 'green';
+  } else {
+    letterExampleZ.style.backgroundColor = 'red';
+  }
+  letterExampleZ.removeEventListener('click',guessF);
   displayWord();
+}
+
+function handleClicks(e) {
+  console.log(e);
+  console.log(this);
 }
 
 var letterExampleG = document.querySelector('.G');
 letterExampleG.addEventListener('click', guessG);
 function guessG() {
-  guessedLetter('g');
+  var correctGuess = guessedLetter('g');
+  if (correctGuess) {
+    letterExampleZ.style.backgroundColor = 'green';
+  } else {
+    letterExampleZ.style.backgroundColor = 'red';
+  }
+  letterExampleZ.removeEventListener('click', guessG);
   displayWord();
 }
+
+function handleClicks(e) {
+  console.log(e);
+  console.log(this);
+}
+
 
 var letterExampleH = document.querySelector('.H');
 letterExampleH.addEventListener('click', guessH);
 function guessH() {
-  guessedLetter('h');
+  var correctGuess = guessedLetter('h');
+  if (correctGuess) {
+    letterExampleZ.style.backgroundColor = 'green';
+  } else {
+    letterExampleZ.style.backgroundColor = 'red';
+  }
+  letterExampleZ.removeEventListener('click', guessH);
   displayWord();
 }
+
+
+function handleClicks(e) {
+  console.log(e);
+  console.log(this);
+}
+
 
 var letterExampleI = document.querySelector('.I');
 letterExampleI.addEventListener('click', guessI);
 function guessI() {
-  guessedLetter('i');
+  var correctGuess = guessedLetter('i');
+  if (correctGuess) {
+    letterExampleZ.style.backgroundColor = 'green';
+  } else {
+    letterExampleZ.style.backgroundColor = 'red';
+  }
+  letterExampleZ.removeEventListener('click', guessI);
   displayWord();
 }
+
+function handleClicks(e) {
+  console.log(e);
+  console.log(this);
+}
+
 var letterExampleJ = document.querySelector('.J');
 letterExampleJ.addEventListener('click', guessJ);
 function guessJ() {
-  guessedLetter('j');
+  var correctGuess = guessedLetter('j');
+  if (correctGuess) {
+    letterExampleZ.style.backgroundColor = 'green';
+  } else {
+    letterExampleZ.style.backgroundColor = 'red';
+  }
+  letterExampleZ.removeEventListener('click', guessJ);
   displayWord();
 }
+
+
+function handleClicks(e) {
+  console.log(e);
+  console.log(this);
+}
+
 
 var letterExampleK = document.querySelector('.K');
 letterExampleK.addEventListener('click', guessK);
 function guessK() {
-  guessedLetter('k');
+  var correctGuess = guessedLetter('k');
+  if (correctGuess) {
+    letterExampleZ.style.backgroundColor = 'green';
+  } else {
+    letterExampleZ.style.backgroundColor = 'red';
+  }
+  letterExampleZ.removeEventListener('click', guessK);
   displayWord();
 }
+
+
+function handleClicks(e) {
+  console.log(e);
+  console.log(this);
+}
+
 
 var letterExampleL = document.querySelector('.L');
 letterExampleL.addEventListener('click', guessL);
 function guessL() {
-  guessedLetter('l');
+  var correctGuess = guessedLetter('l');
+  if (correctGuess) {
+    letterExampleZ.style.backgroundColor = 'green';
+  } else {
+    letterExampleZ.style.backgroundColor = 'red';
+  }
+  letterExampleZ.removeEventListener('click', guessL);
   displayWord();
 }
+
+function handleClicks(e) {
+  console.log(e);
+  console.log(this);
+}
+
 var letterExampleM = document.querySelector('.M');
 letterExampleM.addEventListener('click', guessM);
 function guessM() {
-  guessedLetter('m');
+  var correctGuess = guessedLetter('m');
+  if(correctGuess){
+    letterExampleM.style.backgroundColor = 'green';
+  }else{
+    letterExampleM.style.backgroundColor = 'red';
+  }
+  letterExampleM.removeEventListener('click', guessM);
   displayWord();
 }
+
+function handleClicks(e){
+  console.log(e);
+  console.log(this);
+}
+
 
 var letterExampleN = document.querySelector('.N');
 letterExampleN.addEventListener('click', guessN);
 function guessN() {
-  guessedLetter('n');
+  var correctGuess = guessedLetter('n');
+  if(correctGuess){
+    letterExampleN.style.backgroundColor = 'green';
+  }else{
+    letterExampleN.style.backgroundColor = 'red';
+  }
+  letterExampleN.removeEventListener('click', guessN);
   displayWord();
+}
+
+function handleClicks(e){
+  console.log(e);
+  console.log(this);
 }
 
 var letterExampleO = document.querySelector('.O');
 letterExampleO.addEventListener('click', guessO);
 function guessO() {
-  guessedLetter('o');
+  var correctGuess = guessedLetter('o');
+  if(correctGuess){
+    letterExampleO.style.backgroundColor = 'green';
+  }else{
+    letterExampleO.style.backgroundColor = 'red';
+  }
+  letterExampleO.removeEventListener('click', guessO);
   displayWord();
+}
+
+
+function handleClicks(e){
+  console.log(e);
+  console.log(this);
 }
 
 var letterExampleP = document.querySelector('.P');
 letterExampleP.addEventListener('click', guessP);
 function guessP() {
-  guessedLetter('p');
+  var correctGuess = guessedLetter('p');
+  if(correctGuess){
+    letterExampleP.style.backgroundColor = 'green';
+  }else{
+    letterExampleP.style.backgroundColor = 'red';
+  }
+  letterExampleP.removeEventListener('click', guessP);
   displayWord();
 }
+
+function handleClicks(e){
+  console.log(e);
+  console.log(this);
+}
+
 
 var letterExampleQ = document.querySelector('.Q');
 letterExampleQ.addEventListener('click', guessQ);
@@ -455,7 +645,17 @@ function guessY() {
 var letterExampleZ = document.querySelector('.Z');
 letterExampleZ.addEventListener('click', guessZ);
 function guessZ() {
+
   guessedLetter('z');
+
+  var correctGuess = guessedLetter('z');
+  if (correctGuess) {
+    letterExampleZ.style.backgroundColor = 'green';
+  } else {
+    letterExampleZ.style.backgroundColor = 'red';
+  }
+  letterExampleZ.removeEventListener('click', guessZ);
+
   displayWord();
 }
 
