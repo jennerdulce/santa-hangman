@@ -10,6 +10,8 @@ var words = [
   'ho ho ho',
   'ol saint nick',
   'north pole',
+  'jack frost',
+  'christmas tree',
 ];
 var blankWord = '';
 var currentWord;
@@ -21,7 +23,7 @@ var topScores = [];
 
 // High Score list entries
 var scores = [100, 500, 600, 400, 300, 400, 600, 115, 630, 900];
-var randomNames = ['Rudolph', 'papa elf', 'Mrs. Clause', 'Jack Skellignton', 'Corpse Bride', 'Hercules', 'Mushu', 'Olaf', 'Else', 'Sven'];
+var randomNames = ['Rudolph', 'Papa Elf', 'Mrs. Clause', 'Jack Skellignton', 'Corpse Bride', 'Hercules', 'Mushu', 'Olaf', 'Elsa', 'Seven'];
 var highscoreList = [];
 var currentUserScore = 0;
 
