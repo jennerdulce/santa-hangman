@@ -21,23 +21,18 @@ var returnValue;
 var bodyPart = 0;
 var topScores = [];
 
-var arrayLetters = [
-  'letterExampleA', 'letterExampleB', 'letterExampleC', 'letterExampleD','letterExampleE', 'letterExampleF', 'letterExampleG', 'letterExampleH', 'letterExampleI', 'letterExampleJ', 'letterExampleK', 'letterExampleL', 'letterExampleM', 'letterExampleN', 'letterExampleO', 'letterExampleP', 'letterExampleQ', 'letterExampleR', 'letterExampleS', 'letterExampleT', 'letterExampleU', 'letterExampleV', 'letterExampleW', 'letterExampleX', 'letterExampleY', 'letterExampleZ'
-];
-
-var arrayGuess = ['guessA', 'guessB', 'guessC', 'guessD', 'guessE', 'guessG', 'guessH', 'guessJ','guessK', 'guessL', 'guessM', 'guessO', 'guessP', 'guessQ', 'guessR', 'guessS','guessT', 'guessU', 'guessV', 'guessW', 'guessX', 'guessY', 'guessZ'];
-
-
-
 // High Score list entries
 var scores = [100, 500, 600, 400, 300, 400, 600, 115, 630, 900];
 var randomNames = ['Rudolph', 'Papa Elf', 'Mrs. Clause', 'Jack Skellignton', 'Corpse Bride', 'Hercules', 'Mushu', 'Olaf', 'Elsa', 'Seven'];
 var highscoreList = [];
 var currentUserScore = 0;
 
+var wordElement = document.getElementById('word');
+
+
 
 // -------------- MODAL -----------------
-// opening modal
+// --------------------- opening modal --------------------- 
 var modalBtn = document.querySelector('.modal-btn');
 var modalBg = document.querySelector('.modal-front-bg');
 var modalClose = document.querySelector('.modal-close');
@@ -52,7 +47,7 @@ function closeModal() {
 }
 modalClose.addEventListener('click', closeModal);
 
-// highscore modal
+// --------------------- highscore modal --------------------- 
 var highscoreBtn = document.getElementById('highscore-btn');
 var highscoreBg = document.querySelector('.modal-highscore-bg');
 var highscoreClose = document.querySelector('.modal-highscore-close');
@@ -70,22 +65,16 @@ function closeHighscore() {
 }
 highscoreClose.addEventListener('click', closeHighscore);
 
-
-// RENDER WORD ON SCREEN
-var wordElement = document.getElementById('word');
-
-
-// play modal
+// --------------------- play modal --------------------- 
 var playBtn = document.getElementById('play-btn');
 
 function displayWord() {
   modalBg.classList.remove('bg-active');
-  // this starts the game so we would render the game here and reset the word
   wordElement.textContent = blankWord;
 }
 playBtn.addEventListener('click', startGame);
 
-// how to play modal
+// --------------------- how to play modal --------------------- 
 var howToPlayBtn = document.getElementById('howToPlay-btn');
 var howToPlayBg = document.querySelector('.modal-howToPlay-bg');
 var howToPlayClose = document.querySelector('.modal-howToPlay-close');
@@ -100,14 +89,12 @@ function closehowToPlay() {
 }
 howToPlayClose.addEventListener('click', closehowToPlay);
 
-// finish modal
-// dont need an open, finish will be opened at end of the game by
+//  --------------------- ending modal --------------------- 
 var finishBtn = document.querySelector('.finish-btn');
 var finishBg = document.querySelector('.modal-finish-bg');
 var yesChoice = document.getElementById('yes');
 var noChoice = document.getElementById('no');
 var finishHighscore = document.getElementById('finishHighscore');
-
 
 function handleYes() {
   resetGame();
@@ -133,7 +120,7 @@ function openFinish() {
 }
 finishBtn.addEventListener('click', openFinish);
 
-// INSTANTIATE NEW PLAYER
+// --------------------- INSTANTIATE NEW PLAYER --------------------- 
 function submitHandler(e) {
   e.preventDefault();
 
@@ -239,7 +226,7 @@ function guessedLetter(guess) {
       returnValue = true;
     }
 
-    // WIN LOGIC -------------
+    // --------------------- WIN LOGIC --------------------- 
     if (blankWord === currentWord && chances > 0) {
       finishStatementEl.textContent = 'You Win!';
       openEndModal();
@@ -247,7 +234,6 @@ function guessedLetter(guess) {
   }
 
   if (!correct) {
-    // turn letter red
     chances--;
     bodyPart++;
     renderBodyParts();
@@ -256,7 +242,7 @@ function guessedLetter(guess) {
     returnValue = false;
   }
 
-  // LOSE LOGIC ---------------
+  // --------------------- LOSE LOGIC --------------------- 
   if (blankWord !== currentWord && chances === 0) {
     finishStatementEl.textContent = 'You Lose!';
     openEndModal();
@@ -623,16 +609,14 @@ function resetGame() {
 }
 
 // ---------------- GAME START -----------------
-renderHighscore();
-updateHighScoresList();
-// resetButtons();
-
 function startGame() {
   resetGame();
   setBlankWord(currentWord);
   displayWord();
   // startTimer() STRETCH GOAL;
 }
+renderHighscore();
+updateHighScoresList();
 
 
 function resetButtonColor(){
@@ -690,19 +674,8 @@ function resetButtonColor(){
   letterExampleZ.addEventListener('click', guessZ);
 }
 
-// function resetButtons(){
-//   for(var i = 0; i < arrayLetters.length; i++){
-//     arrayLetters[i].style.backgroundColor = '';
-//     arrayLetters[i].addEventListener('click', arrayGuess[i]);
-//   }
-// }
-// letterExampleA.style.backgroundColor = 'green';
-
-
-
-// STRETCH GOALS ------------------------------------
-
-// PHRASE CHOICE -------------------------------
+// --------------------- STRETCH GOALS ------------------------------------
+// --------------------- PHRASE CHOICE -------------------------------
 // RENDER PHRASE ON SCREEN
 // var pressPhrase = document.querySelector('.phrase-btn');
 // pressPhrase.addEventListener('click', displayPhrase);
@@ -714,7 +687,7 @@ function resetButtonColor(){
 // }
 
 
-// DIFFERENT WAY OF RENDERING LETTERS --------------------------
+// --------------------- DIFFERENT WAY OF RENDERING LETTERS --------------------------
 // var letters = 'abcdefghijklmnopqrstuvwxyz'.split(''); // 'a', 'b', 'c', 'd'...]
 // var letterContainer = document.getElementById('letters');
 // for (var i = 0; i < letters.length; i++){
@@ -725,7 +698,7 @@ function resetButtonColor(){
 
 
 
-// TIMER ----------------
+// --------------------- TIMER --------------------- 
 // var timeLeft = 92;
 
 // function startTimer() {
@@ -743,3 +716,19 @@ function resetButtonColor(){
 //     }
 //   }, 1000);
 // }
+
+//  ----------------------- RESETTING BUTTONS ---------------------------
+// function resetButtons(){
+//   for(var i = 0; i < arrayLetters.length; i++){
+//     arrayLetters[i].style.backgroundColor = '';
+//     arrayLetters[i].addEventListener('click', arrayGuess[i]);
+//   }
+// }
+// letterExampleA.style.backgroundColor = 'green';
+
+// var arrayLetters = [
+//   'letterExampleA', 'letterExampleB', 'letterExampleC', 'letterExampleD','letterExampleE', 'letterExampleF', 'letterExampleG', 'letterExampleH', 'letterExampleI', 'letterExampleJ', 'letterExampleK', 'letterExampleL', 'letterExampleM', 'letterExampleN', 'letterExampleO', 'letterExampleP', 'letterExampleQ', 'letterExampleR', 'letterExampleS', 'letterExampleT', 'letterExampleU', 'letterExampleV', 'letterExampleW', 'letterExampleX', 'letterExampleY', 'letterExampleZ'
+// ];
+
+// var arrayGuess = ['guessA', 'guessB', 'guessC', 'guessD', 'guessE', 'guessG', 'guessH', 'guessJ','guessK', 'guessL', 'guessM', 'guessO', 'guessP', 'guessQ', 'guessR', 'guessS','guessT', 'guessU', 'guessV', 'guessW', 'guessX', 'guessY', 'guessZ'];
+

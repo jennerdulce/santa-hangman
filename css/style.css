@@ -170,20 +170,6 @@ button {
   box-shadow: 3px 5px 5px rgba(0, 0, 0, .25);
 }
 
-/* #letters > span {
-  font-size: 28px;
-  display: inline-block;
-  margin: 20px auto;
-  margin-left: 30px;
-  border-radius: 10px;
-  padding:5px;
-  background-color:white;
-  text-transform: uppercase;
-}
-
-#letters > span:hover {
-  cursor: pointer;
-} */
 
 .modal-howToPlay > h1 {
   font-size: 45px;
@@ -269,7 +255,7 @@ button {
   outline: 0px;
   display: inline-block;
 }
- .phrase-btn{
+ .phrase-btn, .word-btn, #finishStatement, #chance, #score {
   background-color: #E3CE9F;
   border:none;
   color: #570000;
@@ -288,67 +274,17 @@ button {
   display: inline-block;
 
  }
-.word-btn{
-  background-color: #E3CE9F;
-  border:none;
-  color: #570000;
-  padding: 5px 15px;
-  text-align: center;
-  text-decoration: none;
-  font-family: sans-serif;
-  font-size: 20px;
-  font-weight: bold;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 12px;
-  border: 3px solid black;
-  box-shadow: 3px 3px 2px grey;
-  outline: 0px;
-  display: inline-block;
 
-}
 #chance{
   position: absolute;
   top: 10px;
   left: 10px;
-  background-color: #E3CE9F;
-  border:none;
-  color: #570000;
-  padding: 5px 15px;
-  text-align: center;
-  text-decoration: none;
-  font-family: sans-serif;
-  font-size: 34px;
-  font-weight: bold;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 12px;
-  border: 3px solid black;
-  box-shadow: 3px 3px 2px grey;
-  outline: 0px;
-  display: inline-block;
 }
+
 #score {
   position: absolute;
   top: 10px;
   right: 10px;
-  background-color: #E3CE9F;
-  border:none;
-  color: #570000;
-  padding: 5px 15px;
-  text-align: center;
-  text-decoration: none;
-  font-family: sans-serif;
-  font-size: 34px;
-  font-weight: bold;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 12px;
-  border: 3px solid black;
-  box-shadow: 3px 3px 2px grey;
-  outline: 0px;
-  display: inline-block;
-
 }
 
 h1 {    
@@ -363,10 +299,6 @@ h1 {
   border-radius: 25px 25px 0px 0px; 
   background: black;
 }
-
-/* h1:hover {    
-  color:#F09C00;
-} */
 
 h2{  
   text-align: center;  
@@ -400,81 +332,22 @@ color:black;
   background-color: white;  
 }
 
-#timer{
-background-color: #E3CE9F;
-border:none;
-color: #570000;
-padding: 5px 15px;
-text-align: center;
-text-decoration: none;
-font-family: sans-serif;
-font-size: 20px;
-font-weight: bold;
-margin: 4px 2px;
-cursor: pointer;
-border-radius: 12px;
-border: 3px solid black;
-box-shadow: 3px 3px 2px grey;
-outline: 0px;
-display: inline-block;
-
-}
-#finishStatement{
-background-color: #E3CE9F;
-border:none;
-color: #570000;
-padding: 5px 15px;
-text-align: center;
-text-decoration: none;
-font-family: sans-serif;
-font-size: 20px;
-font-weight: bold;
-margin: 4px 2px;
-cursor: pointer;
-border-radius: 12px;
-border: 3px solid black;
-box-shadow: 3px 3px 2px grey;
-outline: 0px;
-display: inline-block;
-}
-
 h4{
 color: yellow;
 }
 
-#highscore-btn{
+#highscore-btn, #howToPlay-btn, #play-btn{
 color: yellow;
 font-size: 20px;
 cursor: pointer;
 display: inline-block;
 border-radius: 25px 25px 25px 25px; 
-
 }
-#highscore-btn:hover {    
+
+#highscore-btn:hover, #play-btn:hover, #howToPlay-btn:hover, #about:hover {    
 color:red;
 }
-#howToPlay-btn{
-color: yellow;
-font-size: 20px;
-cursor: pointer;
-display: inline-block;
-border-radius: 25px 25px 25px 25px; 
 
-}
-#howToPlay-btn:hover {    
-color:red;
-}
-#play-btn{
-color: yellow;
-font-size: 20px;
-cursor: pointer;
-display: inline-block;
-border-radius: 25px 25px 25px 25px; 
-
-}
-#play-btn:hover {    
-color:red;
-}
 #about{
   text-align: center;
   cursor: pointer;
@@ -483,7 +356,3 @@ color:red;
   background: black;
   border-radius: 25px 25px 25px 25px; 
 } 
-#about:hover {    
-  color:red;
-  }
-
