@@ -401,58 +401,140 @@ function guessP() {
 var letterExampleQ = document.querySelector('.Q');
 letterExampleQ.addEventListener('click', guessQ);
 function guessQ() {
-  guessedLetter('q');
+  var correctGuess = guessedLetter('q');
+  if (correctGuess) {
+    letterExampleQ.style.backgroundColor = 'green';
+  } else {
+    letterExampleQ.style.backgroundColor = 'red';
+  }
+  // letterExampleQ.removeEventListener('click');
+  letterExampleQ.removeEventListener('click',guessQ);
+
   displayWord();
+  guessedLetter('q');
 }
 var letterExampleR = document.querySelector('.R');
 letterExampleR.addEventListener('click', guessR);
 function guessR() {
-  guessedLetter('r');
+  var correctGuess = guessedLetter('r');
+  if (correctGuess) {
+    letterExampleR.style.backgroundColor = 'green';
+  } else {
+    letterExampleR.style.backgroundColor = 'red';
+  }
+  // letterExampleR.removeEventListener('click');
+  letterExampleR.removeEventListener('click',guessR);
+
   displayWord();
+  guessedLetter('r');
 }
 var letterExampleS = document.querySelector('.S');
 letterExampleS.addEventListener('click', guessS);
 function guessS() {
-  guessedLetter('s');
+  var correctGuess = guessedLetter('s');
+  if (correctGuess) {
+    letterExampleS.style.backgroundColor = 'green';
+  } else {
+    letterExampleS.style.backgroundColor = 'red';
+  }
+  // letterExampleS.removeEventListener('click');
+  letterExampleS.removeEventListener('click',guessS);
+
   displayWord();
+  guessedLetter('s');
 }
 var letterExampleT = document.querySelector('.T');
 letterExampleT.addEventListener('click', guessT);
 function guessT() {
-  guessedLetter('t');
+  var correctGuess = guessedLetter('t');
+  if (correctGuess) {
+    letterExampleT.style.backgroundColor = 'green';
+  } else {
+    letterExampleT.style.backgroundColor = 'red';
+  }
+  // letterExampleT.removeEventListener('click');
+  letterExampleT.removeEventListener('click',guessT);
   displayWord();
+  guessedLetter('t');
 }
 var letterExampleU = document.querySelector('.U');
 letterExampleU.addEventListener('click', guessU);
 function guessU() {
-  guessedLetter('u');
+  var correctGuess = guessedLetter('u');
+  if (correctGuess) {
+    letterExampleU.style.backgroundColor = 'green';
+  } else {
+    letterExampleU.style.backgroundColor = 'red';
+  }
+  // letterExampleU.removeEventListener('click');
+  letterExampleU.removeEventListener('click',guessU);
+
   displayWord();
+  guessedLetter('u');
 }
 var letterExampleV = document.querySelector('.V');
 letterExampleV.addEventListener('click', guessV);
 function guessV() {
-  guessedLetter('v');
+  var correctGuess = guessedLetter('v');
+  if (correctGuess) {
+    letterExampleV.style.backgroundColor = 'green';
+  } else {
+    letterExampleV.style.backgroundColor = 'red';
+  }
+  // letterExampleV.removeEventListener('click');
+  letterExampleV.removeEventListener('click',guessV);
+
   displayWord();
+  guessedLetter('v');
 }
 var letterExampleW = document.querySelector('.W');
 letterExampleW.addEventListener('click', guessW);
 function guessW() {
-  guessedLetter('w');
+  var correctGuess = guessedLetter('w');
+  if (correctGuess) {
+    letterExampleW.style.backgroundColor = 'green';
+  } else {
+    letterExampleW.style.backgroundColor = 'red';
+  }
+  // letterExampleW.removeEventListener('click');
+  letterExampleW.removeEventListener('click',guessW);
+
   displayWord();
+  guessedLetter('w');
 }
 var letterExampleX = document.querySelector('.X');
 letterExampleX.addEventListener('click', guessX);
 function guessX() {
-  guessedLetter('x');
+  var correctGuess = guessedLetter('x');
+  if (correctGuess) {
+    letterExampleX.style.backgroundColor = 'green';
+  } else {
+    letterExampleX.style.backgroundColor = 'red';
+  }
+  // letterExampleX.removeEventListener('click');
+  letterExampleX.removeEventListener('click',guessX);
+
   displayWord();
+  guessedLetter('x');
 }
+// Y
 var letterExampleY = document.querySelector('.Y');
 letterExampleY.addEventListener('click', guessY);
-function guessY() {
-  guessedLetter('y');
-  displayWord();
-}
 
+function guessY() {
+  var correctGuess = guessedLetter('y');
+  if (correctGuess) {
+    letterExampleY.style.backgroundColor = 'green';
+  } else {
+    letterExampleY.style.backgroundColor = 'red';
+  }
+  // letterExampleY.removeEventListener('click');
+  letterExampleY.removeEventListener('click',guessY);
+
+  displayWord();
+  guessedLetter('y');
+}
+// Z
 var letterExampleZ = document.querySelector('.Z');
 letterExampleZ.addEventListener('click', guessZ);
 
@@ -463,11 +545,9 @@ function guessZ() {
   } else {
     letterExampleZ.style.backgroundColor = 'red';
   }
-<<<<<<< HEAD
-  letterExampleZ.removeEventListener('click');
-=======
+  // letterExampleZ.removeEventListener('click');
   letterExampleZ.removeEventListener('click',guessZ);
->>>>>>> 4e0ba166b4e59e16734e847e23cd6048a34c0480
+
   displayWord();
   guessedLetter('z');
 }
