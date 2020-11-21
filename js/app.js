@@ -288,11 +288,11 @@ letterExampleA.addEventListener('click', guessA);
 function guessA() {
   var correctGuess = guessedLetter('a');
   if (correctGuess) {
-    letterExampleZ.style.backgroundColor = 'green';
+    letterExampleA.style.backgroundColor = 'green';
   } else {
-    letterExampleZ.style.backgroundColor = 'red';
+    letterExampleA.style.backgroundColor = 'red';
   }
-  letterExampleZ.removeEventListener('click', guessA);
+  letterExampleA.removeEventListener('click', guessA);
   displayWord();
 }
 
@@ -307,11 +307,11 @@ letterExampleB.addEventListener('click', guessB);
 function guessB() {
   var correctGuess = guessedLetter('b');
   if (correctGuess) {
-    letterExampleZ.style.backgroundColor = 'green';
+    letterExampleB.style.backgroundColor = 'green';
   } else {
-    letterExampleZ.style.backgroundColor = 'red';
+    letterExampleB.style.backgroundColor = 'red';
   }
-  letterExampleZ.removeEventListener('click', guessB);
+  letterExampleB.removeEventListener('click', guessB);
   displayWord();
 }
 
@@ -325,11 +325,11 @@ letterExampleC.addEventListener('click', guessC);
 function guessC() {
   var correctGuess = guessedLetter('c');
   if (correctGuess) {
-    letterExampleZ.style.backgroundColor = 'green';
+    letterExampleC.style.backgroundColor = 'green';
   } else {
-    letterExampleZ.style.backgroundColor = 'red';
+    letterExampleC.style.backgroundColor = 'red';
   }
-  letterExampleZ.removeEventListener('click',guessC);
+  letterExampleC.removeEventListener('click', guessC);
   displayWord();
 }
 
@@ -339,15 +339,15 @@ function handleClicks(e) {
 }
 
 var letterExampleD = document.querySelector('.D');
-letterExampleC.addEventListener('click', guessD);
+letterExampleD.addEventListener('click', guessD);
 function guessD() {
   var correctGuess = guessedLetter('d');
   if (correctGuess) {
-    letterExampleZ.style.backgroundColor = 'green';
+    letterExampleD.style.backgroundColor = 'green';
   } else {
-    letterExampleZ.style.backgroundColor = 'red';
+    letterExampleD.style.backgroundColor = 'red';
   }
-  letterExampleZ.removeEventListener('click',guessD);
+  letterExampleD.removeEventListener('click', guessD);
   displayWord();
 }
 
@@ -361,11 +361,11 @@ letterExampleC.addEventListener('click', guessE);
 function guessE() {
   var correctGuess = guessedLetter('e');
   if (correctGuess) {
-    letterExampleZ.style.backgroundColor = 'green';
+    letterExampleE.style.backgroundColor = 'green';
   } else {
-    letterExampleZ.style.backgroundColor = 'red';
+    letterExampleE.style.backgroundColor = 'red';
   }
-  letterExampleZ.removeEventListener('click',guessE);
+  letterExampleE.removeEventListener('click', guessE);
   displayWord();
 }
 
@@ -380,11 +380,11 @@ letterExampleF.addEventListener('click', guessF);
 function guessF() {
   var correctGuess = guessedLetter('f');
   if (correctGuess) {
-    letterExampleZ.style.backgroundColor = 'green';
+    letterExampleF.style.backgroundColor = 'green';
   } else {
-    letterExampleZ.style.backgroundColor = 'red';
+    letterExampleF.style.backgroundColor = 'red';
   }
-  letterExampleZ.removeEventListener('click',guessF);
+  letterExampleF.removeEventListener('click', guessF);
   displayWord();
 }
 
@@ -398,11 +398,11 @@ letterExampleG.addEventListener('click', guessG);
 function guessG() {
   var correctGuess = guessedLetter('g');
   if (correctGuess) {
-    letterExampleZ.style.backgroundColor = 'green';
+    letterExampleG.style.backgroundColor = 'green';
   } else {
-    letterExampleZ.style.backgroundColor = 'red';
+    letterExampleG.style.backgroundColor = 'red';
   }
-  letterExampleZ.removeEventListener('click', guessG);
+  letterExampleG.removeEventListener('click', guessG);
   displayWord();
 }
 
@@ -417,11 +417,11 @@ letterExampleH.addEventListener('click', guessH);
 function guessH() {
   var correctGuess = guessedLetter('h');
   if (correctGuess) {
-    letterExampleZ.style.backgroundColor = 'green';
+    letterExampleH.style.backgroundColor = 'green';
   } else {
-    letterExampleZ.style.backgroundColor = 'red';
+    letterExampleH.style.backgroundColor = 'red';
   }
-  letterExampleZ.removeEventListener('click', guessH);
+  letterExampleH.removeEventListener('click', guessH);
   displayWord();
 }
 
@@ -437,11 +437,11 @@ letterExampleI.addEventListener('click', guessI);
 function guessI() {
   var correctGuess = guessedLetter('i');
   if (correctGuess) {
-    letterExampleZ.style.backgroundColor = 'green';
+    letterExampleI.style.backgroundColor = 'green';
   } else {
-    letterExampleZ.style.backgroundColor = 'red';
+    letterExampleI.style.backgroundColor = 'red';
   }
-  letterExampleZ.removeEventListener('click', guessI);
+  letterExampleI.removeEventListener('click', guessI);
   displayWord();
 }
 
@@ -455,11 +455,11 @@ letterExampleJ.addEventListener('click', guessJ);
 function guessJ() {
   var correctGuess = guessedLetter('j');
   if (correctGuess) {
-    letterExampleZ.style.backgroundColor = 'green';
+    letterExampleJ.style.backgroundColor = 'green';
   } else {
-    letterExampleZ.style.backgroundColor = 'red';
+    letterExampleJ.style.backgroundColor = 'red';
   }
-  letterExampleZ.removeEventListener('click', guessJ);
+  letterExampleJ.removeEventListener('click', guessJ);
   displayWord();
 }
 
@@ -475,11 +475,11 @@ letterExampleK.addEventListener('click', guessK);
 function guessK() {
   var correctGuess = guessedLetter('k');
   if (correctGuess) {
-    letterExampleZ.style.backgroundColor = 'green';
+    letterExampleK.style.backgroundColor = 'green';
   } else {
-    letterExampleZ.style.backgroundColor = 'red';
+    letterExampleK.style.backgroundColor = 'red';
   }
-  letterExampleZ.removeEventListener('click', guessK);
+  letterExampleK.removeEventListener('click', guessK);
   displayWord();
 }
 
@@ -495,11 +495,11 @@ letterExampleL.addEventListener('click', guessL);
 function guessL() {
   var correctGuess = guessedLetter('l');
   if (correctGuess) {
-    letterExampleZ.style.backgroundColor = 'green';
+    letterExampleL.style.backgroundColor = 'green';
   } else {
-    letterExampleZ.style.backgroundColor = 'red';
+    letterExampleL.style.backgroundColor = 'red';
   }
-  letterExampleZ.removeEventListener('click', guessL);
+  letterExampleL.removeEventListener('click', guessL);
   displayWord();
 }
 
@@ -512,16 +512,16 @@ var letterExampleM = document.querySelector('.M');
 letterExampleM.addEventListener('click', guessM);
 function guessM() {
   var correctGuess = guessedLetter('m');
-  if(correctGuess){
+  if (correctGuess) {
     letterExampleM.style.backgroundColor = 'green';
-  }else{
+  } else {
     letterExampleM.style.backgroundColor = 'red';
   }
   letterExampleM.removeEventListener('click', guessM);
   displayWord();
 }
 
-function handleClicks(e){
+function handleClicks(e) {
   console.log(e);
   console.log(this);
 }
@@ -531,16 +531,16 @@ var letterExampleN = document.querySelector('.N');
 letterExampleN.addEventListener('click', guessN);
 function guessN() {
   var correctGuess = guessedLetter('n');
-  if(correctGuess){
+  if (correctGuess) {
     letterExampleN.style.backgroundColor = 'green';
-  }else{
+  } else {
     letterExampleN.style.backgroundColor = 'red';
   }
   letterExampleN.removeEventListener('click', guessN);
   displayWord();
 }
 
-function handleClicks(e){
+function handleClicks(e) {
   console.log(e);
   console.log(this);
 }
@@ -549,9 +549,9 @@ var letterExampleO = document.querySelector('.O');
 letterExampleO.addEventListener('click', guessO);
 function guessO() {
   var correctGuess = guessedLetter('o');
-  if(correctGuess){
+  if (correctGuess) {
     letterExampleO.style.backgroundColor = 'green';
-  }else{
+  } else {
     letterExampleO.style.backgroundColor = 'red';
   }
   letterExampleO.removeEventListener('click', guessO);
@@ -559,7 +559,7 @@ function guessO() {
 }
 
 
-function handleClicks(e){
+function handleClicks(e) {
   console.log(e);
   console.log(this);
 }
@@ -568,16 +568,16 @@ var letterExampleP = document.querySelector('.P');
 letterExampleP.addEventListener('click', guessP);
 function guessP() {
   var correctGuess = guessedLetter('p');
-  if(correctGuess){
+  if (correctGuess) {
     letterExampleP.style.backgroundColor = 'green';
-  }else{
+  } else {
     letterExampleP.style.backgroundColor = 'red';
   }
   letterExampleP.removeEventListener('click', guessP);
   displayWord();
 }
 
-function handleClicks(e){
+function handleClicks(e) {
   console.log(e);
   console.log(this);
 }

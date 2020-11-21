@@ -1,5 +1,6 @@
 body {
   background-color: teal;
+  
 }
 
 /* SNOWFLAKES REFERENCED https://www.youtube.com/watch?v=Y3Cif6o8U7I&ab_channel=AaronWard*/
@@ -54,13 +55,8 @@ body {
   background-image: url("../img/wreath.png");
   background-size: contain;
   background-repeat: no-repeat;
-<<<<<<< HEAD
-  background-size: 1000px;
-  width: 50%;
-=======
   background-size:cover;
   /* width: 50%; */
->>>>>>> 758b3a80757c315d5ad856c34690e4fdc5c8501f
   height: 50%;
   display: flex;
   justify-content: space-around;
@@ -69,6 +65,7 @@ body {
 
 .modal-highscore, .modal-howToPlay, .modal-play, .modal-finish {
   position: relative;
+  background-color: white;
   background-image: url("../img/wreath.png");
   background-repeat: no-repeat;
   text-align: center;
@@ -83,27 +80,23 @@ body {
   /* background-attachment: fixed; */
   background-size: contain;
   background-repeat: no-repeat;
-<<<<<<< HEAD
-  background-size: 1000px 600px;
-=======
   background-size: cover;
   width: 50%;
->>>>>>> 758b3a80757c315d5ad856c34690e4fdc5c8501f
   text-align: center;
   color: #000;
 }
 
 .modal-highscore > h1, ul{
+background: rgb(250, 248, 248);
 color: rgb(17, 187, 34);
 text-align: center;
 border: 300px;
+
 }
 
-.modal-highscore > h1 {
-  background-color: transparent
-}
 
-.modal-front > h1, a { 
+
+.modal-front > h1 { 
   font-size: 30px;
   border: 3px solid black;
   border-radius: 30px;
@@ -193,7 +186,7 @@ button {
 
 .modal-howToPlay > h1 {
   font-size: 45px;
-  
+
 }
 
 .modal-howToPlay > p {
@@ -369,11 +362,9 @@ h1 {
   border-radius: 25px 25px 0px 0px; 
   background: black;
 }
-
-/* h1:hover {    
+h1:hover {    
   color:#F09C00;
-} */
-
+}
 h2{  
   text-align: center;  
   padding: 5px;
@@ -453,7 +444,9 @@ color: yellow;
 font-size: 20px;
 cursor: pointer;
 display: inline-block;
-border-radius: 25px 25px 25px 25px; 
+border-radius: 25px 25px 25px 25px;
+height: 50px; 
+background: purple;
 
 }
 #highscore-btn:hover {    
@@ -465,6 +458,8 @@ font-size: 20px;
 cursor: pointer;
 display: inline-block;
 border-radius: 25px 25px 25px 25px; 
+height: 50px;
+background: purple;
 
 }
 #howToPlay-btn:hover {    
@@ -475,8 +470,9 @@ color: yellow;
 font-size: 20px;
 cursor: pointer;
 display: inline-block;
-border-radius: 25px 25px 25px 25px; 
-
+border-radius: 25px 25px 25px 25px;
+height: 50px; 
+background: purple;
 }
 #play-btn:hover {    
 color:red;
@@ -486,11 +482,39 @@ color:red;
   cursor: pointer;
   font-size: 20px;
   color:yellow;
-  background: black;
+  background: purple;
   border-radius: 25px 25px 25px 25px; 
+  height: 50px;
+  width: 110px;
+  text-align: center;
+  padding-top: 15px;
+  
 } 
 #about:hover {    
   color:red;
   }
+  #high{
+    background:purple;
+    text-align: center;
+    font-size: 40px;
+    border-radius: 15px 15px 15px 15px; 
+    height: 50px; 
+    width: auto;
 
+  }
+  #play{
+    background:purple;
+    text-align: center;
+    font-size: 50px;
+    border-radius: 15px 15px 15px 15px; 
+    height: 50px; 
+    width: 100px;
+    color:black;
+
+    
+  }
+  #para{
+    font-size: 30px;
+    color:white;
+  }
 

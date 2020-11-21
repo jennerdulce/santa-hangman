@@ -9,7 +9,7 @@
   <title>Santa Hangman</title>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
 <!-- music -->
-<audio controls loop>
+<audio controls autoplay loop>
   <source src="JingleBells.mp3"  type="audio/mpeg">
 </audio>
 
@@ -74,9 +74,9 @@
 
     <div class="modal-howToPlay-bg">
       <div class="modal-howToPlay">
-        <h1>How To Play</h1>
+        <h1 id= "play">How To Play</h1>
 
-         <p>Hangman is a simple word guessing game. Players try to figure out the secret word by guessing letters. After 6 wrong guess, the player loses.</p>
+         <p id="para">Hangman is a simple word guessing game. Players try to figure out the secret word by guessing letters. After 6 wrong guess, the player loses.</p>
 
          <p>Who doesn't love a good game of hangman?</p>
 
@@ -95,7 +95,7 @@
 
     <div class="modal-highscore-bg">
       <div class="modal-highscore">
-        <h1>Naughty <del>Highscores</del> List</h1>
+        <h1 id="high">Naughty <del>Highscores</del> List</h1>
         <ul id="highscores">
         </ul>
         <span class="modal-highscore-close">X</span>
