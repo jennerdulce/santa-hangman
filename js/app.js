@@ -250,18 +250,15 @@ function guessedLetter(guess) {
     bodyPart++;
     renderBodyParts();
     chanceEl.textContent = `${chances} / 7`;
-    // LOSE LOGIC ---------------
-    if (blankWord !== currentWord && chances === 0) {
-      finishStatementEl.textContent = 'You Lose!';
-      openEndModal();
-    }
-    // resets to false for the next guess
-    correct = false;
-    return false;
-  } else {
-    return true;
   }
 
+  // LOSE LOGIC ---------------
+  if (blankWord !== currentWord && chances === 0) {
+    finishStatementEl.textContent = 'You Lose!';
+    openEndModal();
+  }
+  // resets to false for the next guess
+  correct = false;
 }
 
 // ------------------- DISPLAY CHANCES --------------------
@@ -517,27 +514,68 @@ function handleClicks(e) {
 var letterExampleM = document.querySelector('.M');
 letterExampleM.addEventListener('click', guessM);
 function guessM() {
-  guessedLetter('m');
+  var correctGuess = guessedLetter('m');
+  if(correctGuess){
+    letterExampleM.style.backgroundColor = 'green';
+  }else{
+    letterExampleM.style.backgroundColor = 'red';
+  }
+  letterExampleM.removeEventListener('click', guessM);
   displayWord();
+}
+function handleClicks(e){
+  console.log(e);
+  console.log(this);
 }
 var letterExampleN = document.querySelector('.N');
 letterExampleN.addEventListener('click', guessN);
 function guessN() {
-  guessedLetter('n');
+  var correctGuess = guessedLetter('n');
+  if(correctGuess){
+    letterExampleN.style.backgroundColor = 'green';
+  }else{
+    letterExampleN.style.backgroundColor = 'red';
+  }
+  letterExampleN.removeEventListener('click', guessN);
   displayWord();
+}
+function handleClicks(e){
+  console.log(e);
+  console.log(this);
 }
 var letterExampleO = document.querySelector('.O');
 letterExampleO.addEventListener('click', guessO);
 function guessO() {
-  guessedLetter('o');
+  var correctGuess = guessedLetter('o');
+  if(correctGuess){
+    letterExampleO.style.backgroundColor = 'green';
+  }else{
+    letterExampleO.style.backgroundColor = 'red';
+  }
+  letterExampleO.removeEventListener('click', guessO);
   displayWord();
+}
+function handleClicks(e){
+  console.log(e);
+  console.log(this);
 }
 var letterExampleP = document.querySelector('.P');
 letterExampleP.addEventListener('click', guessP);
 function guessP() {
-  guessedLetter('p');
+  var correctGuess = guessedLetter('p');
+  if(correctGuess){
+    letterExampleP.style.backgroundColor = 'green';
+  }else{
+    letterExampleP.style.backgroundColor = 'red';
+  }
+  letterExampleP.removeEventListener('click', guessP);
   displayWord();
 }
+function handleClicks(e){
+  console.log(e);
+  console.log(this);
+}
+
 var letterExampleQ = document.querySelector('.Q');
 letterExampleQ.addEventListener('click', guessQ);
 function guessQ() {
@@ -595,8 +633,10 @@ function guessY() {
 
 var letterExampleZ = document.querySelector('.Z');
 letterExampleZ.addEventListener('click', guessZ);
-
 function guessZ() {
+
+  guessedLetter('z');
+
   var correctGuess = guessedLetter('z');
   if (correctGuess) {
     letterExampleZ.style.backgroundColor = 'green';
@@ -604,12 +644,8 @@ function guessZ() {
     letterExampleZ.style.backgroundColor = 'red';
   }
   letterExampleZ.removeEventListener('click', guessZ);
-  displayWord();
-}
 
-function handleClicks(e) {
-  console.log(e);
-  console.log(this);
+  displayWord();
 }
 
 //  ---------------- RESET GAME --------------------
