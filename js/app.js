@@ -742,4 +742,3 @@ function resetButtonColor(){
 //       openEndModal();
 //     }
 //   }, 1000);
-// }
