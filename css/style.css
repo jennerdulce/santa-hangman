@@ -311,37 +311,58 @@ button {
   outline: 0px;
   display: inline-block;
 }
-/* h1 {    
+
+#aboutmebody{
+  background-color: rgb(210, 240, 245);
+}
+
+#about1{    
   text-align: center;                            
-  color: white;
+  color: red;
   height: 100px; 
   background-color: black; 
-  border: black solid 2px;
+  border: black solid ;
   margin: 2px 2px 0px; 
   font-size: 97px;
   width: auto; 
-  border-radius: 25px 25px 0px 0px; 
-  background: black;
-} */
-/* h1:hover {    
-  color:#F09C00;
-} */
-h2{  
+  border-radius: 25px 25px ; 
+  background: rgb(55, 170, 70);
+} 
+
+ #about1:hover {    
+  color:white;
+}
+
+#about2{  
   text-align: center;  
   padding: 5px;
-  font-size: 45px; 
+  font-size: 60px; 
   margin: 5px 2px 0px 0px;
-  color: red;
-  background: wheat;
-  border-radius: 15px 15px 0px 0px;
+  color: rgb(230, 222, 222);
+  background: rgb(55, 170, 70);
+  border: black solid ;
+  border-radius: 25px 25px ;
 }
-h3{
-text-align: center;  
+
+p1{
+  text-align: center;
+  font-size: 25px;
+  color: rgb(8, 7, 7);
+ 
+}
+
+#about3{
+border: black solid ;
+border-radius: 25px 25px ;
+text-align: center; 
 padding: 5px;
 font-size: 45px; 
-margin: 5px 2px 0px 0px;
-color:black;
+margin-top: 50px;
+margin-bottom: 50px;
+color:rgb(206, 202, 202);
+background: rgb(55, 170, 70);
 }
+
 .groupMember{
   display: grid;    
   grid-template-columns: repeat(2, 1fr); 
@@ -352,7 +373,14 @@ color:black;
   margin: 20px; 
   text-align: center;
   background-color: white;  
+  font-size:20px;
 }
+
+img{
+  height: 300px;
+  width: 300px
+}
+
 #timer{
 background-color: #E3CE9F;
 border:none;
