@@ -19,6 +19,14 @@ var returnValue;
 var bodyPart = 0;
 var topScores = [];
 
+var arrayLetters = [
+  'letterExampleA', 'letterExampleB', 'letterExampleC', 'letterExampleD','letterExampleE', 'letterExampleF', 'letterExampleG', 'letterExampleH', 'letterExampleI', 'letterExampleJ', 'letterExampleK', 'letterExampleL', 'letterExampleM', 'letterExampleN', 'letterExampleO', 'letterExampleP', 'letterExampleQ', 'letterExampleR', 'letterExampleS', 'letterExampleT', 'letterExampleU', 'letterExampleV', 'letterExampleW', 'letterExampleX', 'letterExampleY', 'letterExampleZ'
+];
+
+var arrayGuess = ['guessA', 'guessB', 'guessC', 'guessD', 'guessE', 'guessG', 'guessH', 'guessJ','guessK', 'guessL', 'guessM', 'guessO', 'guessP', 'guessQ', 'guessR', 'guessS','guessT', 'guessU', 'guessV', 'guessW', 'guessX', 'guessY', 'guessZ'];
+
+
+
 // High Score list entries
 var scores = [100, 500, 600, 400, 300, 400, 600, 115, 630, 900];
 var randomNames = ['Rudolph', 'papa elf', 'Mrs. Clause', 'Jack Skellignton', 'Corpse Bride', 'Hercules', 'Mushu', 'Olaf', 'Else', 'Sven'];
@@ -615,6 +623,8 @@ function resetGame() {
 // ---------------- GAME START -----------------
 renderHighscore();
 updateHighScoresList();
+// resetButtons();
+
 function startGame() {
   resetGame();
   setBlankWord(currentWord);
@@ -624,7 +634,6 @@ function startGame() {
 
 
 function resetButtonColor(){
-  // if (returnValue === true || returnValue === false)
   letterExampleA.style.backgroundColor = '';
   letterExampleB.style.backgroundColor = '';
   letterExampleC.style.backgroundColor = '';
@@ -679,6 +688,15 @@ function resetButtonColor(){
   letterExampleZ.addEventListener('click', guessZ);
 }
 
+// function resetButtons(){
+//   for(var i = 0; i < arrayLetters.length; i++){
+//     arrayLetters[i].style.backgroundColor = '';
+//     arrayLetters[i].addEventListener('click', arrayGuess[i]);
+//   }
+// }
+// letterExampleA.style.backgroundColor = 'green';
+
+
 
 // STRETCH GOALS ------------------------------------
 
@@ -722,50 +740,4 @@ function resetButtonColor(){
 //       openEndModal();
 //     }
 //   }, 1000);
-// }
-
-
-
-
-
-
-
-
-
-
-// var arrayLetters = [
-//   'letterExampleA',
-//   'letterExampleB',
-//   'letterExampleC',
-//   'letterExampleD',
-//   'letterExampleE',
-//   'letterExampleF',
-//   'letterExampleG',
-//   'letterExampleH',
-//   'letterExampleI',
-//   'letterExampleJ',
-//   'letterExampleK',
-//   'letterExampleL',
-//   'letterExampleM',
-//   'letterExampleN',
-//   'letterExampleO',
-//   'letterExampleP',
-//   'letterExampleQ',
-//   'letterExampleR',
-//   'letterExampleS',
-//   'letterExampleT',
-//   'letterExampleU',
-//   'letterExampleV',
-//   'letterExampleW',
-//   'letterExampleX',
-//   'letterExampleY',
-//   'letterExampleZ'
-// ];
-
-var guessL = []
-
-// function resetButtonColor(){
-//   for(var i = 0; i < arrayLetters.length; i++){
-//     arrayLetters[i].style.backgroundColor = '';
-//   }
 // }
