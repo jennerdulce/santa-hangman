@@ -403,8 +403,16 @@ color:black;
   padding: 10px ; 
   margin: 20px; 
   text-align: center;
-  background-color: white;  
+  background-color: white;
+
 }
+img {
+  display: block;
+  margin-left:20px;
+  height:189px;
+  width: 211px;
+}
+
 
 #timer{
 background-color: #E3CE9F;
@@ -492,4 +500,4 @@ color:red;
 #about:hover {    
   color:red;
   }
-
+  
