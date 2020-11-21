@@ -54,8 +54,13 @@ body {
   background-image: url("../img/wreath.png");
   background-size: contain;
   background-repeat: no-repeat;
+<<<<<<< HEAD
+  background-size: 1000px;
+  width: 50%;
+=======
   background-size:cover;
   /* width: 50%; */
+>>>>>>> 758b3a80757c315d5ad856c34690e4fdc5c8501f
   height: 50%;
   display: flex;
   justify-content: space-around;
@@ -64,7 +69,6 @@ body {
 
 .modal-highscore, .modal-howToPlay, .modal-play, .modal-finish {
   position: relative;
-  background-color: white;
   background-image: url("../img/wreath.png");
   background-repeat: no-repeat;
   text-align: center;
@@ -79,8 +83,12 @@ body {
   /* background-attachment: fixed; */
   background-size: contain;
   background-repeat: no-repeat;
+<<<<<<< HEAD
+  background-size: 1000px 600px;
+=======
   background-size: cover;
   width: 50%;
+>>>>>>> 758b3a80757c315d5ad856c34690e4fdc5c8501f
   text-align: center;
   color: #000;
 }
