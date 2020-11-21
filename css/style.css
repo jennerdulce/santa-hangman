@@ -1,7 +1,6 @@
 body {
   background-color: teal;
 }
-
 /* SNOWFLAKES REFERENCED https://www.youtube.com/watch?v=Y3Cif6o8U7I&ab_channel=AaronWard*/
 .snowflake {
   color: #fff;
@@ -9,10 +8,7 @@ body {
   font-family: Arial, sans-serif;
   text-shadow: 0 0 5px #000;
 }
-
 @-webkit-keyframes snowflakes-fall{0%{top:-10%}100%{top:100%}}@-webkit-keyframes snowflakes-shake{0%,100%{-webkit-transform:translateX(0);transform:translateX(0)}50%{-webkit-transform:translateX(80px);transform:translateX(80px)}}@keyframes snowflakes-fall{0%{top:-10%}100%{top:100%}}@keyframes snowflakes-shake{0%,100%{transform:translateX(0)}50%{transform:translateX(80px)}}.snowflake{position:fixed;top:-10%;z-index:9999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:default;-webkit-animation-name:snowflakes-fall,snowflakes-shake;-webkit-animation-duration:10s,3s;-webkit-animation-timing-function:linear,ease-in-out;-webkit-animation-iteration-count:infinite,infinite;-webkit-animation-play-state:running,running;animation-name:snowflakes-fall,snowflakes-shake;animation-duration:10s,3s;animation-timing-function:linear,ease-in-out;animation-iteration-count:infinite,infinite;animation-play-state:running,running}.snowflake:nth-of-type(0){left:1%;-webkit-animation-delay:0s,0s;animation-delay:0s,0s}.snowflake:nth-of-type(1){left:10%;-webkit-animation-delay:1s,1s;animation-delay:1s,1s}.snowflake:nth-of-type(2){left:20%;-webkit-animation-delay:6s,.5s;animation-delay:6s,.5s}.snowflake:nth-of-type(3){left:30%;-webkit-animation-delay:4s,2s;animation-delay:4s,2s}.snowflake:nth-of-type(4){left:40%;-webkit-animation-delay:2s,2s;animation-delay:2s,2s}.snowflake:nth-of-type(5){left:50%;-webkit-animation-delay:8s,3s;animation-delay:8s,3s}.snowflake:nth-of-type(6){left:60%;-webkit-animation-delay:6s,2s;animation-delay:6s,2s}.snowflake:nth-of-type(7){left:70%;-webkit-animation-delay:2.5s,1s;animation-delay:2.5s,1s}.snowflake:nth-of-type(8){left:80%;-webkit-animation-delay:1s,0s;animation-delay:1s,0s}.snowflake:nth-of-type(9){left:90%;-webkit-animation-delay:3s,1.5s;animation-delay:3s,1.5s}.snowflake:nth-of-type(10){left:25%;-webkit-animation-delay:2s,0s;animation-delay:2s,0s}.snowflake:nth-of-type(11){left:65%;-webkit-animation-delay:4s,2.5s;animation-delay:4s,2.5s}
-
-
 #game-container {
   position: relative;
   width: 1000px;
@@ -21,8 +17,6 @@ body {
   background-size: contain;
   margin: 150px auto;
 }
-
-
 /* MODAL */
 .modal-front-bg, .modal-highscore-bg, .modal-howToPlay-bg, .modal-play-bg, .modal-finish-bg {
   position: fixed;
@@ -38,17 +32,13 @@ body {
   opacity: 0;
   /* transition: visibility 0s opacity 0,5s; NOT WORKING */
 }
-
 .bg-active {
   visibility: visible;
   opacity: 1;
 }
-
  .modal>h1 :hover {
   background-color:white;
-
 }
-
 .modal-front {
   position: relative;
   background-image: url("../img/wreath.png");
@@ -63,7 +53,6 @@ body {
   justify-content: space-around;
   align-items: center;
 }
-
 .modal-highscore, .modal-howToPlay, .modal-play, .modal-finish {
   position: relative;
   background-image: url("../img/wreath.png");
@@ -74,7 +63,6 @@ body {
   height: 50%;
   font-size: 40px;
 }
-
 .modal-highscore {
   background-image: url("../img/list.png");
   /* background-attachment: fixed; */
@@ -87,17 +75,14 @@ body {
   text-align: center;
   color: #000;
 }
-
 .modal-highscore > h1, ul{
 color: rgb(17, 187, 34);
 text-align: center;
 border: 300px;
 }
-
 .modal-highscore > h1 {
   background-color: transparent
 }
-
 .modal-front > h1, a { 
   font-size: 30px;
   border: 3px solid black;
@@ -107,7 +92,6 @@ border: 300px;
   text-align: center;
   /* /* width: 50%; */
 }
-
 .modal-close, .modal-highscore-close, .modal-howToPlay-close, .modal-play-close {
   position: absolute;
   top: 10px;
@@ -117,7 +101,6 @@ border: 300px;
   padding: 3px;
   font-size: 14px;
 }
-
 /* WORD BOX */
 #word-container {
   position: absolute;
@@ -131,7 +114,6 @@ border: 300px;
   background-color: white;
   opacity: .6;
 }
-
 #word{
   text-align: center;
   letter-spacing: 8px;
@@ -139,9 +121,7 @@ border: 300px;
   font-size: 36px;
   text-transform: capitalize;
   box-shadow: 3px 5px 5px rgba(0, 0, 0, .25);
-  
 }
-
 /* LETTER BOX */
 #letters {
   position: absolute;
@@ -154,15 +134,12 @@ border: 300px;
   background-color: aquamarine;
   box-shadow: 3px 5px 5px rgba(0, 0, 0, .25);
 }
-
 #letters > button {
   text-transform: uppercase;
 }
-
 #letters > button:hover {
   cursor: pointer;
 }
-
 button {
   font-size: 24px;
   margin-left: 3px;
@@ -170,27 +147,32 @@ button {
   border-radius: 20px;
   box-shadow: 3px 5px 5px rgba(0, 0, 0, .25);
 }
-
-
+/* #letters > span {
+  font-size: 28px;
+  display: inline-block;
+  margin: 20px auto;
+  margin-left: 30px;
+  border-radius: 10px;
+  padding:5px;
+  background-color:white;
+  text-transform: uppercase;
+}
+#letters > span:hover {
+  cursor: pointer;
+} */
 .modal-howToPlay > h1 {
   font-size: 45px;
-  
 }
-
 .modal-howToPlay > p {
   font-size: 35px;
   color: rgb(245, 245, 245);
-  
 }
-
 .modal-howToPlay {
   background-image: url("../img/wreath.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-size: auto;
-
 }
-
 /* GUESSES */
 #guesses {
   position: absolute;
@@ -201,7 +183,6 @@ button {
   border-radius: 30px;
   padding: 5px;
 }
-
 /* SCORE */
 #score {
   position: absolute;
@@ -212,12 +193,9 @@ button {
   border-radius: 30px;
   padding: 5px;
 }
-
 .logo-box{
   text-align: center;
-
 }
-
 .modal-btn{
   background-color: #E3CE9F;
   border:none;
@@ -236,7 +214,6 @@ button {
   box-shadow: 3px 3px 2px grey;
   outline: 0px;
   display: inline-block;
- 
 }
 .finish-btn{
   background-color: #E3CE9F;
@@ -256,7 +233,7 @@ button {
   outline: 0px;
   display: inline-block;
 }
- .phrase-btn, .word-btn, #finishStatement, #chance, #score {
+ .phrase-btn{
   background-color: #E3CE9F;
   border:none;
   color: #570000;
@@ -273,21 +250,67 @@ button {
   box-shadow: 3px 3px 2px grey;
   outline: 0px;
   display: inline-block;
-
  }
-
+.word-btn{
+  background-color: #E3CE9F;
+  border:none;
+  color: #570000;
+  padding: 5px 15px;
+  text-align: center;
+  text-decoration: none;
+  font-family: sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
+  border: 3px solid black;
+  box-shadow: 3px 3px 2px grey;
+  outline: 0px;
+  display: inline-block;
+}
 #chance{
   position: absolute;
   top: 10px;
   left: 10px;
+  background-color: #E3CE9F;
+  border:none;
+  color: #570000;
+  padding: 5px 15px;
+  text-align: center;
+  text-decoration: none;
+  font-family: sans-serif;
+  font-size: 34px;
+  font-weight: bold;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
+  border: 3px solid black;
+  box-shadow: 3px 3px 2px grey;
+  outline: 0px;
+  display: inline-block;
 }
-
 #score {
   position: absolute;
   top: 10px;
   right: 10px;
+  background-color: #E3CE9F;
+  border:none;
+  color: #570000;
+  padding: 5px 15px;
+  text-align: center;
+  text-decoration: none;
+  font-family: sans-serif;
+  font-size: 34px;
+  font-weight: bold;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
+  border: 3px solid black;
+  box-shadow: 3px 3px 2px grey;
+  outline: 0px;
+  display: inline-block;
 }
-
 /* h1 {    
   text-align: center;                            
   color: white;
@@ -300,7 +323,9 @@ button {
   border-radius: 25px 25px 0px 0px; 
   background: black;
 } */
-
+/* h1:hover {    
+  color:#F09C00;
+} */
 h2{  
   text-align: center;  
   padding: 5px;
@@ -309,8 +334,6 @@ h2{
   color: red;
   background: wheat;
   border-radius: 15px 15px 0px 0px;
-  
-  
 }
 h3{
 text-align: center;  
@@ -318,9 +341,7 @@ padding: 5px;
 font-size: 45px; 
 margin: 5px 2px 0px 0px;
 color:black;
-
 }
-
 .groupMember{
   display: grid;    
   grid-template-columns: repeat(2, 1fr); 
@@ -330,17 +351,8 @@ color:black;
   padding: 10px ; 
   margin: 20px; 
   text-align: center;
-  background-color: white;
-
+  background-color: white;  
 }
-img {
-  display: block;
-  margin-left:20px;
-  height:189px;
-  width: 211px;
-}
-
-
 #timer{
 background-color: #E3CE9F;
 border:none;
@@ -358,7 +370,6 @@ border: 3px solid black;
 box-shadow: 3px 3px 2px grey;
 outline: 0px;
 display: inline-block;
-
 }
 #finishStatement{
 background-color: #E3CE9F;
@@ -378,7 +389,6 @@ box-shadow: 3px 3px 2px grey;
 outline: 0px;
 display: inline-block;
 }
-
 h4{
 color: yellow;
 }
