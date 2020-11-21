@@ -25,7 +25,6 @@ var highscoreList = [];
 var currentUserScore = 0;
 
 
-
 // -------------- MODAL -----------------
 // opening modal
 var modalBtn = document.querySelector('.modal-btn');
@@ -64,6 +63,7 @@ highscoreClose.addEventListener('click', closeHighscore);
 // RENDER WORD ON SCREEN
 var wordElement = document.getElementById('word');
 
+
 // play modal
 var playBtn = document.getElementById('play-btn');
 
@@ -97,14 +97,13 @@ var yesChoice = document.getElementById('yes');
 var noChoice = document.getElementById('no');
 var finishHighscore = document.getElementById('finishHighscore');
 
+
 function handleYes() {
   resetGame();
   startGame();
-
   finishBg.classList.remove('bg-active');
 }
 yesChoice.addEventListener('click', handleYes);
-
 
 function handleNo() {
   finishBg.classList.remove('bg-active');
@@ -114,7 +113,6 @@ noChoice.addEventListener('click', handleNo);
 
 function handleHighscore() {
   finishBg.classList.remove('bg-active');
-  renderHighscore();
   highscoreBg.classList.add('bg-active');
 }
 finishHighscore.addEventListener('click', handleHighscore);
@@ -124,25 +122,21 @@ function openFinish() {
 }
 finishBtn.addEventListener('click', openFinish);
 
-
 // INSTANTIATE NEW PLAYER
 function submitHandler(e) {
   e.preventDefault();
 
   var user = e.target.username.value;
-  var score = 99999;
+  var score = currentUserScore;
   var player = new Player(user, score);
+  updateHighScoresList();
   storeHighScore();
-  renderHighscore();
   finishBg.classList.remove('bg-active');
   highscoreBg.classList.add('bg-active');
-
-
 }
 
 var container = document.getElementById('userHighscore');
 container.addEventListener('submit', submitHandler);
-
 
 // ------ STORE HIGH SCORE -------
 function storeHighScore() {
@@ -195,10 +189,7 @@ function renderHighscore() {
     for (var i = 0; i < randomNames.length; i++) {
       new Player(randomNames[i], scores[i]);
     }
-
-    updateHighScoresList();
   }
-  storeHighScore();
 }
 
 // -------------- GENERATING RANDOM WORD --------------------
@@ -434,10 +425,12 @@ function guessH() {
   displayWord();
 }
 
+
 function handleClicks(e) {
   console.log(e);
   console.log(this);
 }
+
 
 var letterExampleI = document.querySelector('.I');
 letterExampleI.addEventListener('click', guessI);
@@ -470,10 +463,12 @@ function guessJ() {
   displayWord();
 }
 
+
 function handleClicks(e) {
   console.log(e);
   console.log(this);
 }
+
 
 var letterExampleK = document.querySelector('.K');
 letterExampleK.addEventListener('click', guessK);
@@ -488,10 +483,12 @@ function guessK() {
   displayWord();
 }
 
+
 function handleClicks(e) {
   console.log(e);
   console.log(this);
 }
+
 
 var letterExampleL = document.querySelector('.L');
 letterExampleL.addEventListener('click', guessL);
@@ -523,10 +520,13 @@ function guessM() {
   letterExampleM.removeEventListener('click', guessM);
   displayWord();
 }
+
 function handleClicks(e){
   console.log(e);
   console.log(this);
 }
+
+
 var letterExampleN = document.querySelector('.N');
 letterExampleN.addEventListener('click', guessN);
 function guessN() {
@@ -539,10 +539,12 @@ function guessN() {
   letterExampleN.removeEventListener('click', guessN);
   displayWord();
 }
+
 function handleClicks(e){
   console.log(e);
   console.log(this);
 }
+
 var letterExampleO = document.querySelector('.O');
 letterExampleO.addEventListener('click', guessO);
 function guessO() {
@@ -555,10 +557,13 @@ function guessO() {
   letterExampleO.removeEventListener('click', guessO);
   displayWord();
 }
+
+
 function handleClicks(e){
   console.log(e);
   console.log(this);
 }
+
 var letterExampleP = document.querySelector('.P');
 letterExampleP.addEventListener('click', guessP);
 function guessP() {
@@ -571,10 +576,12 @@ function guessP() {
   letterExampleP.removeEventListener('click', guessP);
   displayWord();
 }
+
 function handleClicks(e){
   console.log(e);
   console.log(this);
 }
+
 
 var letterExampleQ = document.querySelector('.Q');
 letterExampleQ.addEventListener('click', guessQ);
@@ -588,6 +595,7 @@ function guessR() {
   guessedLetter('r');
   displayWord();
 }
+
 var letterExampleS = document.querySelector('.S');
 letterExampleS.addEventListener('click', guessS);
 function guessS() {
@@ -600,6 +608,7 @@ function guessT() {
   guessedLetter('t');
   displayWord();
 }
+
 var letterExampleU = document.querySelector('.U');
 letterExampleU.addEventListener('click', guessU);
 function guessU() {
@@ -618,12 +627,14 @@ function guessW() {
   guessedLetter('w');
   displayWord();
 }
+
 var letterExampleX = document.querySelector('.X');
 letterExampleX.addEventListener('click', guessX);
 function guessX() {
   guessedLetter('x');
   displayWord();
 }
+
 var letterExampleY = document.querySelector('.Y');
 letterExampleY.addEventListener('click', guessY);
 function guessY() {
@@ -662,16 +673,14 @@ function resetGame() {
 }
 
 // ---------------- GAME START -----------------
+renderHighscore();
+updateHighScoresList();
 function startGame() {
-  renderHighscore();
   resetGame();
   setBlankWord(currentWord);
   displayWord();
   // startTimer() STRETCH GOAL;
 }
-
-
-
 
 // STRETCH GOALS ------------------------------------
 
@@ -718,3 +727,13 @@ function startGame() {
 //     }
 //   }, 1000);
 // }
+
+
+
+
+
+
+
+
+
+
