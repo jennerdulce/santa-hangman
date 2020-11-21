@@ -86,14 +86,14 @@ body {
 }
 
 .modal-highscore > h1, ul{
-background: rgb(250, 248, 248);
 color: rgb(17, 187, 34);
 text-align: center;
 border: 300px;
-
 }
 
-
+.modal-highscore > h1 {
+  background-color: transparent
+}
 
 .modal-front > h1, a { 
   font-size: 30px;
@@ -185,7 +185,7 @@ button {
 
 .modal-howToPlay > h1 {
   font-size: 45px;
-
+  
 }
 
 .modal-howToPlay > p {
@@ -361,9 +361,11 @@ h1 {
   border-radius: 25px 25px 0px 0px; 
   background: black;
 }
-h1:hover {    
+
+/* h1:hover {    
   color:#F09C00;
-}
+} */
+
 h2{  
   text-align: center;  
   padding: 5px;
