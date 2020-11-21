@@ -80,9 +80,10 @@ body {
   /* background-attachment: fixed; */
   background-size: contain;
   background-repeat: no-repeat;
-  background-size: 1000px 600px;
+  background-size: 1000px 1000px;
   background-size: cover;
-  width: 50%;
+  height: 70%;
+  width: 75%;
   text-align: center;
   color: #000;
 }
@@ -351,7 +352,7 @@ button {
 
 }
 
-h1 {    
+/* h1 {    
   text-align: center;                            
   color: white;
   height: 100px; 
@@ -362,7 +363,7 @@ h1 {
   width: auto; 
   border-radius: 25px 25px 0px 0px; 
   background: black;
-}
+} */
 
 /* h1:hover {    
   color:#F09C00;
