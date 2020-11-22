@@ -28,19 +28,20 @@ var highscoreList = [];
 var currentUserScore = 0;
 
 var wordElement = document.getElementById('word');
+var playBtn = document.getElementById('play-btn');
 
 
 
 // -------------- MODAL -----------------
 // --------------------- opening modal --------------------- 
-var modalBtn = document.querySelector('.modal-btn');
+// var modalBtn = document.querySelector('.modal-btn');
 var modalBg = document.querySelector('.modal-front-bg');
 var modalClose = document.querySelector('.modal-close');
 
-function openModal() {
-  modalBg.classList.add('bg-active');
-}
-modalBtn.addEventListener('click', openModal);
+// function openModal() {
+//   modalBg.classList.add('bg-active');
+// }
+// modalBtn.addEventListener('click', openModal);
 
 function closeModal() {
   modalBg.classList.remove('bg-active');
@@ -53,6 +54,7 @@ var highscoreBg = document.querySelector('.modal-highscore-bg');
 var highscoreClose = document.querySelector('.modal-highscore-close');
 
 function openHighscores() {
+  modalBg.classList.add('bg-none');
   modalBg.classList.remove('bg-active');
   renderHighscore();
   highscoreBg.classList.add('bg-active');
@@ -61,64 +63,57 @@ highscoreBtn.addEventListener('click', openHighscores);
 
 function closeHighscore() {
   highscoreBg.classList.remove('bg-active');
-  modalBg.classList.add('bg-active');
+  modalBg.classList.remove('bg-none');
 }
 highscoreClose.addEventListener('click', closeHighscore);
 
-// --------------------- play modal --------------------- 
-var playBtn = document.getElementById('play-btn');
+// --------------------- play modal ---------------------
 
 function displayWord() {
-  modalBg.classList.remove('bg-active');
   wordElement.textContent = blankWord;
 }
-playBtn.addEventListener('click', startGame);
 
-// --------------------- how to play modal --------------------- 
+// --------------------- how to play modal ---------------------
 var howToPlayBtn = document.getElementById('howToPlay-btn');
 var howToPlayBg = document.querySelector('.modal-howToPlay-bg');
 var howToPlayClose = document.querySelector('.modal-howToPlay-close');
 
 function openHowToPlay() {
+  modalBg.classList.add('bg-none');
   howToPlayBg.classList.add('bg-active');
 }
 howToPlayBtn.addEventListener('click', openHowToPlay);
 
 function closehowToPlay() {
+  modalBg.classList.remove('bg-none');
   howToPlayBg.classList.remove('bg-active');
 }
 howToPlayClose.addEventListener('click', closehowToPlay);
 
 //  --------------------- ending modal --------------------- 
-var finishBtn = document.querySelector('.finish-btn');
+// var finishBtn = document.querySelector('.finish-btn');
 var finishBg = document.querySelector('.modal-finish-bg');
-var yesChoice = document.getElementById('yes');
+// var yesChoice = document.getElementById('yes');
 var noChoice = document.getElementById('no');
-var finishHighscore = document.getElementById('finishHighscore');
 
-function handleYes() {
-  resetGame();
-  startGame();
-  finishBg.classList.remove('bg-active');
-}
-yesChoice.addEventListener('click', handleYes);
+// function handleYes() {
+//   resetGame();
+//   startGame();
+//   modalBg.classList.remove('bg-none');
+//   finishBg.classList.remove('bg-active');
+// }
+// yesChoice.addEventListener('click', handleYes);
 
 function handleNo() {
   finishBg.classList.remove('bg-active');
-  modalBg.classList.add('bg-active');
+  modalBg.classList.remove('bg-none');
 }
 noChoice.addEventListener('click', handleNo);
-
-function handleHighscore() {
-  finishBg.classList.remove('bg-active');
-  highscoreBg.classList.add('bg-active');
-}
-finishHighscore.addEventListener('click', handleHighscore);
 
 function openFinish() {
   finishBg.classList.add('bg-active');
 }
-finishBtn.addEventListener('click', openFinish);
+// finishBtn.addEventListener('click', openFinish);
 
 // --------------------- INSTANTIATE NEW PLAYER --------------------- 
 function submitHandler(e) {
@@ -129,8 +124,9 @@ function submitHandler(e) {
   var player = new Player(user, score);
   updateHighScoresList();
   storeHighScore();
+  modalBg.classList.remove('bg-none');
   finishBg.classList.remove('bg-active');
-  highscoreBg.classList.add('bg-active');
+  container.removeEventListener('submit', submitHandler);
 }
 
 var container = document.getElementById('userHighscore');
@@ -603,6 +599,7 @@ function resetGame() {
   // timeLeft = 90;
   currentWord = words[randomWord()];
   bodyPart = 0;
+  container.addEventListener('submit', submitHandler);
   gameBackground.style.backgroundImage = 'url("../santa/0.jpg")';
   scoreEl.textContent = `Score: ${currentUserScore}`;
   chanceEl.textContent = `${chances} / 7`;
@@ -613,8 +610,11 @@ function startGame() {
   resetGame();
   setBlankWord(currentWord);
   displayWord();
+  modalBg.classList.add('bg-none');
   // startTimer() STRETCH GOAL;
 }
+playBtn.addEventListener('click', startGame);
+
 renderHighscore();
 updateHighScoresList();
 
