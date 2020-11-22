@@ -14,7 +14,7 @@ body {
   width: 1000px;
   height: 750px;
   /* FOR LOCAL */
-  background-image: url("../img/beginningscreen.jpg"); */
+  background-image: url("../img/beginningscreen.jpg");
   /* for GITHUB 
   background-image: url("https://jennerdulce.github.io/santa-hangman/santa/0.jpg"); */
   background-size: contain;
