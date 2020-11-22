@@ -311,7 +311,7 @@ button {
   outline: 0px;
   display: inline-block;
 }
-/* h1 {    
+#about1 {    
   text-align: center;                            
   color: white;
   height: 100px; 
@@ -322,10 +322,14 @@ button {
   width: auto; 
   border-radius: 25px 25px 0px 0px; 
   background: black;
-} */
-/* h1:hover {    
+} 
+#about1:hover {    
   color:#F09C00;
-} */
+}
+.aboutSection>h2{
+  font-family: 'Courier New', Courier, monospace;
+}
+
 h2{  
   text-align: center;  
   padding: 5px;
@@ -404,7 +408,7 @@ border-radius: 25px 25px 25px 25px;
 #highscore-btn:hover, #play-btn:hover, #howToPlay-btn:hover, #about:hover {    
 color:red;
 }
-
+/* 
 #about{
   text-align: center;
   cursor: pointer;
@@ -412,5 +416,5 @@ color:red;
   color:yellow;
   background: black;
   border-radius: 25px 25px 25px 25px; 
-} 
+}  */
 
