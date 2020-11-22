@@ -1,18 +1,23 @@
 'use strict';
 
 var words = [
-  'prancer',
-  'santa',
+  'tis the season',
+  'deck the halls',
   'merry christmas',
   'sleigh bells ring',
   'rudolph the rednose raindeer',
-  'presents',
-  'ho ho ho',
+  'merry christmas you filthy animal',
+  'baby its cold outside',
   'ol saint nick',
-  'north pole',
+  'a christmas miracle',
   'jack frost',
   'christmas tree',
+  'home for the holidays',
+  'meet me under the mistletoe',
+  'walking in a winter wonderland',
+  'winter is coming'
 ];
+
 var blankWord = '';
 var currentWord;
 var chances = 7;
@@ -20,42 +25,56 @@ var correct = false;
 var returnValue;
 var bodyPart = 0;
 var topScores = [];
+var timeLeft = 60;
 
-// High Score list entries
+
+// WRONG AUDIO
+var wrongAudio = [new Audio(), new Audio(), new Audio()];
+wrongAudio[0].src = '../soundfx/wrong1.mp3';
+wrongAudio[1].src = '../soundfx/wrong2.mp3';
+wrongAudio[2].src = '../soundfx/wrong3.mp3';
+
+// CORRECT AUDIO
+var correctAudio = [new Audio(), new Audio()];
+correctAudio[0].src = '../soundfx/correct1.mp3';
+correctAudio[1].src = '../soundfx/correct2.mp3';
+
+// WIN AND LOSE AUDIO
+var endingAudio = [new Audio(), new Audio()];
+endingAudio[0].src = '../soundfx/win.mp3';
+endingAudio[1].src = '../soundfx/lose.mp3';
+
+// ------------------- DISPLAY SCORE RESULTS  ------------------------
+var finalScoreEl = document.getElementById('finalScore');
+var answerEl = document.getElementById('answer');
+
+// --------------------- HARDCODED HIGH SCORE ENTRIES ------------------------
 var scores = [100, 500, 600, 400, 300, 400, 600, 115, 630, 900];
-var randomNames = ['Rudolph', 'Papa Elf', 'Mrs. Clause', 'Jack Skellignton', 'Corpse Bride', 'Hercules', 'Mushu', 'Olaf', 'Elsa', 'Seven'];
+var randomNames = ['Rudolph', 'Papa Elf', 'Mrs. Clause', 'Jack Skellignton', 'Corpse Bride', 'Hercules', 'Mushu', 'Olaf', 'Elsa', 'Sven'];
 var highscoreList = [];
 var currentUserScore = 0;
 
 var wordElement = document.getElementById('word');
 var playBtn = document.getElementById('play-btn');
 
-
-
 // -------------- MODAL -----------------
-// --------------------- opening modal --------------------- 
-// var modalBtn = document.querySelector('.modal-btn');
+// --------------------- opening modal ---------------------
+var modalBtn = document.querySelector('.modal-btn');
 var modalBg = document.querySelector('.modal-front-bg');
-var modalClose = document.querySelector('.modal-close');
 
+// --------------------- MADE TO TOGGLE MODAL FOR TESTING PURPOSES ---------------------
 // function openModal() {
-//   modalBg.classList.add('bg-active');
+//   wrongAudio[randomNumber(wrongAudio)].play();
 // }
 // modalBtn.addEventListener('click', openModal);
 
-function closeModal() {
-  modalBg.classList.remove('bg-active');
-}
-modalClose.addEventListener('click', closeModal);
-
-// --------------------- highscore modal --------------------- 
+// --------------------- highscore modal ---------------------
 var highscoreBtn = document.getElementById('highscore-btn');
 var highscoreBg = document.querySelector('.modal-highscore-bg');
 var highscoreClose = document.querySelector('.modal-highscore-close');
 
 function openHighscores() {
   modalBg.classList.add('bg-none');
-  modalBg.classList.remove('bg-active');
   renderHighscore();
   highscoreBg.classList.add('bg-active');
 }
@@ -90,7 +109,7 @@ function closehowToPlay() {
 }
 howToPlayClose.addEventListener('click', closehowToPlay);
 
-//  --------------------- ending modal --------------------- 
+//  --------------------- ending modal ---------------------
 // var finishBtn = document.querySelector('.finish-btn');
 var finishBg = document.querySelector('.modal-finish-bg');
 // var yesChoice = document.getElementById('yes');
@@ -115,18 +134,17 @@ function openFinish() {
 }
 // finishBtn.addEventListener('click', openFinish);
 
-// --------------------- INSTANTIATE NEW PLAYER --------------------- 
+// --------------------- INSTANTIATE NEW PLAYER ---------------------
 function submitHandler(e) {
   e.preventDefault();
 
   var user = e.target.username.value;
-  var score = currentUserScore;
+  var score = generateScore(timeLeft, currentUserScore);
   var player = new Player(user, score);
   updateHighScoresList();
   storeHighScore();
   modalBg.classList.remove('bg-none');
   finishBg.classList.remove('bg-active');
-  container.removeEventListener('submit', submitHandler);
 }
 
 var container = document.getElementById('userHighscore');
@@ -155,14 +173,19 @@ function sortHighScore() {
 // ------------------- UPDATE HIGH SCORE LIST -------------------
 function updateHighScoresList() {
   sortHighScore();
+
+  // DELETES EVERYTHING IN CURRENT TOP SCORES ARRAY
   while (topScores.length !== 0) {
     topScores.shift();
   }
 
+  // ADDS NEWLY SORTED HIGH SCORE LIST
   for (var i = 0; i < 10; i++) {
     topScores.push(highscoreList[i]);
   }
 
+  // CLEARS OUT UL
+  // CREATES LI FOR EACH HIGH SCORE
   highscoreEl.innerHTML = '';
   for (var i = 0; i < topScores.length; i++) {
     var li = document.createElement('li');
@@ -188,8 +211,8 @@ function renderHighscore() {
 
 // -------------- GENERATING RANDOM WORD --------------------
 
-function randomWord() {
-  return Math.floor(Math.random() * words.length);
+function randomNumber(array) {
+  return Math.floor(Math.random() * array.length);
 }
 
 function setBlankWord(word) {
@@ -206,6 +229,11 @@ function openEndModal() {
   finishBg.classList.add('bg-active');
 }
 
+// ---------------- GENERATE SCORE -------------------
+function generateScore(time){
+  var totalScore = (time * 100) + currentUserScore;
+  return totalScore;
+}
 // ---------------- THIS IS HOW YOU GUESS A LETTER -----------------------
 
 var finishStatementEl = document.getElementById('finishStatement');
@@ -225,7 +253,11 @@ function guessedLetter(guess) {
     // --------------------- WIN LOGIC --------------------- 
     if (blankWord === currentWord && chances > 0) {
       finishStatementEl.textContent = 'You Win!';
+      myStopFunction();
+      answerEl.textContent = `The Answer was: "${currentWord}"`;
+      finalScoreEl.textContent = `Total Score: (${timeLeft} * 100) + ${currentUserScore} = ${generateScore(timeLeft, currentUserScore)}`;
       openEndModal();
+      endingAudio[0].play();
     }
   }
 
@@ -238,10 +270,14 @@ function guessedLetter(guess) {
     returnValue = false;
   }
 
-  // --------------------- LOSE LOGIC --------------------- 
+  // --------------------- LOSE LOGIC ---------------------
   if (blankWord !== currentWord && chances === 0) {
     finishStatementEl.textContent = 'You Lose!';
+    myStopFunction();
+    answerEl.textContent = `The Answer was: "${currentWord}"`;
+    finalScoreEl.textContent = `Total Score: ${currentUserScore}`;
     openEndModal();
+    endingAudio[1].play();
   }
   // resets to false for the next guess
   correct = false;
@@ -282,6 +318,7 @@ function guessA() {
   guessedLetter('a');
   if (returnValue) {
     letterExampleA.style.backgroundColor = 'green';
+    correctAudio[randomNumber(correctAudio)].play();
   } else {
     letterExampleA.style.backgroundColor = 'red';
   }
@@ -294,8 +331,10 @@ function guessB() {
   guessedLetter('b');
   if (returnValue) {
     letterExampleB.style.backgroundColor = 'green';
+    correctAudio[randomNumber(correctAudio)].play();
   } else {
     letterExampleB.style.backgroundColor = 'red';
+    wrongAudio[randomNumber(wrongAudio)].play();
   }
   letterExampleB.removeEventListener('click', guessB);
 }
@@ -306,8 +345,10 @@ function guessC() {
   guessedLetter('c');
   if (returnValue) {
     letterExampleC.style.backgroundColor = 'green';
+    correctAudio[randomNumber(correctAudio)].play();
   } else {
     letterExampleC.style.backgroundColor = 'red';
+    wrongAudio[randomNumber(wrongAudio)].play();
   }
   letterExampleC.removeEventListener('click',guessC);
 }
@@ -318,8 +359,10 @@ function guessD() {
   guessedLetter('d');
   if (returnValue) {
     letterExampleD.style.backgroundColor = 'green';
+    correctAudio[randomNumber(correctAudio)].play();
   } else {
     letterExampleD.style.backgroundColor = 'red';
+    wrongAudio[randomNumber(wrongAudio)].play();
   }
   letterExampleD.removeEventListener('click',guessD);
 }
@@ -330,8 +373,10 @@ function guessE() {
   guessedLetter('e');
   if (returnValue) {
     letterExampleE.style.backgroundColor = 'green';
+    correctAudio[randomNumber(correctAudio)].play();
   } else {
     letterExampleE.style.backgroundColor = 'red';
+    wrongAudio[randomNumber(wrongAudio)].play();
   }
   letterExampleE.removeEventListener('click',guessE);
 }
@@ -342,8 +387,10 @@ function guessF() {
   guessedLetter('f');
   if (returnValue) {
     letterExampleF.style.backgroundColor = 'green';
+    correctAudio[randomNumber(correctAudio)].play();
   } else {
     letterExampleF.style.backgroundColor = 'red';
+    wrongAudio[randomNumber(wrongAudio)].play();
   }
   letterExampleF.removeEventListener('click',guessF);
 }
@@ -354,8 +401,10 @@ function guessG() {
   guessedLetter('g');
   if (returnValue) {
     letterExampleG.style.backgroundColor = 'green';
+    correctAudio[randomNumber(correctAudio)].play();
   } else {
     letterExampleG.style.backgroundColor = 'red';
+    wrongAudio[randomNumber(wrongAudio)].play();
   }
   letterExampleG.removeEventListener('click', guessG);
 }
@@ -366,8 +415,10 @@ function guessH() {
   guessedLetter('h');
   if (returnValue) {
     letterExampleH.style.backgroundColor = 'green';
+    correctAudio[randomNumber(correctAudio)].play();
   } else {
     letterExampleH.style.backgroundColor = 'red';
+    wrongAudio[randomNumber(wrongAudio)].play();
   }
   letterExampleH.removeEventListener('click', guessH);
 }
@@ -378,8 +429,10 @@ function guessI() {
   guessedLetter('i');
   if (returnValue) {
     letterExampleI.style.backgroundColor = 'green';
+    correctAudio[randomNumber(correctAudio)].play();
   } else {
     letterExampleI.style.backgroundColor = 'red';
+    wrongAudio[randomNumber(wrongAudio)].play();
   }
   letterExampleI.removeEventListener('click', guessI);
 }
@@ -390,8 +443,10 @@ function guessJ() {
   guessedLetter('j');
   if (returnValue) {
     letterExampleJ.style.backgroundColor = 'green';
+    correctAudio[randomNumber(correctAudio)].play();
   } else {
     letterExampleJ.style.backgroundColor = 'red';
+    wrongAudio[randomNumber(wrongAudio)].play();
   }
   letterExampleJ.removeEventListener('click', guessJ);
 }
@@ -402,8 +457,10 @@ function guessK() {
   guessedLetter('k');
   if (returnValue) {
     letterExampleK.style.backgroundColor = 'green';
+    correctAudio[randomNumber(correctAudio)].play();
   } else {
     letterExampleK.style.backgroundColor = 'red';
+    wrongAudio[randomNumber(wrongAudio)].play();
   }
   letterExampleK.removeEventListener('click', guessK);
 }
@@ -414,8 +471,10 @@ function guessL() {
   guessedLetter('l');
   if (returnValue) {
     letterExampleL.style.backgroundColor = 'green';
+    correctAudio[randomNumber(correctAudio)].play();
   } else {
     letterExampleL.style.backgroundColor = 'red';
+    wrongAudio[randomNumber(wrongAudio)].play();
   }
   letterExampleL.removeEventListener('click', guessL);
 }
@@ -426,8 +485,10 @@ function guessM() {
   guessedLetter('m');
   if(returnValue){
     letterExampleM.style.backgroundColor = 'green';
+    correctAudio[randomNumber(correctAudio)].play();
   }else{
     letterExampleM.style.backgroundColor = 'red';
+    wrongAudio[randomNumber(wrongAudio)].play();
   }
   letterExampleM.removeEventListener('click', guessM);
 }
@@ -438,8 +499,10 @@ function guessN() {
   guessedLetter('n');
   if(returnValue){
     letterExampleN.style.backgroundColor = 'green';
+    correctAudio[randomNumber(correctAudio)].play();
   }else{
     letterExampleN.style.backgroundColor = 'red';
+    wrongAudio[randomNumber(wrongAudio)].play();
   }
   letterExampleN.removeEventListener('click', guessN);
 }
@@ -450,8 +513,10 @@ function guessO() {
   guessedLetter('o');
   if(returnValue){
     letterExampleO.style.backgroundColor = 'green';
+    correctAudio[randomNumber(correctAudio)].play();
   }else{
     letterExampleO.style.backgroundColor = 'red';
+    wrongAudio[randomNumber(wrongAudio)].play();
   }
   letterExampleO.removeEventListener('click', guessO);
 }
@@ -462,8 +527,10 @@ function guessP() {
   guessedLetter('p');
   if(returnValue){
     letterExampleP.style.backgroundColor = 'green';
+    correctAudio[randomNumber(correctAudio)].play();
   }else{
     letterExampleP.style.backgroundColor = 'red';
+    wrongAudio[randomNumber(wrongAudio)].play();
   }
   letterExampleP.removeEventListener('click', guessP);
 }
@@ -474,8 +541,10 @@ function guessQ() {
   guessedLetter('q');
   if (returnValue) {
     letterExampleQ.style.backgroundColor = 'green';
+    correctAudio[randomNumber(correctAudio)].play();
   } else {
     letterExampleQ.style.backgroundColor = 'red';
+    wrongAudio[randomNumber(wrongAudio)].play();
   }
   // letterExampleQ.removeEventListener('click');
   letterExampleQ.removeEventListener('click',guessQ);
@@ -487,8 +556,10 @@ function guessR() {
   guessedLetter('r');
   if (returnValue) {
     letterExampleR.style.backgroundColor = 'green';
+    correctAudio[randomNumber(correctAudio)].play();
   } else {
     letterExampleR.style.backgroundColor = 'red';
+    wrongAudio[randomNumber(wrongAudio)].play();
   }
   letterExampleR.removeEventListener('click',guessR);
 }
@@ -499,8 +570,10 @@ function guessS() {
   guessedLetter('s');
   if (returnValue) {
     letterExampleS.style.backgroundColor = 'green';
+    correctAudio[randomNumber(correctAudio)].play();
   } else {
     letterExampleS.style.backgroundColor = 'red';
+    wrongAudio[randomNumber(wrongAudio)].play();
   }
   letterExampleS.removeEventListener('click',guessS);
 }
@@ -511,8 +584,10 @@ function guessT() {
   guessedLetter('t');
   if (returnValue) {
     letterExampleT.style.backgroundColor = 'green';
+    correctAudio[randomNumber(correctAudio)].play();
   } else {
     letterExampleT.style.backgroundColor = 'red';
+    wrongAudio[randomNumber(wrongAudio)].play();
   }
   letterExampleT.removeEventListener('click',guessT);
 
@@ -524,8 +599,10 @@ function guessU() {
   guessedLetter('u');
   if (returnValue) {
     letterExampleU.style.backgroundColor = 'green';
+    correctAudio[randomNumber(correctAudio)].play();
   } else {
     letterExampleU.style.backgroundColor = 'red';
+    wrongAudio[randomNumber(wrongAudio)].play();
   }
   letterExampleU.removeEventListener('click',guessU);
 }
@@ -536,8 +613,10 @@ function guessV() {
   guessedLetter('v');
   if (returnValue) {
     letterExampleV.style.backgroundColor = 'green';
+    correctAudio[randomNumber(correctAudio)].play();
   } else {
     letterExampleV.style.backgroundColor = 'red';
+    wrongAudio[randomNumber(wrongAudio)].play();
   }
   letterExampleV.removeEventListener('click',guessV);
 }
@@ -548,8 +627,10 @@ function guessW() {
   guessedLetter('w');
   if (returnValue) {
     letterExampleW.style.backgroundColor = 'green';
+    correctAudio[randomNumber(correctAudio)].play();
   } else {
     letterExampleW.style.backgroundColor = 'red';
+    wrongAudio[randomNumber(wrongAudio)].play();
   }
   letterExampleW.removeEventListener('click',guessW);
 }
@@ -560,8 +641,10 @@ function guessX() {
   guessedLetter('x');
   if (returnValue) {
     letterExampleX.style.backgroundColor = 'green';
+    correctAudio[randomNumber(correctAudio)].play();
   } else {
     letterExampleX.style.backgroundColor = 'red';
+    wrongAudio[randomNumber(wrongAudio)].play();
   }
   letterExampleX.removeEventListener('click',guessX);
 }
@@ -572,8 +655,10 @@ function guessY() {
   guessedLetter('y');
   if (returnValue) {
     letterExampleY.style.backgroundColor = 'green';
+    correctAudio[randomNumber(correctAudio)].play();
   } else {
     letterExampleY.style.backgroundColor = 'red';
+    wrongAudio[randomNumber(wrongAudio)].play();
   }
   letterExampleY.removeEventListener('click',guessY);
 }
@@ -584,110 +669,61 @@ function guessZ() {
   guessedLetter('z');
   if (returnValue) {
     letterExampleZ.style.backgroundColor = 'green';
+    correctAudio[randomNumber(correctAudio)].play();
   } else {
     letterExampleZ.style.backgroundColor = 'red';
+    wrongAudio[randomNumber(wrongAudio)].play();
   }
   letterExampleZ.removeEventListener('click',guessZ);
 }
 
+//  ---------------- RESET BUTTONS --------------------
+function resetButtons(){
+  for(var i = 0; i < arrayLetters.length; i++){
+    arrayLetters[i].style.backgroundColor = '';
+    arrayLetters[i].addEventListener('click', arrayGuess[i]);
+  }
+}
+
+var arrayLetters = [
+  letterExampleA, letterExampleB, letterExampleC, letterExampleD,letterExampleE, letterExampleF, letterExampleG, letterExampleH, letterExampleI, letterExampleJ, letterExampleK, letterExampleL, letterExampleM, letterExampleN, letterExampleO, letterExampleP, letterExampleQ, letterExampleR, letterExampleS, letterExampleT, letterExampleU, letterExampleV, letterExampleW, letterExampleX, letterExampleY, letterExampleZ
+];
+
+var arrayGuess = [guessA, guessB, guessC, guessD, guessE, guessF,guessG, guessH, guessI, guessJ,guessK, guessL, guessM, guessN, guessO, guessP, guessQ, guessR, guessS,guessT, guessU, guessV, guessW, guessX, guessY, guessZ];
+
 //  ---------------- RESET GAME --------------------
 function resetGame() {
-  resetButtonColor();
+  resetButtons();
   chances = 7;
   currentUserScore = 0;
   blankWord = '';
-  // timeLeft = 90;
-  currentWord = words[randomWord()];
+  currentWord = words[randomNumber(words)];
   bodyPart = 0;
-  container.addEventListener('submit', submitHandler);
   gameBackground.style.backgroundImage = 'url("../santa/0.jpg")';
+  answerEl.textContent = '';
+  finalScoreEl.textContent = '';
   scoreEl.textContent = `Score: ${currentUserScore}`;
   chanceEl.textContent = `${chances} / 7`;
+  timeLeft = 60;
 }
 
 // ---------------- GAME START -----------------
+renderHighscore();
+updateHighScoresList();
+storeHighScore();
+retrievedData = localStorage.getItem('scoresData');
 function startGame() {
   resetGame();
   setBlankWord(currentWord);
   displayWord();
   modalBg.classList.add('bg-none');
-  // startTimer() STRETCH GOAL;
+  startTimer();
 }
 playBtn.addEventListener('click', startGame);
 
-renderHighscore();
-updateHighScoresList();
-
-
-function resetButtonColor(){
-  letterExampleA.style.backgroundColor = '';
-  letterExampleB.style.backgroundColor = '';
-  letterExampleC.style.backgroundColor = '';
-  letterExampleD.style.backgroundColor = '';
-  letterExampleE.style.backgroundColor = '';
-  letterExampleF.style.backgroundColor = '';
-  letterExampleG.style.backgroundColor = '';
-  letterExampleH.style.backgroundColor = '';
-  letterExampleI.style.backgroundColor = '';
-  letterExampleJ.style.backgroundColor = '';
-  letterExampleK.style.backgroundColor = '';
-  letterExampleL.style.backgroundColor = '';
-  letterExampleM.style.backgroundColor = '';
-  letterExampleN.style.backgroundColor = '';
-  letterExampleO.style.backgroundColor = '';
-  letterExampleP.style.backgroundColor = '';
-  letterExampleQ.style.backgroundColor = '';
-  letterExampleR.style.backgroundColor = '';
-  letterExampleS.style.backgroundColor = '';
-  letterExampleT.style.backgroundColor = '';
-  letterExampleU.style.backgroundColor = '';
-  letterExampleV.style.backgroundColor = '';
-  letterExampleW.style.backgroundColor = '';
-  letterExampleX.style.backgroundColor = '';
-  letterExampleY.style.backgroundColor = '';
-  letterExampleZ.style.backgroundColor = '';
-  letterExampleA.addEventListener('click', guessA);
-  letterExampleB.addEventListener('click', guessB);
-  letterExampleC.addEventListener('click', guessC);
-  letterExampleD.addEventListener('click', guessD);
-  letterExampleE.addEventListener('click', guessE);
-  letterExampleF.addEventListener('click', guessF);
-  letterExampleG.addEventListener('click', guessG);
-  letterExampleH.addEventListener('click', guessH);
-  letterExampleI.addEventListener('click', guessI);
-  letterExampleJ.addEventListener('click', guessJ);
-  letterExampleK.addEventListener('click', guessK);
-  letterExampleL.addEventListener('click', guessL);
-  letterExampleM.addEventListener('click', guessM);
-  letterExampleN.addEventListener('click', guessN);
-  letterExampleO.addEventListener('click', guessO);
-  letterExampleP.addEventListener('click', guessP);
-  letterExampleQ.addEventListener('click', guessQ);
-  letterExampleR.addEventListener('click', guessR);
-  letterExampleS.addEventListener('click', guessS);
-  letterExampleT.addEventListener('click', guessT);
-  letterExampleU.addEventListener('click', guessU);
-  letterExampleV.addEventListener('click', guessV);
-  letterExampleW.addEventListener('click', guessW);
-  letterExampleX.addEventListener('click', guessX);
-  letterExampleY.addEventListener('click', guessY);
-  letterExampleZ.addEventListener('click', guessZ);
-}
-
-// --------------------- STRETCH GOALS ------------------------------------
-// --------------------- PHRASE CHOICE -------------------------------
-// RENDER PHRASE ON SCREEN
-// var pressPhrase = document.querySelector('.phrase-btn');
-// pressPhrase.addEventListener('click', displayPhrase);
-
-// function displayPhrase() {
-//   modalBg.classList.remove('bg-active');
-//   playBg.classList.remove('bg-active');
-//   wordElement.textContent = blankPhrase;
-// }
-
 
 // --------------------- DIFFERENT WAY OF RENDERING LETTERS --------------------------
+// OR USE OF OBJECT CONSTRUCTOR?
 // var letters = 'abcdefghijklmnopqrstuvwxyz'.split(''); // 'a', 'b', 'c', 'd'...]
 // var letterContainer = document.getElementById('letters');
 // for (var i = 0; i < letters.length; i++){
@@ -698,38 +734,26 @@ function resetButtonColor(){
 
 
 
-// --------------------- TIMER --------------------- 
-// var timeLeft = 92;
+// --------------------- TIMER ---------------------
 
-// function startTimer() {
-//   setInterval(function () {
-//     timeLeft--;
+var myVar;
+function startTimer() {
+  myVar = setInterval(function () {
+    timeLeft--;
 
-//     if (timeLeft >= 0) {
-//       var timeEl = document.getElementById('timer');
-//       timeEl.textContent = timeLeft;
-//     }
+    if (timeLeft >= 0) {
+      var timeEl = document.getElementById('timer');
+      timeEl.textContent = timeLeft;
+    }
 
-//     if (timeLeft === 0) {
-//       finishStatementEl.textContent = 'You Lose!';
-//       openEndModal();
-//     }
-//   }, 1000);
-// }
+    if (timeLeft === 0) {
+      finishStatementEl.textContent = 'You Lose!';
+      myStopFunction();
+      openEndModal();
+    }
+  }, 1000);
+}
 
-
-//  ----------------------- RESETTING BUTTONS ---------------------------
-// function resetButtons(){
-//   for(var i = 0; i < arrayLetters.length; i++){
-//     arrayLetters[i].style.backgroundColor = '';
-//     arrayLetters[i].addEventListener('click', arrayGuess[i]);
-//   }
-// }
-// letterExampleA.style.backgroundColor = 'green';
-
-// var arrayLetters = [
-//   'letterExampleA', 'letterExampleB', 'letterExampleC', 'letterExampleD','letterExampleE', 'letterExampleF', 'letterExampleG', 'letterExampleH', 'letterExampleI', 'letterExampleJ', 'letterExampleK', 'letterExampleL', 'letterExampleM', 'letterExampleN', 'letterExampleO', 'letterExampleP', 'letterExampleQ', 'letterExampleR', 'letterExampleS', 'letterExampleT', 'letterExampleU', 'letterExampleV', 'letterExampleW', 'letterExampleX', 'letterExampleY', 'letterExampleZ'
-// ];
-
-// var arrayGuess = ['guessA', 'guessB', 'guessC', 'guessD', 'guessE', 'guessG', 'guessH', 'guessJ','guessK', 'guessL', 'guessM', 'guessO', 'guessP', 'guessQ', 'guessR', 'guessS','guessT', 'guessU', 'guessV', 'guessW', 'guessX', 'guessY', 'guessZ'];
-
+function myStopFunction() {
+  clearTimeout(myVar);
+}
