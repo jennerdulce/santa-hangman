@@ -7,9 +7,11 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/style.css">
   <title>Santa Hangman</title>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+ <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
 <!-- music -->
-<audio controls loop>
+<audio controls autoplay loop>
   <source src="JingleBells.mp3"  type="audio/mpeg">
 </audio>
 
@@ -57,8 +59,8 @@
         <button class="Z">z</button>
       </section>
     </div>
-    <button class="modal-btn">TRIGGER MODAL</button>
-    <button class="finish-btn">TRIGGER FINISH</button>
+    <!-- <button class="modal-btn">TRIGGER MODAL</button> -->
+    <!-- <button class="finish-btn">TRIGGER FINISH</button> -->
 
     <div class="modal-front-bg">
       <div class="modal-front">
@@ -95,7 +97,7 @@
 
     <div class="modal-highscore-bg">
       <div class="modal-highscore">
-        <h1>Naughty <del>Highscores</del> List</h1>
+        <h1 id="highscoreTitle">Naughty <del>Highscores</del> List</h1>
         <ul id="highscores">
         </ul>
         <span class="modal-highscore-close">X</span>
@@ -110,14 +112,13 @@
           <input type="text" name="username">
           <input id="submitHighscore" type="submit" value="Submit">
         </form>
-
         <p>PLAY AGAIN?</p>
         <!-- will lead back to choose mode modal -->
-        <button id="yes">Yes</button>
-        <!-- will lead back to front modal -->
-        <button id="no">No</button>
-        <!-- will open highscore modal -->
-        <button id="finishHighscore">highscore</button>
+        <div id="endChoices">
+          <!-- <button id="yes">Yes</button> -->
+          <!-- will lead back to front modal -->
+          <button id="no">>>></button>
+        </div>
       </div>
     </div>
 
