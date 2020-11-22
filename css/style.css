@@ -105,12 +105,12 @@ font-family: 'Dancing Script', cursive;
 
 ul li:nth-of-type(even) {
   color: rgb(205, 33, 33);
+
 }
 
 ul li:nth-of-type(odd) {
   color: rgb(40, 188, 40);
 }
-
 li {
   margin-top: 10px;
   font-weight: bolder;
@@ -392,6 +392,7 @@ button {
   border: black solid ;
   border-radius: 50px ;
   
+
 }
 
 #description {
@@ -443,7 +444,6 @@ background: rgb(55, 170, 70);
 img{
   height: 300px;
   width: 300px
-  
 }
 
 #timer{
@@ -530,6 +530,8 @@ a:active {
 #highscore-btn:hover, #play-btn:hover, #howToPlay-btn:hover, #about:hover {    
 color:red;
 }
+
+
 
 #finishStatement {
   margin-top: 150px;
