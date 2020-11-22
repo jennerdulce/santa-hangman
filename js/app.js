@@ -257,42 +257,42 @@ scoreEl.textContent = `Score: ${currentUserScore}`;
 
 // ------------------- DISPLAY BODY PARTS -----------------
 // var gameBackground = document.getElementById('game-container');
-// function renderBodyParts() {
-//   if (bodyPart === 1) {
-//     gameBackground.style.backgroundImage = 'url("../santa/1.jpg")';
-//   } else if (bodyPart === 2) {
-//     gameBackground.style.backgroundImage = 'url("../santa/2.jpg")';
-//   } else if (bodyPart === 3) {
-//     gameBackground.style.backgroundImage = 'url("../santa/3.jpg")';
-//   } else if (bodyPart === 4) {
-//     gameBackground.style.backgroundImage = 'url("../santa/4.jpg")';
-//   } else if (bodyPart === 5) {
-//     gameBackground.style.backgroundImage = 'url("../santa/5.jpg")';
-//   } else if (bodyPart === 6) {
-//     gameBackground.style.backgroundImage = 'url("../santa/6.jpg")';
-//   } else if (bodyPart === 7) {
-//     gameBackground.style.backgroundImage = 'url("../santa/7.jpg")';
-//   }
-// }
-
-// FOR GITHUB
 function renderBodyParts() {
   if (bodyPart === 1) {
-    gameBackground.style.backgroundImage = 'url("https://jennerdulce.github.io/santa-hangman/santa/1.jpg")';
+    gameBackground.style.backgroundImage = 'url("../santa/1.jpg")';
   } else if (bodyPart === 2) {
-    gameBackground.style.backgroundImage = 'url("https://jennerdulce.github.io/santa-hangman/santa/2.jpg")';
+    gameBackground.style.backgroundImage = 'url("../santa/2.jpg")';
   } else if (bodyPart === 3) {
-    gameBackground.style.backgroundImage = 'url("https://jennerdulce.github.io/santa-hangman/santa/3.jpg")';
+    gameBackground.style.backgroundImage = 'url("../santa/3.jpg")';
   } else if (bodyPart === 4) {
-    gameBackground.style.backgroundImage = 'url("https://jennerdulce.github.io/santa-hangman/santa/4.jpg")';
+    gameBackground.style.backgroundImage = 'url("../santa/4.jpg")';
   } else if (bodyPart === 5) {
-    gameBackground.style.backgroundImage = 'url("https://jennerdulce.github.io/santa-hangman/santa/5.jpg")';
+    gameBackground.style.backgroundImage = 'url("../santa/5.jpg")';
   } else if (bodyPart === 6) {
-    gameBackground.style.backgroundImage = 'url("https://jennerdulce.github.io/santa-hangman/santa/6.jpg")';
+    gameBackground.style.backgroundImage = 'url("../santa/6.jpg")';
   } else if (bodyPart === 7) {
-    gameBackground.style.backgroundImage = 'url("https://jennerdulce.github.io/santa-hangman/santa/7.jpg")';
+    gameBackground.style.backgroundImage = 'url("../santa/7.jpg")';
   }
 }
+
+// FOR GITHUB
+// function renderBodyParts() {
+//   if (bodyPart === 1) {
+//     gameBackground.style.backgroundImage = 'url("https://jennerdulce.github.io/santa-hangman/santa/1.jpg")';
+//   } else if (bodyPart === 2) {
+//     gameBackground.style.backgroundImage = 'url("https://jennerdulce.github.io/santa-hangman/santa/2.jpg")';
+//   } else if (bodyPart === 3) {
+//     gameBackground.style.backgroundImage = 'url("https://jennerdulce.github.io/santa-hangman/santa/3.jpg")';
+//   } else if (bodyPart === 4) {
+//     gameBackground.style.backgroundImage = 'url("https://jennerdulce.github.io/santa-hangman/santa/4.jpg")';
+//   } else if (bodyPart === 5) {
+//     gameBackground.style.backgroundImage = 'url("https://jennerdulce.github.io/santa-hangman/santa/5.jpg")';
+//   } else if (bodyPart === 6) {
+//     gameBackground.style.backgroundImage = 'url("https://jennerdulce.github.io/santa-hangman/santa/6.jpg")';
+//   } else if (bodyPart === 7) {
+//     gameBackground.style.backgroundImage = 'url("https://jennerdulce.github.io/santa-hangman/santa/7.jpg")';
+//   }
+// }
 
 
 // -------------- CREATE LETTERS AND DISPLAY ON HTML --------------------
