@@ -22,7 +22,7 @@
   </header>
   <main>
     <div id="game-container">
-      <!-- <p id="timer">Time will go here</p> -->
+      <p id="timer">60</p>
       <p id="chance">chance WILL GO HERE</p>
       <p id="score">SCORE WILL GO HERE</p>
       <section id="word-container">
@@ -59,8 +59,6 @@
         <button class="Z">z</button>
       </section>
     </div>
-    <!-- <button class="modal-btn">TRIGGER MODAL</button> -->
-    <!-- <button class="finish-btn">TRIGGER FINISH</button> -->
 
     <div class="modal-front-bg">
       <div class="modal-front">
@@ -70,7 +68,6 @@
           <h1 id="about">About Us</h1>
         </a>
         <h1 id="play-btn">Play</h1>
-        <span class="modal-close">X</span>
       </div>
     </div>
 
@@ -78,9 +75,9 @@
       <div class="modal-howToPlay">
         <h1>How To Play</h1>
 
-         <p>Hangman is a simple word guessing game. Players try to figure out the secret word by guessing letters. After 6 wrong guess, the player loses.</p>
+         <p>Santa Hangman is a simple word guessing game. Players try to figure out the Christmas Word or Phrase by guessing letters. After 6 wrong guesses, the player loses.</p>
 
-         <p>Who doesn't love a good game of hangman?</p>
+         <p>Good Luck!</p>
 
         <span class="modal-howToPlay-close">X</span>
       </div>
@@ -107,12 +104,13 @@
     <div class="modal-finish-bg">
       <div class="modal-finish">
         <h1 id="finishStatement">WIN OR LOSE STATEMENT WILL BE HERE</h1>
+        <h1 id="answer">THE ANSWER</h1>
+        <h1 id="finalScore">YOUR SCORE</h1>
         <form id="userHighscore" action="get">
           <label for="username">Enter Your name</label>
           <input type="text" name="username">
           <input id="submitHighscore" type="submit" value="Submit">
         </form>
-        <p>PLAY AGAIN?</p>
         <!-- will lead back to choose mode modal -->
         <div id="endChoices">
           <!-- <button id="yes">Yes</button> -->
@@ -163,7 +161,6 @@
     </div>
   </main>
   <footer>
-    
   </footer>
   <script src="js/app.js"></script>
 </body>

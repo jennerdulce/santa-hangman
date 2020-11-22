@@ -48,7 +48,6 @@ body {
   align-items: center;
   visibility: visible;
   opacity: 1;
-  /* transition: visibility 0s opacity 0,5s; NOT WORKING */
 }
 
 .bg-none {
@@ -116,9 +115,9 @@ li {
   font-weight: bolder;
 }
 
-.modal-front > h1, a { 
+.modal-front > h1, a, #submit { 
   font-size: 30px;
-  border: 3px solid black;
+  border: 5px solid white;
   border-radius: 30px;
   padding: 10px;
   cursor: pointer;
@@ -130,7 +129,7 @@ li {
   top: 10px;
   right: 10px;
   cursor: pointer;
-  border: 3px solid black;
+  border: 3px solid white;
   padding: 3px;
   font-size: 14px;
 }
@@ -217,6 +216,7 @@ button {
   font-weight: bolder;
   width: 500px;
   margin: 30px auto;
+
   /* -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: black; */
 }
@@ -360,9 +360,9 @@ button {
   margin: auto
 }
 
-#about1{    
-  text-align: center;                            
-  color: red;
+#about1 {    
+  text-align: center;
+  color: white;                            
   font-family: 'Lobster', cursive;
   height: 100px; 
   background-color: black; 
@@ -373,10 +373,6 @@ button {
   border-radius: 25px 25px ; 
   background: rgb(55, 170, 70);
 } 
-
- #about1:hover {    
-  color:white;
-}
 
 #about2{  
   font-family: 'Lobster', cursive;
@@ -442,7 +438,10 @@ img{
   width: 300px
 }
 
-#timer{
+#timer {
+position: absolute;
+top: 10px;
+left: 425px;
 background-color: #E3CE9F;
 border:none;
 color: #570000;
@@ -461,18 +460,7 @@ outline: 0px;
 display: inline-block;
 }
 
-#finishStatement {
-background-color: #E3CE9F;
-color: #570000;
-padding: 10px 30px;
-text-align: center;
-font-family: 'Roboto Condensed', sans-serif;
-font-size: 30px;
-font-weight: bold;
-border-radius: 12px;
-border: 3px solid black;
-display: inline-block;
-}
+
 
 form {
   margin-top: 50px;
@@ -484,14 +472,22 @@ form > input {
   font-size: 30px
 }
 
+#answer, #finalScore {
+  font-family: 'Dancing Script', cursive;
+  margin-top: 20px;
+  text-transform: capitalize;
+}
+
 .modal-finish > p {
   font-family: 'Roboto Condensed', sans-serif;
   margin-top: 30px;
-  font-size: 120px;
+  font-size: 80px;
+  
 }
 
 
-#highscore-btn, #howToPlay-btn, #play-btn, a, #no {
+
+#highscore-btn, #howToPlay-btn, #play-btn, a, #no, #submitHighscore {
 font-family: 'Lobster', cursive;
 color: black;
 background-color: rgb(210, 240, 245);
@@ -523,13 +519,25 @@ a:active {
   font-family: 'Lobster', cursive;
 }
 
-#highscore-btn:hover, #play-btn:hover, #howToPlay-btn:hover, #about:hover {    
+#highscore-btn:hover, #play-btn:hover, #howToPlay-btn:hover, #about1:hover, #about2:hover, #about3:hover {    
 color:red;
 }
 
-
 #finishStatement {
-  margin-top: 150px;
+  margin: 125px 0 30px 0;
+  background-color: #E3CE9F;
+  border:none;
+  color: #570000;
+  padding: 5px 15px;
+  text-align: center;
+  text-decoration: none;
+  font-family: sans-serif;
+  font-size: 50px;
+  font-weight: bold;
+  border-radius: 12px;
+  border: 3px solid black;
+  box-shadow: 3px 3px 2px grey;
+  display: inline-block;
 }
 
 #endChoices {
