@@ -59,7 +59,7 @@ var playBtn = document.getElementById('play-btn');
 
 // -------------- MODAL -----------------
 // --------------------- opening modal ---------------------
-var modalBtn = document.querySelector('.modal-btn');
+// var modalBtn = document.querySelector('.modal-btn');
 var modalBg = document.querySelector('.modal-front-bg');
 
 // --------------------- MADE TO TOGGLE MODAL FOR TESTING PURPOSES ---------------------
@@ -129,9 +129,9 @@ function handleNo() {
 }
 noChoice.addEventListener('click', handleNo);
 
-function openFinish() {
-  finishBg.classList.add('bg-active');
-}
+// function openFinish() {
+//   finishBg.classList.add('bg-active');
+// }
 // finishBtn.addEventListener('click', openFinish);
 
 // --------------------- INSTANTIATE NEW PLAYER ---------------------
@@ -292,7 +292,7 @@ var scoreEl = document.getElementById('score');
 scoreEl.textContent = `Score: ${currentUserScore}`;
 
 // ------------------- DISPLAY BODY PARTS -----------------
-// var gameBackground = document.getElementById('game-container');
+var gameBackground = document.getElementById('game-container');
 function renderBodyParts() {
   if (bodyPart === 1) {
     gameBackground.style.backgroundImage = 'url("../santa/1.jpg")';
