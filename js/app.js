@@ -231,7 +231,12 @@ function openEndModal() {
 
 // ---------------- GENERATE SCORE -------------------
 function generateScore(time){
-  var totalScore = (time * 100) + currentUserScore;
+  var totalScore;
+  if (chances === 0 || timeLeft === 0){
+    totalScore = currentUserScore;
+  } else {
+    totalScore = (time * 100) + currentUserScore;
+  }
   return totalScore;
 }
 // ---------------- THIS IS HOW YOU GUESS A LETTER -----------------------
