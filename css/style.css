@@ -13,7 +13,10 @@ body {
   position: relative;
   width: 1000px;
   height: 750px;
+  /* FOR LOCAL */
   background-image: url("../img/beginningscreen.jpg");
+  /* for GITHUB 
+  background-image: url("https://jennerdulce.github.io/santa-hangman/santa/0.jpg"); */
   background-size: contain;
   margin: 150px auto;
 }
@@ -32,6 +35,27 @@ body {
   opacity: 0;
   /* transition: visibility 0s opacity 0,5s; NOT WORKING */
 }
+
+.modal-front-bg {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: visible;
+  opacity: 1;
+  /* transition: visibility 0s opacity 0,5s; NOT WORKING */
+}
+
+.bg-none {
+  visibility: hidden;
+  opacity: 0;
+}
+
 .bg-active {
   visibility: visible;
   opacity: 1;
@@ -42,12 +66,10 @@ body {
 .modal-front {
   position: relative;
   background-image: url("../img/wreath.png");
-  background-size: contain;
   background-repeat: no-repeat;
   background-size: 1000px;
+  max-width: 1000px;
   width: 50%;
-  background-size:cover;
-  /* width: 50%; */
   height: 50%;
   display: flex;
   justify-content: space-around;
@@ -57,6 +79,7 @@ body {
   position: relative;
   background-image: url("../img/wreath.png");
   background-repeat: no-repeat;
+  background-size: 1000px;
   text-align: center;
   color: white;
   width: 50%;
@@ -68,21 +91,31 @@ body {
   /* background-attachment: fixed; */
   background-size: contain;
   background-repeat: no-repeat;
-  background-size: 1000px 1000px;
+  background-size: 1000px;
   background-size: cover;
   height: 70%;
-  width: 75%;
   text-align: center;
   color: #000;
 }
+
 .modal-highscore > h1, ul{
-color: rgb(17, 187, 34);
 text-align: center;
-border: 300px;
+font-family: 'Dancing Script', cursive;
 }
-.modal-highscore > h1 {
-  background-color: transparent
+
+ul li:nth-of-type(even) {
+  color: rgb(205, 33, 33);
 }
+
+ul li:nth-of-type(odd) {
+  color: rgb(40, 188, 40);
+}
+
+li {
+  margin-top: 10px;
+  font-weight: bolder;
+}
+
 .modal-front > h1, a { 
   font-size: 30px;
   border: 3px solid black;
@@ -114,6 +147,7 @@ border: 300px;
   background-color: white;
   opacity: .6;
 }
+
 #word{
   text-align: center;
   letter-spacing: 8px;
@@ -122,6 +156,7 @@ border: 300px;
   text-transform: capitalize;
   box-shadow: 3px 5px 5px rgba(0, 0, 0, .25);
 }
+
 /* LETTER BOX */
 #letters {
   position: absolute;
@@ -134,12 +169,15 @@ border: 300px;
   background-color: aquamarine;
   box-shadow: 3px 5px 5px rgba(0, 0, 0, .25);
 }
+
 #letters > button {
   text-transform: uppercase;
 }
+
 #letters > button:hover {
   cursor: pointer;
 }
+
 button {
   font-size: 24px;
   margin-left: 3px;
@@ -160,19 +198,37 @@ button {
 #letters > span:hover {
   cursor: pointer;
 } */
+
 .modal-howToPlay > h1 {
   font-size: 45px;
+  font-family: 'Lobster', cursive;
+  text-decoration: underline;
+  margin-top: 130px;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
 }
+
 .modal-howToPlay > p {
-  font-size: 35px;
-  color: rgb(245, 245, 245);
+  font-size: 38px;
+  line-height: 40px;
+  color: rgb(255, 255, 255);
+  font-family: 'Dancing Script', cursive;
+  margin-top: 10px;
+  font-weight: bolder;
+  width: 500px;
+  margin: 30px auto;
+  /* -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black; */
 }
-.modal-howToPlay {
+
+.modal-howToPlay, .modal-finish {
+  max-width:1000px;
   background-image: url("../img/wreath.png");
-  background-size: contain;
+  /* background-size: contain; */
   background-repeat: no-repeat;
-  background-size: auto;
+  background-size: 1000px;
 }
+
 /* GUESSES */
 #guesses {
   position: absolute;
@@ -183,6 +239,7 @@ button {
   border-radius: 30px;
   padding: 5px;
 }
+
 /* SCORE */
 #score {
   position: absolute;
@@ -196,6 +253,7 @@ button {
 .logo-box{
   text-align: center;
 }
+
 .modal-btn{
   background-color: #E3CE9F;
   border:none;
@@ -215,24 +273,7 @@ button {
   outline: 0px;
   display: inline-block;
 }
-.finish-btn{
-  background-color: #E3CE9F;
-  border:none;
-  color: #570000;
-  padding: 5px 15px;
-  text-align: center;
-  text-decoration: none;
-  font-family: sans-serif;
-  font-size: 20px;
-  font-weight: bold;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 12px;
-  border: 3px solid black;
-  box-shadow: 3px 3px 2px grey;
-  outline: 0px;
-  display: inline-block;
-}
+
  .phrase-btn{
   background-color: #E3CE9F;
   border:none;
@@ -251,6 +292,7 @@ button {
   outline: 0px;
   display: inline-block;
  }
+
 .word-btn{
   background-color: #E3CE9F;
   border:none;
@@ -311,52 +353,99 @@ button {
   outline: 0px;
   display: inline-block;
 }
-#about1 {    
+
+
+#aboutmebody{
+  background-color: rgb(210, 240, 245);
+  width: 80%;
+  margin: auto
+}
+
+#about1{    
+
   text-align: center;                            
-  color: white;
+  color: red;
+  font-family: 'Lobster', cursive;
   height: 100px; 
   background-color: black; 
-  border: black solid 2px;
+  border: black solid ;
   margin: 2px 2px 0px; 
   font-size: 97px;
   width: auto; 
-  border-radius: 25px 25px 0px 0px; 
-  background: black;
+
+  border-radius: 25px 25px ; 
+  background: rgb(55, 170, 70);
 } 
-#about1:hover {    
-  color:#F09C00;
-}
-.aboutSection>h2{
-  font-family: 'Courier New', Courier, monospace;
+
+ #about1:hover {    
+  color:white;
 }
 
-h2{  
+#about2{  
+  font-family: 'Lobster', cursive;
+
   text-align: center;  
   padding: 5px;
-  font-size: 45px; 
+  font-size: 60px; 
   margin: 5px 2px 0px 0px;
-  color: red;
-  background: wheat;
-  border-radius: 15px 15px 0px 0px;
+  color: rgb(255, 255, 255);
+  background: rgb(55, 170, 70);
+  border: black solid ;
+  border-radius: 50px ;
+  
 }
-h3{
-text-align: center;  
+
+#description {
+  margin-top: 30px;
+  font-size: 30px;
+  line-height: 38px;
+}
+
+.teamParagraph {
+  font-family: 'Roboto Condensed', sans-serif;
+  text-align: center;
+  font-size: 28px;
+  color: rgb(8, 7, 7);
+  word-spacing: 6px;
+  line-height: 32px;
+}
+
+#about3{
+font-family: 'Lobster', cursive;
+border: black solid ;
+border-radius: 25px 25px ;
+text-align: center; 
 padding: 5px;
 font-size: 45px; 
-margin: 5px 2px 0px 0px;
-color:black;
+margin-top: 50px;
+margin-bottom: 50px;
+color:rgb(255, 255, 255);
+background: rgb(55, 170, 70);
 }
-.groupMember{
+
+.groupMember {
   display: grid;    
   grid-template-columns: repeat(2, 1fr); 
   grid-gap: 20px; 
-  border: 5px solid black; 
+  padding: 50px;
   border: 5px solid black;
-  padding: 10px ; 
+  /* border-radius: 35px; */
   margin: 20px; 
   text-align: center;
   background-color: white;  
+  font-size:20px;
 }
+
+#jennerPara {
+  height: 300px;
+  overflow: auto;
+}
+
+img{
+  height: 300px;
+  width: 300px
+}
+
 #timer{
 background-color: #E3CE9F;
 border:none;
@@ -375,46 +464,78 @@ box-shadow: 3px 3px 2px grey;
 outline: 0px;
 display: inline-block;
 }
-#finishStatement{
+
+#finishStatement {
 background-color: #E3CE9F;
-border:none;
 color: #570000;
-padding: 5px 15px;
+padding: 10px 30px;
 text-align: center;
-text-decoration: none;
-font-family: sans-serif;
-font-size: 20px;
+font-family: 'Roboto Condensed', sans-serif;
+font-size: 30px;
 font-weight: bold;
-margin: 4px 2px;
-cursor: pointer;
 border-radius: 12px;
 border: 3px solid black;
-box-shadow: 3px 3px 2px grey;
-outline: 0px;
 display: inline-block;
-}
-h4{
-color: yellow;
 }
 
-#highscore-btn, #howToPlay-btn, #play-btn{
-color: yellow;
-font-size: 20px;
+form {
+  margin-top: 50px;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+form > input {
+  margin-top: 15px;
+  font-size: 30px
+}
+
+.modal-finish > p {
+  font-family: 'Roboto Condensed', sans-serif;
+  margin-top: 30px;
+  font-size: 120px;
+}
+
+
+#highscore-btn, #howToPlay-btn, #play-btn, a, #no {
+font-family: 'Lobster', cursive;
+color: black;
+background-color: rgb(210, 240, 245);
+font-size: 34px;
+padding: 10px;
 cursor: pointer;
 display: inline-block;
-border-radius: 25px 25px 25px 25px; 
+border-radius: 25px; 
+text-decoration: underline;
+}
+
+#no {
+  text-decoration: none;
+}
+
+#highscoreTitle {
+ margin-top: 150px;
+ margin-bottom: 20px;
+ background-color: transparent;
+ font-family: 'Lobster', cursive;
+ color: black;
+ font-style: italic;
+ font-size: 50px
+}
+
+a:active {
+  text-decoration: none;
+  color: black;
+  font-family: 'Lobster', cursive;
 }
 
 #highscore-btn:hover, #play-btn:hover, #howToPlay-btn:hover, #about:hover {    
 color:red;
 }
-/* 
-#about{
-  text-align: center;
-  cursor: pointer;
-  font-size: 20px;
-  color:yellow;
-  background: black;
-  border-radius: 25px 25px 25px 25px; 
-}  */
 
+
+#finishStatement {
+  margin-top: 150px;
+}
+
+#endChoices {
+  margin-top: 30px;
+}
