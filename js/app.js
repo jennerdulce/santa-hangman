@@ -50,7 +50,7 @@ var answerEl = document.getElementById('answer');
 
 // --------------------- HARDCODED HIGH SCORE ENTRIES ------------------------
 var scores = [100, 500, 600, 400, 300, 400, 600, 115, 630, 900];
-var randomNames = ['Rudolph', 'Papa Elf', 'Mrs. Clause', 'Jack Skellignton', 'Corpse Bride', 'Hercules', 'Mushu', 'Olaf', 'Elsa', 'Sven'];
+var randomNames = ['Hercules', 'Papa Elf', 'Mrs. Clause', 'Jack Skellington', 'Buzz Lightyear', 'Olaf', 'Mushu', 'Rudolph', 'Elsa', 'The Grinch'];
 var highscoreList = [];
 var currentUserScore = 0;
 
@@ -773,6 +773,7 @@ function startTimer() {
 
     if (timeLeft === 0) {
       finishStatementEl.textContent = 'You Lose!';
+      endingAudio[1].play();
       myStopFunction();
       openEndModal();
     }
